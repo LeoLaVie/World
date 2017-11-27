@@ -31,11 +31,20 @@ public class Door
         this.previousRoom=previousRoom;
 
     }  
+     
+    /**
+     * Pour que le test marche --> proposition de NetBeans
+     * 
+     * @param room 
+     */
+    Door(Room room) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     /**
      * Function to know the next room of the player.
      *
-     * @returnThe next room  of the player. 
+     * @return The next room  of the player. 
      */
     public Room getNextRoom()
     {
@@ -45,6 +54,7 @@ public class Door
 
     /**
      * Function to know the previous room of the player.
+     * 
      * @return The previous room  of the player. coucoucoucou
      */
     public Room getPreviousRoom(){
