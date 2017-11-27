@@ -45,7 +45,6 @@ public class KindNPC
      */
     public String getNameKNPC()
     {
-        // put your code here
         return a;
     }
     
@@ -57,7 +56,6 @@ public class KindNPC
      */
     public Room getRoomKNPC()
     {
-        // put your code here
         return b;
     }
 
@@ -69,7 +67,6 @@ public class KindNPC
      */
     public String getEnigma()
     {
-        // put your code here
         return c;
     }
     
@@ -81,7 +78,6 @@ public class KindNPC
      */
     public String getAnswer()
     {
-        // put your code here
         return d;
     }
     

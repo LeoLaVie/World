@@ -50,7 +50,6 @@ public class MeanNPC
      */
     public void setHealth(int health, int attPower)
     {
-        // put your code here
         this.health = health - attPower;
     }
     
