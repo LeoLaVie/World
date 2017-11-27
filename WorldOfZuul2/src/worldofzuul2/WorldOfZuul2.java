@@ -9,7 +9,7 @@ import Interface.InterfaceMain;
 
 /**
  *
- * @author leov  
+ * @author leov  & leo
  */
 public class WorldOfZuul2 {
 
