@@ -14,6 +14,7 @@ import org.junit.Test;
 public class KeyTest
 {
     private Key key;
+    private Room room;
 
     /**
      * Sets up the test fixture.
@@ -23,7 +24,7 @@ public class KeyTest
     @Before
     public void setUp()
     {
-        key = new Key("Key test", "Key able to open all things");
+        key = new Key("Key test", "Key able to open all things", null);
     }
 
     /**

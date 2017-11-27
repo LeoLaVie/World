@@ -17,14 +17,15 @@ public class Items
     private String nameItem;
     /** The description of the item */ 
     private String descriptionItem;
+    private Room romm;
 
     /**
      * Constructor for objects of class Items
      */
-    public Items(String name, String description)
+    public Items(String name, String description, Room room)
     {
         nameItem = name;
-        descriptionItem = description;    
+        descriptionItem = description;
     }
 
     /**

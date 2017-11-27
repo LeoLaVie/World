@@ -19,13 +19,14 @@ public class Weapon extends Items
     private boolean equiped;
     /**the weapon causes a number of damage*/
     private int damage;
+    private Room room;
     
     /**
      * Constructor for objects of class weapon
      */
-    public Weapon(String name, String description, int nbDamage)
+    public Weapon(String name, String description, int nbDamage, Room room)
     {
-        super(name,description);
+        super(name,description, room);
         damage = nbDamage;
         equiped = false;
     }

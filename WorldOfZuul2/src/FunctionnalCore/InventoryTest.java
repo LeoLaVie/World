@@ -17,7 +17,7 @@ public class InventoryTest
     private ArrayList<Items> items;
     private Usable usable;
     private Weapon weapon;
-    private Key key1, key2, key3;   
+    private Key key1, key2, key3;
     
     /**
      * Sets up the test fixture.
@@ -28,9 +28,9 @@ public class InventoryTest
     public void setUp()
     {
         inventory = new Inventory();
-        usable = new Usable("Potion", "Add health point", 20);
-        key1 = new Key("first key", "first key description");
-        weapon = new Weapon("hache", "cut", 50);
+        usable = new Usable("Potion", "Add health point", 20, null);
+        key1 = new Key("first key", "first key description", null);
+        weapon = new Weapon("hache", "cut", 50, null);
         items = new ArrayList<Items>();
     }
 

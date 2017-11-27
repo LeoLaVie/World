@@ -15,13 +15,14 @@ public class Usable extends Items
     // instance variables - replace the example below with your own
     private int pdv;
     private String effect;
+    private Room room;
 
     /**
      * Constructor for objects of class Usable
      */
-    public Usable(String name, String description, int Health)
+    public Usable(String name, String description, int Health, Room room)
     {
-        super(name,description);
+        super(name,description, room);
         pdv = Health;
     }
 

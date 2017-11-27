@@ -17,11 +17,12 @@ public class Chest
     private Lock alock;
     private String name;
     private String description;
+    private Room romm;
 
     /**
      * Constructor for objects of class Chest
      */
-    public Chest(String nameChest, String descriptionChest, Lock aLock)
+    public Chest(String nameChest, String descriptionChest, Lock aLock, Room romm)
     {
         name = nameChest;
         description = descriptionChest;

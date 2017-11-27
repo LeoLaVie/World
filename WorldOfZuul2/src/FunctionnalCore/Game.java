@@ -320,10 +320,11 @@ public class Game
         
         System.out.println("Your answer: ");
         answer1 = sc.nextLine();
-        if (answer1 == kNPC1.getAnswer()) {
+        if (answer1.equals("Jonathan")) {
             System.out.println("Good answer !");
         }
         else {System.out.println("Bad answer ! :( Try again !");
+        beginEnigma();
     }
     
   }
