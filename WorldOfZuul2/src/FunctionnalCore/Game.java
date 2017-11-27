@@ -39,7 +39,7 @@ public class Game
         ListenerMove ae = new ListenerMove(this);
         
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan");
+       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
        mNPC1 = new MeanNPC("Joker", houseluttin2, 100, 20, true);
 
                 
@@ -310,7 +310,7 @@ public class Game
     public void beginEnigma()
     {
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan");
+       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
         
         String answer1;
         
@@ -322,6 +322,7 @@ public class Game
         answer1 = sc.nextLine();
         if (answer1.equals("Jonathan")) {
             System.out.println("Good answer !");
+            kNPC1.getAvailability();
         }
         else {System.out.println("Bad answer ! :( Try again !");
         beginEnigma();

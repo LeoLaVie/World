@@ -20,21 +20,26 @@ public class KindNPC
     private String enigma;
     // Enigma's answer
     private String answer;
+    //Enigma's availability
+    private boolean available;
     // ...
     private String a, c, d;
     // ...
     private Room b;
+    // ...
+    private boolean disp;
 
     /**
      * Constructor for objects of class NPC
      */
-    public KindNPC(String a, Room b, String c, String d)
+    public KindNPC(String a, Room b, String c, String d, boolean disp)
     {
         // initialise instance variables
         nameKNPC = a;
         roomKNPC = b;
         enigma = c;
         answer = d;
+        available = disp;
     }
     
     /**
@@ -45,7 +50,12 @@ public class KindNPC
      */
     public String getNameKNPC()
     {
+<<<<<<< HEAD
         return a;
+=======
+        // put your code here
+        return nameKNPC;
+>>>>>>> origin/master
     }
     
     /**
@@ -56,7 +66,12 @@ public class KindNPC
      */
     public Room getRoomKNPC()
     {
+<<<<<<< HEAD
         return b;
+=======
+        // put your code here
+        return roomKNPC;
+>>>>>>> origin/master
     }
 
     /**
@@ -67,7 +82,12 @@ public class KindNPC
      */
     public String getEnigma()
     {
+<<<<<<< HEAD
         return c;
+=======
+        // put your code here
+        return enigma;
+>>>>>>> origin/master
     }
     
     /**
@@ -78,7 +98,25 @@ public class KindNPC
      */
     public String getAnswer()
     {
+<<<<<<< HEAD
         return d;
+=======
+        // put your code here
+        return answer;
+    }
+    
+    /**
+     * Method getAvailability - This method displays the availability of the enigma linked to the kind NPC
+     *
+     * @param  
+     * @return    
+     */
+    public boolean getAvailability()
+    {
+        // put your code here
+        available = false;
+        return available;
+>>>>>>> origin/master
     }
     
     /**
@@ -91,20 +129,6 @@ public class KindNPC
     {
         System.out.println("*** Hello my Friend ! My name is " + nameKNPC + " and I would like to help you ! ***");
         System.out.println("*** Can you solve the following riddle please ? " + enigma + " ***");
-    }
-    
-    /**
-     * Method checkAnswer - This method checks if the answer provided is right
-     *
-     * @param  
-     * @return    
-     */
-    public String checkAnswer(String reponse)
-    {
-        // put your code here
-        // If reponse = answer ...
-        // If reponse /= answer ...
-        return "";
     }
 
 }
