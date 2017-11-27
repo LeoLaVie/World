@@ -14,6 +14,7 @@ import java.util.UUID;
 public class Key extends Items
 {
     private String keyToken;
+
     /**
      * Constructor for objects of class Key
      */

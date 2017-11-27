@@ -19,7 +19,7 @@ public class Weapon extends Items
     private boolean equiped;
     /**the weapon causes a number of damage*/
     private int damage;
-    
+
     /**
      * Constructor for objects of class weapon
      */

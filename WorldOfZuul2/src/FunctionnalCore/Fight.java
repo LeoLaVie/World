@@ -17,6 +17,7 @@ public class Fight extends Events
     private boolean isWin;
     private int health;
     private boolean fighting = true;
+    
 
     /**
      * Constructor for objects of class Fight
@@ -79,7 +80,6 @@ public class Fight extends Events
      */
     public void fight1()
     {
-        // put your code here
         System.out.print("\nYour attack does " + player.getAttPower() + " damage to the enemy!");
         meanNpc.setHealth(meanNpc.getHealth(), player.getAttPower());
         enemyAttack();

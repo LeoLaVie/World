@@ -25,7 +25,7 @@ public class testDoor
     @Before
     public void setUp()
     {
-        //door = new Door(new Room("garden"));
+        door = new Door(new Room("garden"));
         player = new Player("Maurice");
     }
 
@@ -35,7 +35,7 @@ public class testDoor
     @Test
     public void testNotEmptyRoom()
     {
-        //assertNotNull(door.getNextRoom());
+        assertNotNull(door.getNextRoom());
     }
     
     /**
@@ -43,6 +43,6 @@ public class testDoor
      */
     @Test
     public void testDifferentRooms() {
-       // assertNotSame(player.getLocation(),door.getNextRoom());
+       assertNotSame(player.getLocation(),door.getNextRoom());
     }
 }

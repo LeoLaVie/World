@@ -17,7 +17,7 @@ public class InventoryTest
     private ArrayList<Items> items;
     private Usable usable;
     private Weapon weapon;
-    private Key key1, key2, key3;   
+    private Key key1, key2, key3;
     
     /**
      * Sets up the test fixture.

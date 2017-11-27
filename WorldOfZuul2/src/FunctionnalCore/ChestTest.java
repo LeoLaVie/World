@@ -30,7 +30,6 @@ public class ChestTest
         chest = new Chest("chest for test", "beautiful chest", locked);
         locked.addKey(key1);
     }
-
     /**
      * Tears down the test fixture.
      *

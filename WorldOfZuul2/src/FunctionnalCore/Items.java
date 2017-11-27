@@ -24,7 +24,7 @@ public class Items
     public Items(String name, String description)
     {
         nameItem = name;
-        descriptionItem = description;    
+        descriptionItem = description;
     }
 
     /**

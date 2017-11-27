@@ -14,6 +14,7 @@ import org.junit.Test;
 public class KeyTest
 {
     private Key key;
+    private Room room;
 
     /**
      * Sets up the test fixture.

@@ -18,6 +18,7 @@ public class Chest
     private String name;
     private String description;
 
+
     /**
      * Constructor for objects of class Chest
      */

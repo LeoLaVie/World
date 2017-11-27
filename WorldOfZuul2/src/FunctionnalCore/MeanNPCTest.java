@@ -23,7 +23,6 @@ public class MeanNPCTest
     private MeanNPC ennemyNPC;
     private MeanNPC goodNPC;
     private MeanNPC badNPC;
-    private Room rommNPC;
 
     /**
      * Constructeur de la classe-test NPCTest
@@ -42,10 +41,10 @@ public class MeanNPCTest
     public void setUp() // throws java.lang.Exception
     {
         // Initialisez ici vos engagements
-        goodNPC = new MeanNPC("Vic", null, 100, 0, true);
-        badNPC = new MeanNPC("Ka", null, 50, 10, false);
-        kindNPC = new MeanNPC("Tom", null, 100, 0, true);
-        ennemyNPC = new MeanNPC("Jim", null, 100, 15, true);
+        goodNPC = new MeanNPC("Vic", 100, 0, true);
+        badNPC = new MeanNPC("Ka", 50, 10, false);
+        kindNPC = new MeanNPC("Tom", 100, 0, true);
+        ennemyNPC = new MeanNPC("Jim", 100, 15, true);
     }
 
     /**
