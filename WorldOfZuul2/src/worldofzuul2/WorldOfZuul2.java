@@ -5,17 +5,20 @@
  */
 package worldofzuul2;
 
+import Interface.InterfaceMain;
+
 /**
  *
- * @author leov
+ * @author leov  yoyo
  */
 public class WorldOfZuul2 {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args){
+        InterfaceMain game = new InterfaceMain();
+        
     }
     
 }
