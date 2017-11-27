@@ -22,13 +22,26 @@ public class MeanNPC
     private int attack;
     /** Boolean that says if the boolean is alive or not */
     private boolean alive;
+    //
+    private String nameMPC;
+    //
+    private Room roomMPC;
+    //
+    private int health1, attack1;
+    //
+    private boolean live;
 
     /**
      * Constructor for objects of class NPC
      */
-    public MeanNPC(String nameMPC, Room roomMPC, int health1, int atack, boolean live)
+    public MeanNPC(String nameMPC, Room roomMPC, int health1, int attack1, boolean live)
     {
         // initialise instance variables
+        nameMNPC = nameMPC;
+        roomMNPC = roomMPC;
+        health = health1;
+        attack = attack1;
+        alive = live;
     }
     
     /**
