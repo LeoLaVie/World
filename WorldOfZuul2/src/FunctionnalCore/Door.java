@@ -45,7 +45,7 @@ public class Door
 
     /**
      * Function to know the previous room of the player.
-     * @return The previous room  of the player.
+     * @return The previous room  of the player. coucoucoucou
      */
     public Room getPreviousRoom(){
         return null;
