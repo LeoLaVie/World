@@ -24,7 +24,7 @@ public class UsableTest
     @Before
     public void setUp() 
     {
-        usable = new Usable("Potion", "Give health point", 20, null);
+        usable = new Usable("Potion", "Give health point", 20);
     }
     
     /**

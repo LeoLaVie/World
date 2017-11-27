@@ -24,7 +24,7 @@ public class WeaponTest
     @Before
     public void setUp() 
     {
-     equipment = new Weapon("hache", "cut", 20, null);
+     equipment = new Weapon("hache", "cut", 20);
     }
     
     /**

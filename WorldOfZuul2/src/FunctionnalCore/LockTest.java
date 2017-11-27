@@ -24,8 +24,8 @@ public class LockTest
     @Before
     public void setUp()
     {
-        key1 = new Key("first key", "first key descript", null);
-        key2 = new Key("second key", "second key descript", null);
+        key1 = new Key("first key", "first key descript");
+        key2 = new Key("second key", "second key descript");
         locked = new Lock();
         locked.addKey(key1);
     }

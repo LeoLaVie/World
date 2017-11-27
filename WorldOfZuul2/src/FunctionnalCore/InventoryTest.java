@@ -28,9 +28,9 @@ public class InventoryTest
     public void setUp()
     {
         inventory = new Inventory();
-        usable = new Usable("Potion", "Add health point", 20, null);
-        key1 = new Key("first key", "first key description", null);
-        weapon = new Weapon("hache", "cut", 50, null);
+        usable = new Usable("Potion", "Add health point", 20);
+        key1 = new Key("first key", "first key description");
+        weapon = new Weapon("hache", "cut", 50);
         items = new ArrayList<Items>();
     }
 

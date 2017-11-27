@@ -14,13 +14,13 @@ import java.util.UUID;
 public class Key extends Items
 {
     private String keyToken;
-    private Room room;
+
     /**
      * Constructor for objects of class Key
      */
-    public Key(String name, String description, Room room)
+    public Key(String name, String description)
     {
-        super(name, description, room);
+        super(name, description);
         keyToken = UUID.randomUUID().toString();
     }
     

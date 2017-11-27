@@ -24,7 +24,7 @@ public class KeyTest
     @Before
     public void setUp()
     {
-        key = new Key("Key test", "Key able to open all things", null);
+        key = new Key("Key test", "Key able to open all things");
     }
 
     /**

@@ -23,7 +23,7 @@ public class ItemsTest
     @Before
     public void setUp()
     {
-        items = new Items("name test item", "description test item", null);
+        items = new Items("name test item", "description test item");
     }
 
     /**
