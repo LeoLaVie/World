@@ -83,13 +83,13 @@ public class Player
         this.health = health - attPower;
     }
     
-    // /**
-     // * This method returns the max health points of the character.
-     // */
-    // public int getMaxHealth()
-    // {
-        // return maxHealth;
-    // }
+    /**
+     * This method returns the max health points of the character.
+     */
+     public int getMaxHealth()
+    {
+        return maxHealth;
+     }
 
     /**
      * This method allows to loose points when the character loose a fight.. .
