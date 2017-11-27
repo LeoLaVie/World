@@ -23,6 +23,7 @@ public class KindNPC
     //Enigma's availability
     private boolean available;
     // ...
+
     private String a, c, d;
     // ...
     private Room b;
@@ -50,12 +51,8 @@ public class KindNPC
      */
     public String getNameKNPC()
     {
-<<<<<<< HEAD
-        return a;
-=======
         // put your code here
         return nameKNPC;
->>>>>>> origin/master
     }
     
     /**
@@ -66,28 +63,7 @@ public class KindNPC
      */
     public Room getRoomKNPC()
     {
-<<<<<<< HEAD
-        return b;
-=======
-        // put your code here
         return roomKNPC;
->>>>>>> origin/master
-    }
-
-    /**
-     * Method getEnigma - This method displays the enigma linked to the kind NPC
-     *
-     * @param  
-     * @return    
-     */
-    public String getEnigma()
-    {
-<<<<<<< HEAD
-        return c;
-=======
-        // put your code here
-        return enigma;
->>>>>>> origin/master
     }
     
     /**
@@ -98,12 +74,10 @@ public class KindNPC
      */
     public String getAnswer()
     {
-<<<<<<< HEAD
-        return d;
-=======
-        // put your code here
+
         return answer;
     }
+    
     
     /**
      * Method getAvailability - This method displays the availability of the enigma linked to the kind NPC
@@ -116,7 +90,6 @@ public class KindNPC
         // put your code here
         available = false;
         return available;
->>>>>>> origin/master
     }
     
     /**
