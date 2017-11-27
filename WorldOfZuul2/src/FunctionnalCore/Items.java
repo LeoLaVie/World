@@ -17,7 +17,7 @@ public class Items
     private String nameItem;
     /** The description of the item */ 
     private String descriptionItem;
-    private Room romm;
+    private Room room;
 
     /**
      * Constructor for objects of class Items
