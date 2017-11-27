@@ -70,31 +70,31 @@ public class InterfaceGame2 extends JFrame {
       //  buttonNorth.addActionListener(ae);
         
         buttonEast = new JButton();
-        buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheEast.gif")));
+        buttonEast.setIcon(new ImageIcon(getClass().getResource("/Images/flecheEast.gif")));
         buttonEast.setOpaque(false);
         buttonEast.setContentAreaFilled(false);
         buttonEast.setBorderPainted(false);
         
         buttonSouth = new JButton();
-        buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheSouth.gif")));
+        buttonSouth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheSouth.gif")));
         buttonSouth.setOpaque(false);
         buttonSouth.setContentAreaFilled(false);
         buttonSouth.setBorderPainted(false);
         
         buttonWest = new JButton();
-        buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheWest.gif")));
+        buttonWest.setIcon(new ImageIcon(getClass().getResource("/Images/flecheWest.gif")));
         buttonWest.setOpaque(false);
         buttonWest.setContentAreaFilled(false);
         buttonWest.setBorderPainted(false);
        
         buttonUp = new JButton();
-        buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheUp.gif")));
+        buttonUp.setIcon(new ImageIcon(getClass().getResource("/Images/flecheUp.gif")));
         buttonUp.setOpaque(false);
         buttonUp.setContentAreaFilled(false);
         buttonUp.setBorderPainted(false);
         
         buttonDown = new JButton();
-        buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheDown.gif")));
+        buttonDown.setIcon(new ImageIcon(getClass().getResource("/Images/flecheDown.gif")));
        // buttonDown.setPreferredSize(new Dimension(80, 30)); 
         buttonDown.setOpaque(false);
         buttonDown.setContentAreaFilled(false);
@@ -109,62 +109,62 @@ public class InterfaceGame2 extends JFrame {
         
        //add to panel move        
         //Creation of a container with a horizontal gestion
-       // Box b1 = Box.createHorizontalBox();
-      //  b1.add(Box.createHorizontalGlue());
-      //  b1.add(buttonNorth);
-      //  add(b1, BorderLayout.NORTH);
+        Box b1 = Box.createHorizontalBox();
+        b1.add(Box.createHorizontalGlue());
+        b1.add(buttonNorth);
+        add(b1, BorderLayout.NORTH);
 
 
         
         //Idem
-    //    Box b2 = Box.createHorizontalBox();
-   //     b2.add(Box.createHorizontalGlue());
-   //     b2.add(buttonWest);
-   //     b2.add(buttonEast);
-    //    add(b2, BorderLayout.CENTER);
-        
+       Box b2 = Box.createHorizontalBox();
+        b2.add(Box.createHorizontalGlue());
+       b2.add(buttonWest);
+       b2.add(buttonEast);
+       add(b2, BorderLayout.CENTER);
+      
         //Idem
-     //   Box b3 = Box.createHorizontalBox();
-     //   b3.add(Box.createHorizontalGlue());
-     //   b3.add(buttonSouth);
-     //   add(b3, BorderLayout.SOUTH);
+       Box b3 = Box.createHorizontalBox();
+       b3.add(Box.createHorizontalGlue());
+       b3.add(buttonSouth);
+       add(b3, BorderLayout.SOUTH);
         
         //Creation of a container with a vertical gestion
-      //  Box panelMove = Box.createVerticalBox();
-        //panelMove.add(Box.createHorizontalGlue());
-        //panelMove.add(Box.createRigidArea(new Dimension(10, 0)));
-     //   panelMove.add(b1);
-      //  panelMove.add(b2);
-      //  panelMove.add(b3);
+      Box panelMove = Box.createVerticalBox();
+      panelMove.add(Box.createHorizontalGlue());
+      panelMove.add(Box.createRigidArea(new Dimension(10, 0)));
+       panelMove.add(b1);
+      panelMove.add(b2);
+      panelMove.add(b3);
        
-         JPanel b1 = new JPanel();
+      //   JPanel b1 = new JPanel();
          //On définit le layout en lui indiquant qu'il travaillera en ligne
-         b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
-         b1.add(buttonNorth);
+       //  b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
+        // b1.add(buttonNorth);
          
-         JPanel b2 = new JPanel();
+      //   JPanel b2 = new JPanel();
         //Idem pour cette ligne
-        b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-        b2.add(buttonWest);
-        b2.add(buttonEast);
+      //  b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
+      //  b2.add(buttonWest);
+       // b2.add(buttonEast);
 
 
-        JPanel b3 = new JPanel();
+      //  JPanel b3 = new JPanel();
          //Idem pour cette ligne
-        b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
-        b3.add(buttonSouth);
+       // b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
+       // b3.add(buttonSouth);
 
 
-        JPanel panelMove = new JPanel();
+       // JPanel panelMove = new JPanel();
          //On positionne maintenant ces trois lignes en colonne
-        panelMove.setLayout(new BoxLayout(panelMove, BoxLayout.PAGE_AXIS));
-        panelMove.add(b1);
-        panelMove.add(b2);
-        panelMove.add(b3);
+      //  panelMove.setLayout(new BoxLayout(panelMove, BoxLayout.PAGE_AXIS));
+    //    panelMove.add(b1);
+     //  panelMove.add(b2);
+      //  panelMove.add(b3);
         
         JPanel panelMoveTot = new JPanel();
         panelMoveTot.add(panelMove);
-       // panelMoveTot.add(panelUpDown);
+        panelMoveTot.add(panelUpDown);
         
         
         //label pv
