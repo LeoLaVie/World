@@ -39,15 +39,15 @@ public class Game
         ListenerMove ae = new ListenerMove(this);
         
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
-       mNPC1 = new MeanNPC("Joker", houseluttin2, 100, 20, true);
+       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+       mNPC1 = new MeanNPC("Joker", 100, 20, true);
 
                 
     }
     
     
     /**
-     * This method create all the rooms of the town of the game.
+     * This method creates all the rooms of the town of the game.
      * Create the link between the different rooms.
      *
      */
@@ -301,8 +301,8 @@ public class Game
     }
     
       /**
-     * Method beginEnigma - This method allows to ask a question to the player
-     * The player can answr to the question.
+     * Method beginEnigma - This method allows to ask a question to the player.
+     * The player can answer to the question.
      *
      * @param  
      * @return    
@@ -310,7 +310,7 @@ public class Game
     public void beginEnigma()
     {
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", houseluttin1, "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
         
         String answer1;
         

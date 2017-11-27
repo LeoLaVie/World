@@ -14,8 +14,6 @@ public class KindNPC
 {
     // NPC's name
     private String nameKNPC, a;
-    // Room where the NPC is
-    private Room roomKNPC, b;
     // Enigma that the NPC will give to the player
     private String enigma, c;
     // Enigma's answer
@@ -25,11 +23,10 @@ public class KindNPC
     /**
      * Constructor for objects of class NPC
      */
-    public KindNPC(String a, Room b, String c, String d, boolean disp)
+    public KindNPC(String a, String c, String d, boolean disp)
     {
         // initialise instance variables
         nameKNPC = a;
-        roomKNPC = b;
         enigma = c;
         answer = d;
         available = disp;
@@ -45,17 +42,6 @@ public class KindNPC
     {
         // put your code here
         return nameKNPC;
-    }
-    
-    /**
-     * Method getRoomKNPC - This method displays the name of the room where the kind NPC is
-     *
-     * @param  
-     * @return    
-     */
-    public Room getRoomKNPC()
-    {
-        return roomKNPC;
     }
     
     /**

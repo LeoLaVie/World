@@ -14,8 +14,6 @@ public class MeanNPC
 {
     /** NPC's name */
     private String nameMNPC, nameMPC;
-    /** Room where the NPC is */
-    private Room roomMNPC, roomMPC;
     /** Number of NPC health points */
     private int health, health1;
     /** Damage caused by a NPC attack */
@@ -26,11 +24,10 @@ public class MeanNPC
     /**
      * Constructor for objects of class NPC
      */
-    public MeanNPC(String nameMPC, Room roomMPC, int health1, int attack1, boolean live)
+    public MeanNPC(String nameMPC, int health1, int attack1, boolean live)
     {
         // initialise instance variables
         nameMNPC = nameMPC;
-        roomMNPC = roomMPC;
         health = health1;
         attack = attack1;
         alive = live;
@@ -48,10 +45,10 @@ public class MeanNPC
     } 
     
     /**
-     * An example of a method - replace this comment with your own
+     * Method setHealth - 
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  
+     * @return    
      */
     public void setHealth(int health, int attPower)
     {
@@ -80,7 +77,7 @@ public class MeanNPC
     }
     
     /**
-     * Method getAttaque - This method allows to display the damage caused by a NPC attack
+     * Method getAttack - This method allows to display the damage caused by a NPC attack
      *
      * @param  
      * @return    

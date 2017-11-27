@@ -14,7 +14,6 @@ import org.junit.Test;
 public class KindNPCTest
 {
     private KindNPC kindNPC;
-    private Room room1;
     
     /**
      * Default constructor for test class EnigmaTest
@@ -31,7 +30,7 @@ public class KindNPCTest
     @Before
     public void setUp()
     {
-        kindNPC = new KindNPC("Loulou", room1, "Qu'est-ce qui est vert et long?", "Un poireau", true);
+        kindNPC = new KindNPC("Loulou", "Qu'est-ce qui est vert et long?", "Un poireau", true);
     }
 
     /**
@@ -55,7 +54,6 @@ public class KindNPCTest
     public void testGettersOk()
     {
         assertEquals("Loulou", kindNPC.getNameKNPC());
-        assertEquals(room1, kindNPC.getRoomKNPC());
         assertEquals("Un poireau", kindNPC.getAnswer());
     }
 }
