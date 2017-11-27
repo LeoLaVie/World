@@ -13,23 +13,15 @@ import java.util.Map.Entry;
 public class MeanNPC
 {
     /** NPC's name */
-    private String nameMNPC;
+    private String nameMNPC, nameMPC;
     /** Room where the NPC is */
-    private Room roomMNPC;
+    private Room roomMNPC, roomMPC;
     /** Number of NPC health points */
-    private int health;
+    private int health, health1;
     /** Damage caused by a NPC attack */
-    private int attack;
+    private int attack, attack1;
     /** Boolean that says if the boolean is alive or not */
-    private boolean alive;
-    //
-    private String nameMPC;
-    //
-    private Room roomMPC;
-    //
-    private int health1, attack1;
-    //
-    private boolean live;
+    private boolean alive, live;
 
     /**
      * Constructor for objects of class NPC
