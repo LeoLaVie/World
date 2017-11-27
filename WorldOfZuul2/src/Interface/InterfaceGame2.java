@@ -13,6 +13,7 @@ package Interface;
     import java.awt.GridLayout;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
     import javax.swing.Box;
     import javax.swing.BoxLayout;
     import javax.swing.Icon;
@@ -26,6 +27,7 @@ package Interface;
     import javax.swing.JScrollPane;
     import javax.swing.JTextArea;
     import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 /**
  *
  * @author leov
@@ -55,17 +57,17 @@ public class InterfaceGame2 extends JFrame {
      public InterfaceGame2(String playerName){
         
 
-        JLabel labelback = new JLabel();
-        labelback.setIcon(new ImageIcon(getClass().getResource("/Images/outside1.jpg")));
-        labelback.setPreferredSize(new Dimension(1000, 550)); 
+       // JLabel labelback = new JLabel();
+        //labelback.setIcon(new ImageIcon(getClass().getResource("/Images/outside1.jpg")));
+       // labelback.setPreferredSize(new Dimension(1000, 550)); 
 
-         
         //creation of buttons and label
         buttonNorth = new JButton();
         buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheNorth.gif")));
         buttonNorth.setOpaque(false);
         buttonNorth.setContentAreaFilled(false);
-        buttonNorth.setBorderPainted(false);
+        buttonNorth.setBorderPainted(true);
+        buttonNorth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
       //  buttonNorth.addActionListener(ae);
         
@@ -73,133 +75,118 @@ public class InterfaceGame2 extends JFrame {
         buttonEast.setIcon(new ImageIcon(getClass().getResource("/Images/flecheEast.gif")));
         buttonEast.setOpaque(false);
         buttonEast.setContentAreaFilled(false);
-        buttonEast.setBorderPainted(false);
+        buttonEast.setBorderPainted(true);
+        buttonEast.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         buttonSouth = new JButton();
         buttonSouth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheSouth.gif")));
         buttonSouth.setOpaque(false);
         buttonSouth.setContentAreaFilled(false);
-        buttonSouth.setBorderPainted(false);
+        buttonSouth.setBorderPainted(true);
+        buttonSouth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         buttonWest = new JButton();
         buttonWest.setIcon(new ImageIcon(getClass().getResource("/Images/flecheWest.gif")));
         buttonWest.setOpaque(false);
         buttonWest.setContentAreaFilled(false);
-        buttonWest.setBorderPainted(false);
+        buttonWest.setBorderPainted(true);
+        buttonWest.setBorder(BorderFactory.createLineBorder(Color.WHITE));
        
         buttonUp = new JButton();
         buttonUp.setIcon(new ImageIcon(getClass().getResource("/Images/flecheUp.gif")));
         buttonUp.setOpaque(false);
         buttonUp.setContentAreaFilled(false);
-        buttonUp.setBorderPainted(false);
+        buttonUp.setBorderPainted(true);
+        buttonUp.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         buttonDown = new JButton();
         buttonDown.setIcon(new ImageIcon(getClass().getResource("/Images/flecheDown.gif")));
        // buttonDown.setPreferredSize(new Dimension(80, 30)); 
         buttonDown.setOpaque(false);
         buttonDown.setContentAreaFilled(false);
-        buttonDown.setBorderPainted(false);
+        buttonDown.setBorderPainted(true);
+        buttonDown.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
         
        //add to panel up/down
         JPanel panelUpDown = new JPanel();
         panelUpDown.setLayout(new GridLayout(2,1));
+        panelUpDown.setBackground(Color.GRAY);
         panelUpDown.add(buttonUp);
         panelUpDown.add(buttonDown);
         
        //add to panel move        
         //Creation of a container with a horizontal gestion
         Box b1 = Box.createHorizontalBox();
-        b1.add(Box.createHorizontalGlue());
         b1.add(buttonNorth);
-        add(b1, BorderLayout.NORTH);
-
-
-        
+        add(b1);
+ 
         //Idem
        Box b2 = Box.createHorizontalBox();
-        b2.add(Box.createHorizontalGlue());
        b2.add(buttonWest);
        b2.add(buttonEast);
-       add(b2, BorderLayout.CENTER);
+       add(b2);
       
         //Idem
        Box b3 = Box.createHorizontalBox();
-       b3.add(Box.createHorizontalGlue());
        b3.add(buttonSouth);
-       add(b3, BorderLayout.SOUTH);
+       add(b3);
         
         //Creation of a container with a vertical gestion
-      Box panelMove = Box.createVerticalBox();
-      panelMove.add(Box.createHorizontalGlue());
-      panelMove.add(Box.createRigidArea(new Dimension(10, 0)));
+       Box panelMove = Box.createVerticalBox();
        panelMove.add(b1);
-      panelMove.add(b2);
-      panelMove.add(b3);
-       
-      //   JPanel b1 = new JPanel();
-         //On définit le layout en lui indiquant qu'il travaillera en ligne
-       //  b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
-        // b1.add(buttonNorth);
-         
-      //   JPanel b2 = new JPanel();
-        //Idem pour cette ligne
-      //  b2.setLayout(new BoxLayout(b2, BoxLayout.LINE_AXIS));
-      //  b2.add(buttonWest);
-       // b2.add(buttonEast);
-
-
-      //  JPanel b3 = new JPanel();
-         //Idem pour cette ligne
-       // b3.setLayout(new BoxLayout(b3, BoxLayout.LINE_AXIS));
-       // b3.add(buttonSouth);
-
-
-       // JPanel panelMove = new JPanel();
-         //On positionne maintenant ces trois lignes en colonne
-      //  panelMove.setLayout(new BoxLayout(panelMove, BoxLayout.PAGE_AXIS));
-    //    panelMove.add(b1);
-     //  panelMove.add(b2);
-      //  panelMove.add(b3);
+       panelMove.add(b2);
+       panelMove.add(b3);
         
         JPanel panelMoveTot = new JPanel();
+        panelMoveTot.setBackground(Color.GRAY);
+       // panelMoveTot.setLayout(new GridLayout(1,1));
         panelMoveTot.add(panelMove);
         panelMoveTot.add(panelUpDown);
         
         
         //label pv
-        labelPv = new JLabel("PV : " + "0");
-        labelPv.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,20));
-        labelPv.setForeground(Color.black);
+        labelPv = new JLabel("100");
+        labelPv.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
+        labelPv.setForeground(Color.red);
+        
+        JLabel labelLife = new JLabel();
+        labelLife.setIcon(new ImageIcon(getClass().getResource("/Images/boutton_game.png")));
+        labelLife.setText("Life");
+        labelLife.setForeground(Color.black);
+        labelLife.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,25));
+        labelLife.setVerticalTextPosition(SwingConstants.CENTER);
+        labelLife.setHorizontalTextPosition(SwingConstants.CENTER);
+        
+        JPanel panelPv = new JPanel();
+        panelPv.setLayout(new GridLayout(2,1));
+        panelPv.setBackground(Color.GRAY);
+        panelPv.add(labelLife, BorderLayout.CENTER);
+        panelPv.add(labelPv, BorderLayout.CENTER);
+        
         
          //panel interface
         JPanel panelInterface = new JPanel();
-        panelInterface.setLayout(new GridLayout(1,1,200,200));
-        panelInterface.add(labelPv, BorderLayout.WEST);
+        panelInterface.setLayout(new GridLayout(1, 1, 200, 200));
+        panelInterface.add(panelPv);
         panelInterface.add(buildContentPane(), BorderLayout.CENTER);
         panelInterface.add(panelMoveTot, BorderLayout.EAST);
+        panelInterface.setBackground(new Color(192,192,192));
         
         
-         //panel total
-        //receive background
-        //receive panel interface;
-        JPanel panelTot = new JPanel();
-        panelTot.setLayout(new BorderLayout());
-        panelTot.add(labelback,BorderLayout.CENTER);
-        panelTot.add(panelInterface,BorderLayout.SOUTH);
+         
+        JLabel labelback = new JLabel(makeImage());
+        labelback.setPreferredSize(new Dimension(1000, 550));
         
-        //this.setSize(800, 800);
-        //this.setJMenuBar(menuBar);
-        //  Container c = new JLabel(makeImage());
-        //   c.setLayout(new FlowLayout());
-         //  c.add(panelInterface);
-       //   c.setPreferredSize(new Dimension(1600,1000));
-      //  c.setMaximumSize(new Dimension(1600,1000));
-       // c.setMinimumSize(new Dimension(1600,1000));
-       // this.add(c);
+        Container c = new JLabel(makeImage());
+        c.setLayout(new BorderLayout());
+        c.add(panelInterface,BorderLayout.SOUTH);
+        c.setPreferredSize(new Dimension(1300,650));
+        c.setMaximumSize(new Dimension(1300,650));
+        c.setMinimumSize(new Dimension(1300,650));
+        this.add(c);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panelTot);
         this.pack();
         this.setResizable(false);
         this.setPreferredSize(new Dimension(1000,550));
@@ -207,6 +194,12 @@ public class InterfaceGame2 extends JFrame {
         this.setMinimumSize(new Dimension(1000,550));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+     }
+     
+     private ImageIcon makeImage()
+     {
+       return new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+        
      }
      
       private Box buildContentPane(){
@@ -254,11 +247,6 @@ public class InterfaceGame2 extends JFrame {
          return textArea;
     }
     
-    private ImageIcon makeImage()
-     {
-       return new ImageIcon(getClass().getResource("/Images/outside1.jpg"));
-        
-     }
      
 
 }
