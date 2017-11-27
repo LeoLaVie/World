@@ -25,9 +25,9 @@ public class ChestTest
     public void setUp()
     {
         locked = new Lock();
-        key1 = new Key("key for chest", "test key1");
-        key2 = new Key("other key", "test key2");
-        chest = new Chest("chest for test", "beautiful chest", locked);
+        key1 = new Key("key for chest", "test key1", null);
+        key2 = new Key("other key", "test key2", null);
+        chest = new Chest("chest for test", "beautiful chest", locked, null);
         locked.addKey(key1);
     }
 
