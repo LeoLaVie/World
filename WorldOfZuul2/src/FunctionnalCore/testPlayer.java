@@ -58,30 +58,30 @@ public class testPlayer
     	assertEquals(p1.getName(), "Pseudo");
     }
     
-	/**
-	 * Method testSetHealth
-	 * <p>This method test that a player's hp will never go out of [0/MaxHp]</p>
-	 * <p>It also test if the health is correctly modified</p>
-	 * 
-	 */
-	@Test
-	public void testAddHealth() 
-	{
-		//p1.addHealth(p1.getMaxHealth() + 200);
-		//assertEquals(p1.getHealth(),p1.getMaxHealth());
-	}
+    /**
+     * Method testSetHealth
+     * <p>This method test that a player's hp will never go out of [0/MaxHp]</p>
+     * <p>It also test if the health is correctly modified</p>
+     * 
+     */
+    @Test
+    public void testAddHealth() 
+    {
+	//p1.addHealth(p1.getMaxHealth() + 200);
+	//assertEquals(p1.getHealth(),p1.getMaxHealth());
+    }
     
-		/**
-	 * Method testSetHealth
-	 * <p>This method test that a player's hp will never go out of [0/MaxHp]</p>
-	 * <p>It also test if the health is correctly modified</p>
-	 */
-	@Test
-	public void testLooseHealth() 
-	{
-		//p1.addHealth(-300);
-		//assertEquals(p1.getHealth(),p1.getMaxHealth());
-	}
+    /**
+     * Method testSetHealth
+     * <p>This method test that a player's hp will never go out of [0/MaxHp]</p>
+     * <p>It also test if the health is correctly modified</p>
+     */
+    @Test
+    public void testLooseHealth() 
+    {
+	//p1.addHealth(-300);
+	//assertEquals(p1.getHealth(),p1.getMaxHealth());
+    }
 
     private void assertEquals(String name, String feignant) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
