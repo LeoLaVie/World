@@ -33,8 +33,8 @@ public class ActionText extends AbstractAction {
      * @return    the sum of x and y
      */
     public void actionPerformed(ActionEvent e) { 
-    String texteUtilisateur = interfaceGame.getTextField().getText();
-    interfaceGame.getTextArea().setText(texteUtilisateur);
+        String texteUtilisateur = interfaceGame.getTextField().getText();
+        interfaceGame.getTextArea().setText(texteUtilisateur);
         
     // String text = game.textField.getText();
         // game.textArea.append(text + game.newline);

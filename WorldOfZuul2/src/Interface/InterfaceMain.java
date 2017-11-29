@@ -50,9 +50,10 @@ public class InterfaceMain extends JFrame implements ActionListener
        this.setTitle("World Of Zuul");// Titre
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        //-----------------------------------------------------------------------
-        labTitle = new JLabel("Horreur en Laponie",JLabel.CENTER);
+        labTitle = new JLabel("Horror in Laponia",JLabel.CENTER);
         labTitle.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,45));
         labTitle.setForeground(Color.red);
+       
         
          //-----------------------------------------------------------------------
        
@@ -83,16 +84,17 @@ public class InterfaceMain extends JFrame implements ActionListener
        /// BOTTOM : Boutons start
         butStart = new JButton();
         butStart.setPreferredSize(new Dimension(200,60));
-        butStart.setIcon(new ImageIcon(getClass().getResource("/Images/boutton_game.png")));
+        butStart.setIcon(new ImageIcon(getClass().getResource("/Images/boutton.jpg")));
         butStart.setText("Start Game");
         butStart.setForeground(Color.black);
         butStart.setOpaque(false);
         butStart.setContentAreaFilled(false);
-        butStart.setBorderPainted(false);
-        butStart.setDisabledIcon(new ImageIcon(getClass().getResource("/Images/boutton_game.png")));
+        butStart.setBorderPainted(true);
+        butStart.setDisabledIcon(new ImageIcon(getClass().getResource("/Images/boutton.jpg")));
         butStart.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,25));
         butStart.setVerticalTextPosition(SwingConstants.CENTER);
         butStart.setHorizontalTextPosition(SwingConstants.CENTER);
+        butStart.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                
         
         panelStart.add(butStart);
@@ -123,9 +125,9 @@ public class InterfaceMain extends JFrame implements ActionListener
        c.setMinimumSize(new Dimension(1600,1000));
        this.add(c);
        this.setResizable(false);
-       this.setPreferredSize(new Dimension(1000,550));
-       this.setMaximumSize(new Dimension(1000,550));
-       this.setMinimumSize(new Dimension(1000,550));
+       this.setPreferredSize(new Dimension(1300,650));
+       this.setMaximumSize(new Dimension(1300,650));
+       this.setMinimumSize(new Dimension(1300,650));
        this.setLocationRelativeTo(null);
        this.setVisible(true);        
         
@@ -133,7 +135,7 @@ public class InterfaceMain extends JFrame implements ActionListener
     
      private ImageIcon makeImage()
      {
-       return new ImageIcon(getClass().getResource("/Images/fond1.gif"));
+       return new ImageIcon(getClass().getResource("/Images/fond2.gif"));
         
      }
 
