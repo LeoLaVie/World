@@ -11,6 +11,7 @@ package Interface;
     import java.awt.FlowLayout;
     import java.awt.Font;
     import java.awt.GridLayout;
+import java.awt.PopupMenu;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
     import java.awt.event.*;
@@ -41,26 +42,32 @@ public class InterfaceGame2 extends JFrame {
     
     private JPanel myPanel;
     
-    protected JButton buttonNorth;
-    protected JButton buttonEast;
-    protected JButton buttonSouth;
-    protected JButton buttonWest;
-    protected JButton button;
-    protected JButton buttonUp;
-    protected JButton buttonDown;
+    private JButton buttonNorth;
+    private JButton buttonEast;
+    private JButton buttonSouth;
+    private JButton buttonWest;
+    private JButton button;
+    private JButton buttonUp;
+    private JButton buttonDown;
+    private JButton buttonLife;
+    private JButton buttonAttack;
     
     private JLabel labelPv;
     
      //champ textuel
-    protected JTextField textField;
-    protected JTextArea textArea;
+    private JTextField textField;
+    private JTextArea textArea;
     protected final static String newline = "\n";
-    protected JPanel panelText;
+    private JPanel panelText;
     private JLabel labelText;
     
     private String name;
     private Document doc; 
     private JScrollPane pa;
+    
+    private Boolean reponseBoolean;
+    private String stri;
+    private String reponse;
     
      public InterfaceGame2(String playerName){
         
@@ -118,6 +125,23 @@ public class InterfaceGame2 extends JFrame {
         buttonDown.setBackground(Color.GRAY);
         buttonDown.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
+        buttonLife = new JButton();
+        buttonLife.setIcon(new ImageIcon(getClass().getResource("/Images/buttonPotion2.gif")));
+        buttonLife.setOpaque(true);
+        buttonLife.setContentAreaFilled(true);
+        buttonLife.setBorderPainted(false);
+        buttonLife.setBackground(Color.lightGray);
+       // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        
+        buttonAttack = new JButton();
+        buttonAttack.setIcon(new ImageIcon(getClass().getResource("/Images/buttonSword2.gif")));
+        buttonAttack.setOpaque(true);
+        buttonAttack.setContentAreaFilled(true);
+        buttonAttack.setBorderPainted(false);
+        buttonAttack.setBackground(Color.lightGray);
+      //  buttonAttack.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        
+        //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
         
         //listener mouse for directiv button 
@@ -174,6 +198,19 @@ public class InterfaceGame2 extends JFrame {
         panelMoveTot.add(panelUpDown);
         
         
+        //panel life and attakc button
+        JPanel panelLifeAttack = new JPanel();
+        panelLifeAttack.setLayout(new GridLayout(2,2));
+        JLabel labelvide = new JLabel(" ");
+        JLabel labelvide2= new JLabel(" ");
+        panelLifeAttack.setBackground(Color.lightGray);
+        panelLifeAttack.add(buttonLife);
+        panelLifeAttack.add(labelvide);
+        panelLifeAttack.add(labelvide2);
+        panelLifeAttack.add(buttonAttack);
+        
+        
+        
         //label pv
         labelPv = new JLabel("100");
         labelPv.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,30));
@@ -205,10 +242,11 @@ public class InterfaceGame2 extends JFrame {
         
          //panel interface
         JPanel panelInterface = new JPanel();
-        panelInterface.setLayout(new GridLayout(1, 1, 200, 200));
+        panelInterface.setLayout(new GridLayout(1, 1, 9, 9));
         panelInterface.add(panelPv);
         panelInterface.add(panelYolo, BorderLayout.CENTER);
-        panelInterface.add(panelMoveTot, BorderLayout.EAST);
+        panelInterface.add(panelLifeAttack, BorderLayout.EAST);
+        panelInterface.add(panelMoveTot);
         panelInterface.setBackground(new Color(192,192,192));
          
         JLabel labelback = new JLabel(makeImage());
@@ -238,6 +276,8 @@ public class InterfaceGame2 extends JFrame {
        return new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         
      }
+     
+     
      
      protected void compteurMouse (MouseEvent evt){
          if (evt.getSource() == buttonNorth){
@@ -326,14 +366,15 @@ public class InterfaceGame2 extends JFrame {
         textArea.setLineWrap(true);
         //JScrollPane scrollPane = new JScrollPane(textArea);
         doc = textArea.getDocument();
-        insert("Bienvenue à toi, " + name + " au pays de père Nöel. \n ...");
+        insert("Bienvenue à toi, " + name + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?");
+        
         
         // output.setEditable(false);
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        pa.setMaximumSize(new Dimension(290, 100));
-        pa.setMinimumSize(new Dimension(290,100));
-        pa.setPreferredSize(new Dimension(290, 100));
+        pa.setMaximumSize(new Dimension(300, 100));
+        pa.setMinimumSize(new Dimension(300,100));
+        pa.setPreferredSize(new Dimension(300, 100));
 
 
         textField = new JTextField();
@@ -355,9 +396,40 @@ public class InterfaceGame2 extends JFrame {
         panelText.add(bt1);
         panelText.add(bt2);
         
+       // setReponse(reponse);
+      //  reponseJoueur();
+        
         return panelText;
      }
     
+    public void setReponse(String newReponse){
+        if (newReponse == "oui" | newReponse == "yes"){
+            reponseBoolean = true;
+        }
+        else if(newReponse == "non" | newReponse == "no"){
+            reponseBoolean = false;
+        }
+        else{
+            reponseBoolean = false;
+        }
+    }
+    
+    public boolean getReponse(){
+        return reponseBoolean;
+    }
+    
+    public void reponseJoueur(){
+        
+        //boucle
+            while (getReponse() != true)
+            {
+            setReponse(stri);
+            insert("C'est pas vraiment la réponse que j'attendais.");
+            String b = "Son projet maléfique : rendre inaccessible la junk food, la viande et le gluten de la nation. \nVotre mission : Empêcher ce virus de se propager. Pour cela, vous devrez vaincre le père noël afin de rétablir la vrai nourriture et l'obésité, et accessoirement le guérir";
+            insert(b);
+            }
+           
+    }
     
     public JTextField getTextField(){
         return textField;
