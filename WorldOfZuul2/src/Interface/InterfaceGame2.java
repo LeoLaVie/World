@@ -10,7 +10,10 @@ package Interface;
     import java.awt.Dimension;
     import java.awt.FlowLayout;
     import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
     import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.PopupMenu;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
@@ -140,6 +143,7 @@ public class InterfaceGame2 extends JFrame {
         buttonAttack.setBorderPainted(false);
         buttonAttack.setBackground(Color.lightGray);
       //  buttonAttack.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+      
         
         //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
@@ -176,22 +180,22 @@ public class InterfaceGame2 extends JFrame {
         add(b1);
  
         //Idem
-       Box b2 = Box.createHorizontalBox();
-       b2.add(buttonWest);
-       b2.add(buttonEast);
-       add(b2);
+        Box b2 = Box.createHorizontalBox();
+        b2.add(buttonWest);
+        b2.add(buttonEast);
+        add(b2);
       
         //Idem
-       Box b3 = Box.createHorizontalBox();
-       b3.add(buttonSouth);
-       add(b3);
+        Box b3 = Box.createHorizontalBox();
+        b3.add(buttonSouth);
+        add(b3);
         
         //Creation of a container with a vertical gestion
-       Box panelMove = Box.createVerticalBox();
-       panelMove.add(b1);
-       panelMove.add(b2);
-       panelMove.add(b3);
-        
+        Box panelMove = Box.createVerticalBox();
+        panelMove.add(b1);
+        panelMove.add(b2);
+        panelMove.add(b3);
+         
         JPanel panelMoveTot = new JPanel();
         panelMoveTot.setBackground(Color.GRAY);
         panelMoveTot.add(panelMove);
@@ -201,6 +205,9 @@ public class InterfaceGame2 extends JFrame {
         //panel life and attakc button
         JPanel panelLifeAttack = new JPanel();
         panelLifeAttack.setLayout(new GridLayout(2,2));
+        panelLifeAttack.setMaximumSize(new Dimension(30, 30));
+        panelLifeAttack.setPreferredSize(new Dimension(30,30));
+        panelLifeAttack.setMinimumSize(new Dimension(30, 30));
         JLabel labelvide = new JLabel(" ");
         JLabel labelvide2= new JLabel(" ");
         panelLifeAttack.setBackground(Color.lightGray);
@@ -208,7 +215,6 @@ public class InterfaceGame2 extends JFrame {
         panelLifeAttack.add(labelvide);
         panelLifeAttack.add(labelvide2);
         panelLifeAttack.add(buttonAttack);
-        
         
         
         //label pv
@@ -235,13 +241,13 @@ public class InterfaceGame2 extends JFrame {
         JPanel panelYolo = new JPanel();
         panelYolo.setBackground(Color.lightGray);
         panelYolo.add(buildContentPane());
-        panelYolo.setMaximumSize(new Dimension(500, 100));
-        panelYolo.setMinimumSize(new Dimension(500,100));
-        panelYolo.setPreferredSize(new Dimension(500, 100));
+        panelYolo.setMaximumSize(new Dimension(300, 100));
+        panelYolo.setMinimumSize(new Dimension(300,100));
+        panelYolo.setPreferredSize(new Dimension(300, 100));
         
          //panel interface
         JPanel panelInterface = new JPanel();
-        panelInterface.setLayout(new GridLayout(1, 1, 9, 9));
+        panelInterface.setLayout(new GridLayout(1, 4));
         panelInterface.add(panelPv);
         panelInterface.add(panelYolo, BorderLayout.CENTER);
         panelInterface.add(panelLifeAttack, BorderLayout.EAST);
@@ -275,8 +281,6 @@ public class InterfaceGame2 extends JFrame {
        return new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         
      }
-     
-     
      
      protected void compteurMouse (MouseEvent evt){
          if (evt.getSource() == buttonNorth){
@@ -354,6 +358,18 @@ public class InterfaceGame2 extends JFrame {
 
          }
           else if (move.getSource() == buttonDown){
+             
+         }
+     }
+     
+     protected void interactionItem(ActionEvent item){
+         if (item.getSource() == buttonLife){
+             
+         }
+         else if (item.getSource() == buttonAttack){
+             
+         }
+         else if (item.getSource()== buttonCoffre){
              
          }
      }
