@@ -21,7 +21,10 @@ public class Room
     // All the exits present in the room
 
     private String nameRoom;
-    // Name of the Room. 
+    // Name of the Room.
+    
+    private Chest chest;
+    
     /**
      * Constructor for objects of class Room
      * @param roomName The name of the Room
@@ -70,5 +73,28 @@ public class Room
     {
         return descriptionRoom;
     }
-
+    
+    /**
+     * return if they are a chest in the room
+     */
+    public Chest getChest() {
+        return chest;
+    }
+            
+    /**
+     * method for add a chest in a room
+     */
+    public void addChest(Chest aChest) {
+        chest = aChest;
+    }
+    
+    /**
+     * 
+     */
+    public boolean hasChest() {
+        if (this.chest != null)
+            return true;
+        else
+            return false;
+    }
 }

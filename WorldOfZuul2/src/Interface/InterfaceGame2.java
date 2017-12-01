@@ -54,6 +54,8 @@ public class InterfaceGame2 extends JFrame {
     private JButton buttonDown;
     private JButton buttonLife;
     private JButton buttonAttack;
+    private JButton buttonChest;
+    private JButton buttonInventory;
     
     private JLabel labelPv;
     
@@ -129,22 +131,45 @@ public class InterfaceGame2 extends JFrame {
         buttonDown.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         buttonLife = new JButton();
-        buttonLife.setIcon(new ImageIcon(getClass().getResource("/Images/buttonPotion2.gif")));
-        buttonLife.setOpaque(true);
+        buttonLife.setIcon(new ImageIcon(getClass().getResource("/Images/buttonPotion.gif")));
+        buttonLife.setPreferredSize(new Dimension(25,25));
+        buttonLife.setOpaque(true); //
         buttonLife.setContentAreaFilled(true);
         buttonLife.setBorderPainted(false);
         buttonLife.setBackground(Color.lightGray);
+        buttonLife.setEnabled(false);
        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         
         buttonAttack = new JButton();
-        buttonAttack.setIcon(new ImageIcon(getClass().getResource("/Images/buttonSword2.gif")));
+        buttonAttack.setIcon(new ImageIcon(getClass().getResource("/Images/buttonSword_1.gif")));
+        buttonAttack.setPreferredSize(new Dimension(25,25));
         buttonAttack.setOpaque(true);
         buttonAttack.setContentAreaFilled(true);
         buttonAttack.setBorderPainted(false);
         buttonAttack.setBackground(Color.lightGray);
+        buttonAttack.setEnabled(false);
       //  buttonAttack.setBorder(BorderFactory.createLineBorder(Color.WHITE));
       
-        
+        buttonChest = new JButton();
+        buttonChest.setIcon(new ImageIcon(getClass().getResource("/Images/buttonChest2.gif")));
+        buttonChest.setPreferredSize(new Dimension(25,25));
+        buttonChest.setOpaque(true); //
+        buttonChest.setContentAreaFilled(true);
+        buttonChest.setBorderPainted(false);
+        buttonChest.setBackground(Color.lightGray);
+        buttonChest.setEnabled(false);
+       // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+      
+        buttonInventory = new JButton();
+        buttonInventory.setIcon(new ImageIcon(getClass().getResource("/Images/buttonInventaire.gif")));
+        buttonInventory.setPreferredSize(new Dimension(25,25));
+        buttonInventory.setOpaque(true); //
+        buttonInventory.setContentAreaFilled(true);
+        buttonInventory.setBorderPainted(false);
+        buttonInventory.setBackground(Color.lightGray);
+       // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+       
+       
         //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
         
@@ -203,18 +228,35 @@ public class InterfaceGame2 extends JFrame {
         
         
         //panel life and attakc button
-        JPanel panelLifeAttack = new JPanel();
-        panelLifeAttack.setLayout(new GridLayout(2,2));
-        panelLifeAttack.setMaximumSize(new Dimension(30, 30));
-        panelLifeAttack.setPreferredSize(new Dimension(30,30));
-        panelLifeAttack.setMinimumSize(new Dimension(30, 30));
-        JLabel labelvide = new JLabel(" ");
-        JLabel labelvide2= new JLabel(" ");
-        panelLifeAttack.setBackground(Color.lightGray);
-        panelLifeAttack.add(buttonLife);
-        panelLifeAttack.add(labelvide);
-        panelLifeAttack.add(labelvide2);
-        panelLifeAttack.add(buttonAttack);
+       // JPanel panelLifeAttack = new JPanel();
+     //   panelLifeAttack.setLayout(new GridLayout(2,2));
+     //   panelLifeAttack.setMaximumSize(new Dimension(30, 30));
+     //   panelLifeAttack.setPreferredSize(new Dimension(30,30));
+    //    panelLifeAttack.setMinimumSize(new Dimension(30, 30));
+      //  JLabel labelvide = new JLabel(" ");
+    //    JLabel labelvide2= new JLabel(" ");
+    //    panelLifeAttack.setBackground(Color.lightGray);
+    //    panelLifeAttack.add(buttonLife);
+     //   panelLifeAttack.add(buttonChest);
+     //   panelLifeAttack.add(buttonInventory);
+     //   panelLifeAttack.add(buttonAttack);
+        
+        Box box1 = Box.createHorizontalBox();
+        box1.add(buttonLife);
+        box1.add(buttonChest);
+        add(box1);
+      
+        //Idem
+        Box box2 = Box.createHorizontalBox();
+        box2.add(buttonInventory);
+        box2.add(buttonAttack);
+        add(box2);
+        
+        //Creation of a container with a vertical gestion
+        Box box3 = Box.createVerticalBox();
+        box3.add(box1);
+        box3.add(box2);
+        
         
         
         //label pv
@@ -250,12 +292,13 @@ public class InterfaceGame2 extends JFrame {
         panelInterface.setLayout(new GridLayout(1, 4));
         panelInterface.add(panelPv);
         panelInterface.add(panelYolo, BorderLayout.CENTER);
-        panelInterface.add(panelLifeAttack, BorderLayout.EAST);
+        panelInterface.add(box3, BorderLayout.EAST);
         panelInterface.add(panelMoveTot);
         panelInterface.setBackground(new Color(192,192,192));
          
         JLabel labelback = new JLabel(makeImage());
         labelback.setPreferredSize(new Dimension(1000, 550));
+        
         
         Container c = new JLabel(makeImage());
         c.setLayout(new BorderLayout());
@@ -369,9 +412,17 @@ public class InterfaceGame2 extends JFrame {
          else if (item.getSource() == buttonAttack){
              
          }
-         else if (item.getSource()== buttonCoffre){
+         else if (item.getSource()== buttonChest){
              
          }
+         else if (item.getSource() == buttonInventory){
+             
+         }
+     }
+     
+     
+     protected void actionItem(ActionEvent activation){
+         
      }
      
       private Box buildContentPane()
