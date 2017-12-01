@@ -127,7 +127,7 @@ public class InterfaceGame2 extends JFrame {
         
         buttonLife = new JButton();
         buttonLife.setIcon(new ImageIcon(getClass().getResource("/Images/buttonPotion2.gif")));
-        buttonLife.setOpaque(true);
+        buttonLife.setOpaque(true); //cs
         buttonLife.setContentAreaFilled(true);
         buttonLife.setBorderPainted(false);
         buttonLife.setBackground(Color.lightGray);
