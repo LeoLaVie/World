@@ -51,6 +51,8 @@ public class InterfaceGame2 extends JFrame {
     private JButton buttonDown;
     private JButton buttonLife;
     private JButton buttonAttack;
+    private JButton buttonChest;
+    private JButton buttonInventory;
     
     private JLabel labelPv;
     
@@ -140,7 +142,24 @@ public class InterfaceGame2 extends JFrame {
         buttonAttack.setBorderPainted(false);
         buttonAttack.setBackground(Color.lightGray);
       //  buttonAttack.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        
+      
+        buttonChest = new JButton();
+        buttonChest.setIcon(new ImageIcon(getClass().getResource("/Images/couteau1.png")));
+        buttonChest.setOpaque(true); //
+        buttonChest.setContentAreaFilled(true);
+        buttonChest.setBorderPainted(false);
+        buttonChest.setBackground(Color.lightGray);
+       // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+      
+        buttonInventory = new JButton();
+        buttonInventory.setIcon(new ImageIcon(getClass().getResource("/Images/masse2.png")));
+        buttonInventory.setOpaque(true); //
+        buttonInventory.setContentAreaFilled(true);
+        buttonInventory.setBorderPainted(false);
+        buttonInventory.setBackground(Color.lightGray);
+       // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+       
+       
         //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
         
@@ -208,6 +227,8 @@ public class InterfaceGame2 extends JFrame {
         panelLifeAttack.add(labelvide);
         panelLifeAttack.add(labelvide2);
         panelLifeAttack.add(buttonAttack);
+        panelLifeAttack.add(buttonChest);
+        panelLifeAttack.add(buttonInventory);
         
         
         
