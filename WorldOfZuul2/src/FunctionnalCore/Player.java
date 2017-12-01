@@ -34,6 +34,7 @@ public class Player
     private Usable usable;
     private int soin;
     private int nouvHealth;
+    private ArrayList<Items> items;
     
     /**
      * Constructor for objects of class Player. 
@@ -199,5 +200,18 @@ public class Player
     {
         return location;
     }
-           
+    
+    /**
+     * return the inventory of the player
+     */
+    public Inventory getInventoryPlayer() {
+        return inventory;
+    }
+
+    /**
+     * 
+     */
+    public void addItemPlayer(Items items) {
+        this.inventory.addItem(items);
+    }
 }
