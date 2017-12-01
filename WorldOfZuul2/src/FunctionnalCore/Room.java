@@ -88,8 +88,8 @@ public class Room
         chest = aChest;
     }
     
-    /**
-     * 
+    /** boolean true if there is a chest in the room
+     * @return true
      */
     public boolean hasChest() {
         if (this.chest != null)
