@@ -239,7 +239,6 @@ public class InterfaceGame2 extends JFrame {
         panelYolo.setMinimumSize(new Dimension(500,100));
         panelYolo.setPreferredSize(new Dimension(500, 100));
         
-        
          //panel interface
         JPanel panelInterface = new JPanel();
         panelInterface.setLayout(new GridLayout(1, 1, 9, 9));
