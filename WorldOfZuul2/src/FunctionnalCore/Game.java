@@ -322,7 +322,7 @@ public class Game
         
         kNPC1.displayEnigma();
         
-        System.out.println("Your answer: ");
+        System.out.println(kNPC1.getAnswer());
         answer1 = sc.nextLine();
         if (answer1.equals("Jonathan")) {
             System.out.println("Good answer !");
