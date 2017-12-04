@@ -22,7 +22,7 @@ public class ListenerItem implements ActionListener{
         @Override
     public void actionPerformed(ActionEvent item)
     {
-        game.moveGame(item);
+       // game.moveGame(item);
     }
     
 }

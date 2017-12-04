@@ -1,8 +1,10 @@
 package FunctionnalCore;
 
+import Interface.InterfaceGame2;
 import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
+import javax.swing.ImageIcon;
 
 /**
  * This Door class stands for a door that a player can use to navigate between two different rooms. 
@@ -27,19 +29,58 @@ public class Door
      */
     public Door (Room nextRoom, Room previousRoom)
     {
-        this.nextRoom=nextRoom;
-        this.previousRoom=previousRoom;
+        if(nextRoom==null){
+            this.nextRoom=previousRoom; 
+        }
+        else{
+            this.nextRoom=nextRoom;
+            //ajout de l'image
+            if(nextRoom == InterfaceGame2.getOutside1()){
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+               InterfaceGame2.setMakeImage(newImage);
+            }
+            else if(nextRoom == InterfaceGame2.getHouseluttin1()){
+                ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room1.jpg"));
+               InterfaceGame2.setMakeImage(newImage);
+            }
+            else if(nextRoom == InterfaceGame2.getHouseluttin2()){
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room2.jpg"));
+               InterfaceGame2.setMakeImage(newImage);
+            }
+            else if(nextRoom == InterfaceGame2.getOutside2()){
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room0.jpg"));
+               InterfaceGame2.setMakeImage(newImage);
+            }
+            
+        }
+        if(previousRoom==null){
+            System.out.println("Error, No Room");
+        }
+        else {
+            this.previousRoom=previousRoom;
+        }
 
     }  
+
+    public Door() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+     public boolean isLocked()
+    {
+        return false;
+        
+    }
      
     /**
      * Pour que le test marche --> proposition de NetBeans
      * 
      * @param room 
      */
-    Door(Room room) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+//    Door(Room room) {
+ //       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   // }
 
     /**
      * Function to know the next room of the player.
@@ -48,7 +89,7 @@ public class Door
      */
     public Room getNextRoom()
     {
-        return null;
+        return this.nextRoom;
 
     }
 
@@ -58,7 +99,14 @@ public class Door
      * @return The previous room  of the player. coucoucoucou
      */
     public Room getPreviousRoom(){
-        return null;
+        return this.previousRoom;
     }
 
+    /**
+    * Function allowing the player to go in another room.
+    * @return The next room the player is going to enter. 
+    */
+    public Room goNextRoom(){
+	return this.getNextRoom();
+    }
 }

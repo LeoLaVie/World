@@ -25,7 +25,7 @@ public class testDoor
     @Before
     public void setUp()
     {
-        door = new Door(new Room("garden"));
+        //door = new Door(new Room("garden"));
         player = new Player("Maurice");
     }
 

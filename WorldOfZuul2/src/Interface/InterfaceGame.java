@@ -5,7 +5,6 @@
  */
 package Interface;
 
-import FunctionnalCore.ListenerMove;
 import FunctionnalCore.Game;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -102,7 +101,7 @@ public class InterfaceGame extends JFrame  {
         menuBar.add(quit);
                 
         
-        ListenerMove ae = new ListenerMove(game);
+
          
                 
         Icon background = new ImageIcon("/Images/rugby.jpg");
@@ -122,7 +121,7 @@ public class InterfaceGame extends JFrame  {
         buttonNorth.setContentAreaFilled(false);
         buttonNorth.setBorderPainted(false);
         
-        buttonNorth.addActionListener(ae);
+        //buttonNorth.addActionListener(ae);
         
         buttonEast = new JButton();
         buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheEast.gif")));

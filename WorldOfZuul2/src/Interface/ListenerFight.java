@@ -5,7 +5,7 @@
  */
 package Interface;
 
-//import FunctionnalCore.Game;
+import FunctionnalCore.Fight;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,17 +13,18 @@ import java.awt.event.ActionListener;
  *
  * @author leov
  */
-public class ListenerMove implements ActionListener {
-    private InterfaceGame2 room;
+public class ListenerFight implements ActionListener{
+    private Fight game;
     
-    public ListenerMove (InterfaceGame2 x)
+    public ListenerFight (Fight a)
     {
-        room = x;
+        game = a;
     }
     
-    @Override
-    public void actionPerformed(ActionEvent move)
+        @Override
+    public void actionPerformed(ActionEvent fight)
     {
-        room.goRoom(move);
+        game.runFight(fight);
     }
+    
 }
