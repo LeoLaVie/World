@@ -4,20 +4,26 @@
  * and open the template in the editor.
  */
 package Interface;
+    import FunctionnalCore.Door;
+    import FunctionnalCore.Fight; 
+import FunctionnalCore.Key;
+   // import FunctionnalCore.Game;
+    import FunctionnalCore.Room;
     import java.awt.BorderLayout;
     import java.awt.Color;
     import java.awt.Container;
     import java.awt.Dimension;
     import java.awt.FlowLayout;
     import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+    import java.awt.GridBagConstraints;
+    import java.awt.GridBagLayout;
     import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.PopupMenu;
+    import java.awt.Insets;
+    import java.awt.PopupMenu;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
     import java.awt.event.*;
+    import static java.lang.System.exit;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -43,19 +49,39 @@ import java.awt.PopupMenu;
  */
 public class InterfaceGame2 extends JFrame {
     
+    private JButton direction;
+    
+    protected static Room currentRoom; 
+    private static Room outside1, houseluttin1, houseluttin2, outside2, houseluttin3, houseluttin4, outside3, houseluttin5, houseluttin6, outside4, castlePapa;
+    private static Room mineCastle, roofCastle, entreCastle, roomCastle1, roomCastle2, roomCastle3, roomCastle4, roomCastle5, roomCastle6, roomMama, roomCastle8, roomCastle9, roomCastle10,  roomCastle7, floor2, floor3, floor4, roomBoos;
+    private static Key keyLuttin1;
+    
     private JPanel myPanel;
     
-    private JButton buttonNorth;
-    private JButton buttonEast;
-    private JButton buttonSouth;
-    private JButton buttonWest;
-    private JButton button;
-    private JButton buttonUp;
-    private JButton buttonDown;
-    private JButton buttonLife;
-    private JButton buttonAttack;
-    private JButton buttonChest;
-    private JButton buttonInventory;
+        /**
+     * Attributes button
+     * @param buttonNorth
+     * @param buttonEast
+     * @param buttonSouth
+     * @param buttonWest
+     * @param buttonUp
+     * @param buttonDown
+     * @param buttonLife
+     * @param buttonAttack
+     * @param buttonChest
+     * @param buttonInventory
+    */
+    private static JButton buttonNorth;
+    private static JButton buttonEast;
+    private static JButton buttonSouth;
+    private static JButton buttonWest;
+    private static JButton button;
+    private static JButton buttonUp;
+    private static JButton buttonDown;
+    private static JButton buttonLife;
+    private static JButton buttonAttack;
+    private static JButton buttonChest;
+    private static JButton buttonInventory;
     
     private JLabel labelPv;
     
@@ -74,8 +100,20 @@ public class InterfaceGame2 extends JFrame {
     private String stri;
     private String reponse;
     
+    private Fight fight;
+ //   protected Game room;
+    private static ImageIcon image;
+    private static ImageIcon newImage;
+
+    
+    
      public InterfaceGame2(String playerName){
         
+         // initialise instance variables
+         createRooms();
+         newImage = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+         setMakeImage(newImage);
+         
          name = playerName;
 
         //creation of buttons and label
@@ -86,6 +124,7 @@ public class InterfaceGame2 extends JFrame {
         buttonNorth.setBorderPainted(true);
         buttonNorth.setBackground(Color.GRAY);
         buttonNorth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        
         
       //  buttonNorth.addActionListener(ae);
         
@@ -175,11 +214,17 @@ public class InterfaceGame2 extends JFrame {
         
         //listener mouse for directiv button 
         buttonNorth.addMouseListener(m);
+        buttonNorth.setActionCommand("North");
         buttonEast.addMouseListener(m);
+        buttonEast.setActionCommand("East");
         buttonSouth.addMouseListener(m);
+        buttonSouth.setActionCommand("South");
         buttonWest.addMouseListener(m);
+        buttonWest.setActionCommand("West");
         buttonUp.addMouseListener(m);
+        buttonUp.setActionCommand("Up");
         buttonDown.addMouseListener(m);
+        buttonDown.setActionCommand("Down");
         
         ListenerMove x = new ListenerMove(this);
         
@@ -190,6 +235,11 @@ public class InterfaceGame2 extends JFrame {
         buttonWest.addActionListener(x);
         buttonUp.addActionListener(x);
         buttonDown.addActionListener(x);
+        
+        ListenerFight a = new ListenerFight(fight);
+        //listener for action during the fight
+        buttonAttack.addActionListener(a);
+        buttonLife.addActionListener(a);
         
        //add to panel up/down
         JPanel panelUpDown = new JPanel();
@@ -319,11 +369,59 @@ public class InterfaceGame2 extends JFrame {
         this.setVisible(true);
      }
      
+     
+     
      private ImageIcon makeImage()
      {
-       return new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+        return image;
+         //ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         
      }
+     
+     public static void setMakeImage (ImageIcon newPicture){
+         image = newPicture;
+     }
+     
+     public static void createRooms()
+    {
+        // CREATION OF THE DOORS (ROOMS)
+        outside1 = new Room("outside1","outside the main entrance of the Santa claus village");
+        houseluttin1 = new Room("houseluttin1","in a luttin's house");
+        houseluttin2 = new Room("houseluttin2","in a luttin's house");
+        outside2 = new Room("outside2","outside of the Santa claus village");
+
+        // CREATION OF THE EXITS
+//        outside1.setExit(getButtonNorth(),null,outside2); //(direction,key,nextRoom)
+//        houseluttin1.setExit(getButtonWest(),null,null);
+//        houseluttin2.setExit(getButtonEast(),null,null);
+//        outside2.setExit(getButtonNorth(),null,null);
+        
+        // CREATION OF KEYS
+         keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin2 = new Key("Key2","Key of the second luttin house");
+        
+        //CREATION OF CHEST
+        
+        
+        //CREATION OF POTION
+        
+        
+        //CREATION OF WEAPON
+        
+
+        // Exits 
+        outside1.setExit("North",null,houseluttin1);
+        houseluttin1.setExit("South",null,outside1);
+        houseluttin1.setExit("North",keyLuttin1,houseluttin2);
+        houseluttin1.setExit("East",null,outside2);
+        houseluttin2.setExit("South",keyLuttin1,houseluttin1);
+        outside2.setExit("West",null,houseluttin1);
+        
+        // WHERE THE GAME START
+        currentRoom = outside1;
+        
+    }
      
      protected void compteurMouse (MouseEvent evt){
          if (evt.getSource() == buttonNorth){
@@ -384,33 +482,13 @@ public class InterfaceGame2 extends JFrame {
           }
      }
      
-     protected void moveGame (ActionEvent move){
-         if (move.getSource() == buttonNorth){
- 
-         }
-         else if (move.getSource() == buttonEast){
-
-         }
-          else if (move.getSource() == buttonSouth){
-
-         }
-          else if (move.getSource() == buttonWest){
-
-         }
-          else if (move.getSource() == buttonUp){
-
-         }
-          else if (move.getSource() == buttonDown){
-             
-         }
-     }
      
      protected void interactionItem(ActionEvent item){
          if (item.getSource() == buttonLife){
              
          }
          else if (item.getSource() == buttonAttack){
-             
+             //Fight.runFight();
          }
          else if (item.getSource()== buttonChest){
              
@@ -419,6 +497,7 @@ public class InterfaceGame2 extends JFrame {
              
          }
      }
+     
      
      
      protected void actionItem(ActionEvent activation){
@@ -514,4 +593,312 @@ public class InterfaceGame2 extends JFrame {
        }
     }
 
+    public static JButton getButtonNorth() {
+        return buttonNorth;
+    }
+
+    public static JButton getButtonEast() {
+        return buttonEast;
+    }
+
+    public static JButton getButtonSouth() {
+        return buttonSouth;
+    }
+
+    public static JButton getButtonWest() {
+        return buttonWest;
+    }
+
+    public static JButton getButtonUp() {
+        return buttonUp;
+    }
+
+    public static JButton getButtonDown() {
+        return buttonDown;
+    }
+
+    public static JButton getButtonLife() {
+        return buttonLife;
+    }
+
+    public static JButton getButtonAttack() {
+        return buttonAttack;
+    }
+
+    public static JButton getButtonChest() {
+        return buttonChest;
+    }
+
+    public static JButton getButtonInventory() {
+        return buttonInventory;
+    }
+
+        /** 
+     * Try to go to one direction. If there is an exit, enter
+     * the new room, otherwise print an error message.
+     */
+    public void goRoom(ActionEvent move)
+    {
+        String action = move.getActionCommand();
+        //this.direction = (JButton)move.getSource(); PAS A UTILISEEEEEE !!!!!
+        Room nextRoom = null;
+        nextRoom = currentRoom.getExit().get(action).getNextRoom();
+        if(action.equals("North")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!"); 
+            }
+            else{
+                if(currentRoom.getExit().get(action).isLocked()){
+                    System.out.println("La porte est fermé il vous faut la clé");
+                }
+                else{
+                    // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
+                    System.out.println(currentRoom.getExit().get(action).isLocked());
+                    currentRoom = currentRoom.getExit().get(action).getNextRoom();
+                    System.out.println("You are " + currentRoom.getDescription());
+                    System.out.print("Exits: ");
+                }
+//                currentRoom = nextRoom;
+//                //Display the new room
+//                System.out.println("You are " + currentRoom.getDescription());
+//                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        else if (action.equals("East")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!");
+                
+            }
+            else{
+                currentRoom = nextRoom;
+                //Display the new room
+                 System.out.println("You are " + currentRoom.getDescription());
+                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+            
+        else if (action.equals("South")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!");
+                
+            }
+            else{
+                currentRoom = nextRoom;
+                //Display the new room
+                 System.out.println("You are " + currentRoom.getDescription());
+                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        else if (action.equals("West")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!");
+                
+            }
+            else{
+                currentRoom = nextRoom;
+                //Display the new room
+                System.out.println("You are " + currentRoom.getDescription());
+                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        else if (action.equals("Up")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!");
+                
+            }
+            else{
+                currentRoom = nextRoom;
+                //Display the new room
+                 System.out.println("You are " + currentRoom.getDescription());
+                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }
+        else if (action.equals("Down")){
+            if (currentRoom.getExit().get(action) == null) {
+                System.out.println("There is no door!");
+                
+            }
+            else{
+                currentRoom = nextRoom;
+                //Display the new room
+                 System.out.println("You are " + currentRoom.getDescription());
+                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+        }            
+    }
+    
+    public static Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public static Room getOutside1() {
+        return outside1;
+    }
+
+    public static Room getHouseluttin1() {
+        return houseluttin1;
+    }
+
+    public static Room getHouseluttin2() {
+        return houseluttin2;
+    }
+
+    public static Room getOutside2() {
+        return outside2;
+    }
+
+    public static Room getHouseluttin3() {
+        return houseluttin3;
+    }
+
+    public static Room getHouseluttin4() {
+        return houseluttin4;
+    }
+
+    public static Room getOutside3() {
+        return outside3;
+    }
+
+    public static Room getHouseluttin5() {
+        return houseluttin5;
+    }
+
+    public static Room getHouseluttin6() {
+        return houseluttin6;
+    }
+
+    public static Room getOutside4() {
+        return outside4;
+    }
+
+    public static Room getCastlePapa() {
+        return castlePapa;
+    }
+
+    public static Room getMineCastle() {
+        return mineCastle;
+    }
+
+    public static Room getRoofCastle() {
+        return roofCastle;
+    }
+
+    public static Room getEntreCastle() {
+        return entreCastle;
+    }
+
+    public static Room getRoomCastle1() {
+        return roomCastle1;
+    }
+
+    public static Room getRoomCastle2() {
+        return roomCastle2;
+    }
+
+    public static Room getRoomCastle3() {
+        return roomCastle3;
+    }
+
+    public static Room getRoomCastle4() {
+        return roomCastle4;
+    }
+
+    public static Room getRoomCastle5() {
+        return roomCastle5;
+    }
+
+    public static Room getRoomCastle6() {
+        return roomCastle6;
+    }
+
+    public static Room getRoomMama() {
+        return roomMama;
+    }
+
+    public static Room getRoomCastle8() {
+        return roomCastle8;
+    }
+
+    public static Room getRoomCastle9() {
+        return roomCastle9;
+    }
+
+    public static Room getRoomCastle10() {
+        return roomCastle10;
+    }
+
+    public static Room getRoomCastle7() {
+        return roomCastle7;
+    }
+
+    public static Room getFloor2() {
+        return floor2;
+    }
+
+    public static Room getFloor3() {
+        return floor3;
+    }
+
+    public static Room getFloor4() {
+        return floor4;
+    }
+
+    public static Room getRoomBoos() {
+        return roomBoos;
+    }
+    
 }

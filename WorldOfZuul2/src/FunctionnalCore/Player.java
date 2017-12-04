@@ -91,6 +91,19 @@ public class Player
     {
         return maxHealth;
      }
+     
+         /**
+     * Return true if the player has a specific key
+     * @param key The specific key
+     * @return Return true if the player has a specific key
+     */
+    public boolean haveKey(Key key){
+        for (Items item : items) {
+            if(item.equals(key))
+                return true;
+        }
+        return false;
+    }
 
     /**
      * This method allows to loose points when the character loose a fight.. .

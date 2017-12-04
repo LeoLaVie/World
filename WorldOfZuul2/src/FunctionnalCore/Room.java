@@ -3,6 +3,7 @@ package FunctionnalCore;
 import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
+import javax.swing.JButton;
 
 /**
  * This class allows to manage the different rooms in our game. 
@@ -34,14 +35,12 @@ public class Room
     {
         this.descriptionRoom = descriptionRoom; 
 
-        myExit = new HashMap <String, Door>(); 
         // instanciation of the HashMap that will contains the exits of the room
+        myExit = new HashMap <String, Door>(); 
+        
 
     }
 
-    Room(String room1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     /**
      * Allows to add a simple or locked exit in the room
@@ -50,21 +49,28 @@ public class Room
      * @param lock A boolean to know if the door is locked or not
      * @param nextRoom The room behind the door
      */
-    public void setExit(String direction, Key lock, Room nextRoom)
+    public void setExit(String action, Key keyLocked, Room nextRoom)
     {
-        
+        if(!this.myExit.containsKey(action)) {
+            if(keyLocked!=null) // there is a key
+                this.myExit.put(action,new LockedDoor(nextRoom,this,keyLocked));
+            else 
+                this.myExit.put(action, new Door(nextRoom,this));
+        }
+        else 
+            System.out.println("Error");
     }
     
-    /**
-     * Allows to recover a door in the room for a specific decision.
-     * @return an exit
+     /**
+     * Accessor for the different exits of a room.
+     * @return a hashmap containing the exits.
      */
-    public String getExit()
+    public HashMap<String,Door> getExit()
     {
-        return null;
+        return(myExit);
     }
-
-    /** 
+    
+        /** 
      * To get the description of the Room
      * @return The description of the room.
      * 
@@ -73,6 +79,7 @@ public class Room
     {
         return descriptionRoom;
     }
+
     
     /**
      * return if they are a chest in the room

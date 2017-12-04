@@ -12,31 +12,39 @@ import java.awt.event.*;
  */
 public class LockedDoor extends Door
 {
-    private int key;
     // Attribut clé qui correspond au numéro de la clé
-    private boolean locked;
+    private Key key;
     // Attribut de type boolean qui prend la valeur vrai si la porte est fermée et faux si elle est ouverte
+
+    private boolean locked;
 
     /**
      * Constructeur d'objets de classe LockedDoor, en plus des pièces suivantes et précédentes, possède un identificateur de
      * type int qui correspond à la clé.
      */
-    public LockedDoor(Room nextRoom, Room previousRoom, int key)
+    public LockedDoor(Room nextRoom, Room previousRoom, Key keyLocked)
     {
         super(nextRoom,previousRoom);
+        this.locked = true; // The door is locked
+        this.key = keyLocked;
         // initialisation des variables d'instance
 
     }
 
     /**
-     * La méthode isOk permet de vérifier que la clé fournie en argument correspond à la clé de la porte
+     * La méthode isOk permet de vérifier que le joueur à bien la clé
      *
-     * @param  int provideKey correspond au numéro de la clé fournie
+     * @param player The player that wants to open the door
      * @return    un boolean vrai si la clé est bonne et faux si la clé n'est pas bonne.
      */
-    public boolean isOk(int providedKey)
+    public boolean isOk(Player player)
     {
-        return false;    
+        if(player.haveKey(this.key)){
+			unlock(); // The player has the key in his inventory.
+			return true;
+		}
+		else
+			return false; // The player has not the key.
     }
 
     /**
@@ -47,17 +55,24 @@ public class LockedDoor extends Door
      */
     public boolean isLocked()
     {
-        return false;
+        if (this.locked)
+            return true;
+        else 
+            return false;
     }
 
-    /**
+   /**
      * La méthode unlock permet de dévérouiller la porte si la clé fournie est la bonne
      *
      * @param  int provideKey correspond au numéro de la clé fournie
      * @return  //
      */
-    public void unlock(int providedKey)
+    public void unlock()
     {
+        if (!isLocked())
+            System.out.println("The door is already unlocked");
+        else
+            this.locked=false;
     }
 
     /**
@@ -69,8 +84,18 @@ public class LockedDoor extends Door
     
     public Room nextRoom()
     {
-
-        return super.getNextRoom();
+        if(isLocked())
+            return null;
+        else
+            return this.getNextRoom();       
     }
+    
+    /**
+	 * To get the key of the locked door
+	 * @return The key that opens the locked door.
+	 */
+	public Key getKey(){
+		return this.key;
+	}
 
 }

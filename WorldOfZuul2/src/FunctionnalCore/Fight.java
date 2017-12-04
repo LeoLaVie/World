@@ -1,9 +1,12 @@
 package FunctionnalCore;
 
+import Interface.InterfaceGame2;
+import java.awt.event.ActionEvent;
 import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import javax.swing.JButton;
 
 /**
  * This class is the event for the fighting between the player and a npc.
@@ -34,34 +37,32 @@ public class Fight extends Events
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    public void runFight()
+    public void runFight(ActionEvent fight)
     {
        //appelle du joueur, vie, etat...
        //appelle de l'ennemie, vie, etat..
        
-       System.out.print("\n1 = Combat !");
+       System.out.print("\nChose your action with buttons !");
        
        //fight system
-       while(fighting) {
-         if (player.getHealth() <= 0 || meanNpc.getHealth() <= 0){
-             fighting = false;
-             break;
-        }
-        if(Game.userInput.hasNextInt()){
-            int input = Game.userInput.nextInt();
-            if (!(input ==1 || input ==2 || input == 3 || input == 4)){
-                fightInput();
+        while(fighting) {
+            if (player.getHealth() <= 0 || meanNpc.getHealth() <= 0){
+                fighting = false;
+                break;
             }
-            else if (input == 1) {
+            else if (fight.getSource() == InterfaceGame2.getButtonAttack()) {
                 //start the fight
                 fight1();
             }
-            else if (input == 2){
+            else if (fight.getSource() == InterfaceGame2.getButtonLife()){
                 //take a potion
                 takePotion();
             }
+            else{
+                enemyAttack();
+                statusUpdate();
+            }
         }
-      }
       if (!fighting){
         if (player.getHealth() <= 0){
             youLose();
@@ -99,19 +100,6 @@ public class Fight extends Events
         System.out.print("\nYou have regained" + player.calculSoin());
         player.addHealth();
     }
-
-    /**
-     * method to describe the different possibility during a fighting
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public void fightInput()
-    {
-        // put your code here
-        System.out.print("\n1 = Attack");
-        System.out.print("\n2 = Take a potion");
-    }
     
     /**
      * method when the enemy attack
@@ -144,7 +132,6 @@ public class Fight extends Events
      */
     public boolean getWin()
     {
-        // put your code here
         return isWin;
     }
     
