@@ -40,15 +40,15 @@ public class Door
                InterfaceGame2.setMakeImage(newImage);
             }
             else if(nextRoom == InterfaceGame2.getHouseluttin1()){
-                ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room1.jpg"));
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
                InterfaceGame2.setMakeImage(newImage);
             }
             else if(nextRoom == InterfaceGame2.getHouseluttin2()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room2.jpg"));
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
                InterfaceGame2.setMakeImage(newImage);
             }
             else if(nextRoom == InterfaceGame2.getOutside2()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/room0.jpg"));
+               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/outside2.jpg"));
                InterfaceGame2.setMakeImage(newImage);
             }
             
