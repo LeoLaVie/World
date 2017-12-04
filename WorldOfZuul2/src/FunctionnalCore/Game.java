@@ -22,8 +22,13 @@ public class Game
     private Parser parser;
     private KindNPC kNPC1;
     private MeanNPC mNPC1;
+    //private Inventory inventory;
+    //private Items items;
+    //private Player player;
     public static Scanner userInput = new Scanner(System.in);
     private InterfaceGame interfaceGame;
+    //private Weapon w1;
+
    
     
     private Door exit;
@@ -42,8 +47,9 @@ public class Game
        // NPC instantiation
        kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
        mNPC1 = new MeanNPC("Joker", 100, 20, true);
-
-                
+       
+       
+               
     }
     
     
@@ -393,7 +399,7 @@ public class Game
         
         kNPC1.displayEnigma();
         
-        System.out.println("Your answer: ");
+        System.out.println(kNPC1.getAnswer());
         answer1 = sc.nextLine();
         if (answer1.equals("Jonathan")) {
             System.out.println("Good answer !");
@@ -404,8 +410,5 @@ public class Game
     }
     
   }
-
-    
-    
-    
 }
+

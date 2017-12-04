@@ -28,7 +28,7 @@ public class Player
     /**where the character is in the town.*/
     private Room location;
     /**the inventory of the character*/
-    private Inventory inventory;    
+    public Inventory inventory;    
     private int attPower;
     private Weapon weapon;
     private Usable usable;
