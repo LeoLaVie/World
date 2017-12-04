@@ -13,13 +13,13 @@ import java.util.Map.Entry;
 public class KindNPC
 {
     // NPC's name
-    private String nameKNPC, a;
+    private String nameKNPC;
     // Enigma that the NPC will give to the player
-    private String enigma, c;
+    private String enigma;
     // Enigma's answer
-    private String answer, d;
+    private String answer;
     //Enigma's availability
-    private boolean available, disp;
+    private boolean available;
     /**
      * Constructor for objects of class NPC
      */
