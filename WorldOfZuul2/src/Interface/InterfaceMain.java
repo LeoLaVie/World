@@ -4,6 +4,16 @@
  * and open the template in the editor.
  */
 package Interface;
+
+import FunctionnalCore.Door;
+import FunctionnalCore.Game;
+import FunctionnalCore.Inventory;
+import FunctionnalCore.Items;
+import FunctionnalCore.Player;
+import FunctionnalCore.Game;
+import FunctionnalCore.Inventory;
+import FunctionnalCore.Player;
+import Interface.InterfaceInventory;
     import java.awt.*;
     import javax.swing.*;
     import java.awt.event.*;
@@ -20,6 +30,9 @@ package Interface;
  */
 public class InterfaceMain extends JFrame implements ActionListener
 {
+    private Inventory anInventory;
+    private Player aPlayer;
+    private Game aGame; 
     private final JButton butStart;
     
     ///////////////////////////////////
@@ -46,6 +59,8 @@ public class InterfaceMain extends JFrame implements ActionListener
     
     public InterfaceMain ()
     {
+        
+        
        
        this.setTitle("World Of Zuul");// Titre
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -153,6 +168,7 @@ public class InterfaceMain extends JFrame implements ActionListener
       if (e.getSource() == butStart)
       {
          playerName = fieldName.getText();
+         //new InterfaceInventory(anInventory, aPlayer, aGame);
          new InterfaceGame2(playerName);
          this.dispose();
       }
