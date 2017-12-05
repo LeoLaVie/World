@@ -7,6 +7,7 @@ package Interface;
     import FunctionnalCore.Door;
     import FunctionnalCore.Fight; 
     import FunctionnalCore.Key;
+import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
     import java.awt.BorderLayout;
@@ -123,8 +124,8 @@ public class InterfaceGame2 extends JFrame {
        
         //setMakeImage(newImage);
         //setMaImage(getMakeImage());
-         
-        name = playerName;
+        name = playerName; 
+        new Player(name);
         
         
 
@@ -373,7 +374,7 @@ public class InterfaceGame2 extends JFrame {
         this.setVisible(true);
         
         jop1 = new JOptionPane();
-        jop1.showMessageDialog(null, "Bienvenue à toi, " + name + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?", "Warning",
+        jop1.showMessageDialog(null, "Bienvenue à toi, " + Player.getName() + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?", "Warning",
         JOptionPane.INFORMATION_MESSAGE);
         
      }
@@ -409,21 +410,15 @@ public class InterfaceGame2 extends JFrame {
         rdch2 = new Room("rdch2", " blab");
         toith2 = new Room("toith2", " blab");
         manoir = new Room("manoir", " blab");
-        
         entreemanoir = new Room("entreemanoir", " blab");
         bibliotheque = new Room("bibliotheque", " blab");;
         cachot= new Room("cachot", " blab");
-        
         cuisine= new Room("cuisine", " blab");
-        
         couloir2 = new Room("couloir2", " blab");
-        
         portefermee = new Room("portefermee", " blab");
         salledebain = new Room("salledebain", " blab");
         chambre1= new Room("chambre1", " blab");
-        
         couloir3 = new Room("couloir3", " blab");
-        
         portefermee2 = new Room("portefermee2", " blab");
         chambre2 = new Room("chambre2", " blab");
         terrasse = new Room("terrasse", " blab");
@@ -619,7 +614,7 @@ public class InterfaceGame2 extends JFrame {
         textArea.setLineWrap(true);
         //JScrollPane scrollPane = new JScrollPane(textArea);
         doc = textArea.getDocument();
-        insert("Bienvenue à toi, " + name + " au pays du père Nöel.");
+        insert("Bienvenue à toi, " + Player.getName() + " au pays du père Nöel.");
         // output.setEditable(false);
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
