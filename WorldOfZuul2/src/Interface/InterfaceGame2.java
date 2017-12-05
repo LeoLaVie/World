@@ -6,7 +6,7 @@
 package Interface;
     import FunctionnalCore.Door;
     import FunctionnalCore.Fight; 
-import FunctionnalCore.Key;
+    import FunctionnalCore.Key;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
     import java.awt.BorderLayout;
@@ -85,14 +85,15 @@ public class InterfaceGame2 extends JFrame {
     JOptionPane jop1, jop2, jop3;
     
     private JLabel labelPv;
-    private static JLabel maImage;
+    private JLabel labelImage;
+    private JLabel labelText;
     
      //champ textuel
     private JTextField textField;
     private JTextArea textArea;
     protected final static String newline = "\n";
     private JPanel panelText;
-    private JLabel labelText;
+
     
     private String name;
     private Document doc; 
@@ -103,15 +104,11 @@ public class InterfaceGame2 extends JFrame {
     private String reponse;
     
     private Fight fight;
- //   protected Game room;
-  //  private Container c;
-  // private static ImageIcon newImage;
     private ImageIcon image;
-
-    private JLabel labelImage;
     
     
      public InterfaceGame2(String playerName){
+         
         
         // initialise instance variables
         createRooms();
@@ -128,6 +125,8 @@ public class InterfaceGame2 extends JFrame {
         //setMaImage(getMakeImage());
          
         name = playerName;
+        
+        
 
         //creation of buttons and label
         buttonNorth = new JButton();
@@ -289,20 +288,6 @@ public class InterfaceGame2 extends JFrame {
         panelMoveTot.add(panelUpDown);
         
         
-        //panel life and attakc button
-       // JPanel panelLifeAttack = new JPanel();
-     //   panelLifeAttack.setLayout(new GridLayout(2,2));
-     //   panelLifeAttack.setMaximumSize(new Dimension(30, 30));
-     //   panelLifeAttack.setPreferredSize(new Dimension(30,30));
-    //    panelLifeAttack.setMinimumSize(new Dimension(30, 30));
-      //  JLabel labelvide = new JLabel(" ");
-    //    JLabel labelvide2= new JLabel(" ");
-    //    panelLifeAttack.setBackground(Color.lightGray);
-    //    panelLifeAttack.add(buttonLife);
-     //   panelLifeAttack.add(buttonChest);
-     //   panelLifeAttack.add(buttonInventory);
-     //   panelLifeAttack.add(buttonAttack);
-        
         Box box1 = Box.createHorizontalBox();
         box1.add(buttonLife);
         box1.add(buttonChest);
@@ -369,8 +354,6 @@ public class InterfaceGame2 extends JFrame {
       //  labelback.setPreferredSize(new Dimension(1000, 550));
         
         Container c = labelImage;
-        // c = new JLabel(makeImage());
-        //Container c = maImage;
         c.setLayout(new BorderLayout());
         c.add(panelInterface,BorderLayout.SOUTH);
         c.setPreferredSize(new Dimension(1300,650));
@@ -388,6 +371,11 @@ public class InterfaceGame2 extends JFrame {
         this.setMinimumSize(new Dimension(1000,550));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        jop1 = new JOptionPane();
+        jop1.showMessageDialog(null, "Bienvenue à toi, " + name + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?", "Warning",
+        JOptionPane.INFORMATION_MESSAGE);
+        
      }
      
      
@@ -400,23 +388,7 @@ public class InterfaceGame2 extends JFrame {
      private void changePicture(){
         image = new ImageIcon(getClass().getResource("/Images/" + currentRoom.getNameRoom() + ".jpg"));
         labelImage.setIcon(image);
-     }
-     
-//     public static void setMakeImage (ImageIcon newPicture){
-//         image = newPicture;
-//     }
-//
-//    public static JLabel getMakeImage() {
-//        return maImage;
-//    }
-//
-//    public static void setMaImage(JLabel labelImage) {
-//        //il faut clear l'image présente pour ajouter la nouvelle
-//        //maImage.repaint();
-//       // maImage.remove();
-//        maImage = labelImage;
-//    }
-    
+     }   
     
      
      public static void createRooms()
@@ -647,9 +619,7 @@ public class InterfaceGame2 extends JFrame {
         textArea.setLineWrap(true);
         //JScrollPane scrollPane = new JScrollPane(textArea);
         doc = textArea.getDocument();
-        insert("Bienvenue à toi, " + name + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?");
-        
-        
+        insert("Bienvenue à toi, " + name + " au pays du père Nöel.");
         // output.setEditable(false);
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -782,7 +752,7 @@ public class InterfaceGame2 extends JFrame {
       //  if(action.equals("North")){
             if (currentRoom.getExit().get(action) == null) {
                 jop1 = new JOptionPane();
-                jop1.showMessageDialog(null, "there is no door", "Warning",
+                jop1.showMessageDialog(null, "There is no door", "Warning",
                         JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("There is no door!"); 
             }
