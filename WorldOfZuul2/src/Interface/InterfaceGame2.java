@@ -6,6 +6,8 @@
 package Interface;
     import FunctionnalCore.Door;
     import FunctionnalCore.Fight; 
+import FunctionnalCore.Game;
+import FunctionnalCore.Inventory;
     import FunctionnalCore.Key;
 import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
@@ -50,6 +52,8 @@ import FunctionnalCore.Player;
 public class InterfaceGame2 extends JFrame {
     
     private JButton direction;
+    
+
     
     protected static Room currentRoom; 
     private static Room outside1, houseluttin1, houseluttin2, outside2, ecurie, rdch1, caveh1, toith1, outside3, potager, fastfood, outside4, supermarket, toith2, rdch2;
@@ -107,6 +111,10 @@ public class InterfaceGame2 extends JFrame {
     private Fight fight;
     private ImageIcon image;
     
+    private Inventory anInventory;
+    private Player aPlayer;
+    private Game aGame;
+    
     
      public InterfaceGame2(String playerName){
          
@@ -127,8 +135,9 @@ public class InterfaceGame2 extends JFrame {
         name = playerName; 
         new Player(name);
         
-        
+        //buttonInventory.addActionListener((ActionListener) this);
 
+        
         //creation of buttons and label
         buttonNorth = new JButton();
         buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheNorth.gif")));
@@ -379,7 +388,7 @@ public class InterfaceGame2 extends JFrame {
         
      }
      
-     
+    
      
      private ImageIcon makeImage()
      {
@@ -811,5 +820,18 @@ public class InterfaceGame2 extends JFrame {
         return outside4;
     }
 
+    
+//    //@Override
+//    public void actionPerformed(ActionEvent e)
+//    {
+//      // When the user click on Marion's picture, the button Start and Change 
+//      //become accessible but all the other hero button become unaccessible 
+//      
+//      if (e.getSource() == buttonInventory)
+//        {
+//         new InterfaceInventory(anInventory, aPlayer, aGame);
+//        }
+//      
+//    }
     
 }
