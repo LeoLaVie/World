@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 /**
  * This Door class stands for a door that a player can use to navigate between two different rooms. 
@@ -35,22 +36,30 @@ public class Door
         else{
             this.nextRoom=nextRoom;
             //ajout de l'image
-            if(nextRoom == InterfaceGame2.getOutside1()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
-               InterfaceGame2.setMakeImage(newImage);
-            }
-            else if(nextRoom == InterfaceGame2.getHouseluttin1()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
-               InterfaceGame2.setMakeImage(newImage);
-            }
-            else if(nextRoom == InterfaceGame2.getHouseluttin2()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
-               InterfaceGame2.setMakeImage(newImage);
-            }
-            else if(nextRoom == InterfaceGame2.getOutside2()){
-               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/outside2.jpg"));
-               InterfaceGame2.setMakeImage(newImage);
-            }
+//            if(nextRoom == InterfaceGame2.getOutside1()){
+//               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+//              // InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMaImage(InterfaceGame2.getMakeImage());
+//            }
+//            else if(nextRoom == InterfaceGame2.getHouseluttin1()){
+//               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
+//               //InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMaImage(InterfaceGame2.getMakeImage());
+//            }
+//            else if(nextRoom == InterfaceGame2.getHouseluttin2()){
+//               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/maison_lutin.jpg"));
+//               InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMaImage(InterfaceGame2.getMakeImage());
+//              
+//            }
+//            else if(nextRoom == InterfaceGame2.getOutside2()){
+//               ImageIcon newImage = new ImageIcon(getClass().getResource("/Images/outside2.jpg"));
+//               //InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMakeImage(newImage);
+//               InterfaceGame2.setMaImage(InterfaceGame2.getMakeImage());
+ //           }
             
         }
         if(previousRoom==null){

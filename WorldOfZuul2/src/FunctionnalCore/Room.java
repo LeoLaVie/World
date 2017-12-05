@@ -33,6 +33,7 @@ public class Room
      */
     public Room(String nameRoom, String descriptionRoom)
     {
+        this.nameRoom = nameRoom;
         this.descriptionRoom = descriptionRoom; 
 
         // instanciation of the HashMap that will contains the exits of the room
@@ -40,6 +41,12 @@ public class Room
         
 
     }
+
+    public String getNameRoom() {
+        return nameRoom;
+    }
+    
+    
 
 
     /**

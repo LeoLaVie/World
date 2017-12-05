@@ -51,8 +51,8 @@ public class InterfaceGame2 extends JFrame {
     private JButton direction;
     
     protected static Room currentRoom; 
-    private static Room outside1, houseluttin1, houseluttin2, outside2, houseluttin3, houseluttin4, outside3, houseluttin5, houseluttin6, outside4, castlePapa;
-    private static Room mineCastle, roofCastle, entreCastle, roomCastle1, roomCastle2, roomCastle3, roomCastle4, roomCastle5, roomCastle6, roomMama, roomCastle8, roomCastle9, roomCastle10,  roomCastle7, floor2, floor3, floor4, roomBoos;
+    private static Room outside1, houseluttin1, houseluttin2, outside2, ecurie, rdch1, caveh1, toith1, outside3, potager, fastfood, outside4, supermarket, toith2, rdch2;
+    private static Room manoir, entreemanoir, bibliotheque, cuisine, cachot, couloir2, chambre1, salledebain, couloir3, terrasse, chambre2, portefermee, portefermee2, lastroom;
     private static Key keyLuttin1;
     
     private JPanel myPanel;
@@ -118,6 +118,8 @@ public class InterfaceGame2 extends JFrame {
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         labelImage = new JLabel();
         labelImage.setIcon(image);
+        this.labelImage.setHorizontalAlignment(JLabel.CENTER);
+        this.labelImage.setVerticalAlignment(JLabel.CENTER);
      //   labelImage.setMaximumSize(new Dimension(300, 100));
      //   labelImage.setMinimumSize(new Dimension(300,100));
       //  labelImage.setPreferredSize(new Dimension(300, 100));
@@ -359,7 +361,8 @@ public class InterfaceGame2 extends JFrame {
         JPanel globalPanel = new JPanel();
         globalPanel.setLayout(new BorderLayout());
         globalPanel.add(labelImage, BorderLayout.CENTER);
-      //  globalPanel.add(panelInterface, BorderLayout.SOUTH);
+        globalPanel.add(panelInterface, BorderLayout.SOUTH);
+        globalPanel.setBackground(Color.GRAY);
         
          
      //   JLabel labelback = new JLabel(makeImage());
@@ -373,7 +376,7 @@ public class InterfaceGame2 extends JFrame {
         c.setPreferredSize(new Dimension(1300,650));
         c.setMaximumSize(new Dimension(1300,650));
         c.setMinimumSize(new Dimension(1300,650));
-        this.add(c);
+        this.add(globalPanel);
        // this.add(panelInterface,BorderLayout.SOUTH);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -423,12 +426,40 @@ public class InterfaceGame2 extends JFrame {
         houseluttin1 = new Room("houseluttin1","in a luttin's house");
         houseluttin2 = new Room("houseluttin2","in a luttin's house");
         outside2 = new Room("outside2","outside of the Santa claus village");
+        ecurie = new Room("ecurie", " blab");
+        rdch1= new Room("rdch1", " blab");
+        caveh1= new Room("caveh1", " blab");
+        toith1= new Room("toith1", " blab");
+        outside3 = new Room("outside3", " blab");
+        potager = new Room("potager", " blab");
+        fastfood = new Room("fastfood", " blab");
+        outside4 = new Room("outside4", " blab");
+        rdch2 = new Room("rdch2", " blab");
+        toith2 = new Room("toith2", " blab");
+        manoir = new Room("manoir", " blab");
+        
+        entreemanoir = new Room("entreemanoir", " blab");
+        bibliotheque = new Room("bibliotheque", " blab");;
+        cachot= new Room("cachot", " blab");
+        
+        cuisine= new Room("cuisine", " blab");
+        
+        couloir2 = new Room("couloir2", " blab");
+        
+        portefermee = new Room("portefermee", " blab");
+        salledebain = new Room("salledebain", " blab");
+        chambre1= new Room("chambre1", " blab");
+        
+        couloir3 = new Room("couloir3", " blab");
+        
+        portefermee2 = new Room("portefermee2", " blab");
+        chambre2 = new Room("chambre2", " blab");
+        terrasse = new Room("terrasse", " blab");
+        lastroom = new Room("lastroom", " blab");
+        
 
         // CREATION OF THE EXITS
-//        outside1.setExit(getButtonNorth(),null,outside2); //(direction,key,nextRoom)
-//        houseluttin1.setExit(getButtonWest(),null,null);
-//        houseluttin2.setExit(getButtonEast(),null,null);
-//        outside2.setExit(getButtonNorth(),null,null);
+
         
         // CREATION OF KEYS
          keyLuttin1 = new Key("Key1","Key of the first luttin house");
@@ -446,30 +477,82 @@ public class InterfaceGame2 extends JFrame {
 
         // Exits 
         outside1.setExit("North",null,outside2);
-       // outside1.setExit("East",null,houseluttin1);
-      //  outside1.setExit("South",null,null);
-     //   outside1.setExit("West", null, null);
-     //   outside1.setExit("Up", null, null);
-     //   outside1.setExit("Down", null, null);
-      //  houseluttin1.setExit("West", null, null);
-        houseluttin1.setExit("North",keyLuttin1,houseluttin2);
-        houseluttin1.setExit("South",null,outside1);
-        houseluttin1.setExit("East",null,outside2);
-        //houseluttin1.setExit("Up", null, null);
-      //  houseluttin1.setExit("Down", null, null);
-      //  houseluttin2.setExit("West", null, null);
-        houseluttin2.setExit("North",keyLuttin1,houseluttin2);
-       // houseluttin2.setExit("South",null,outside1);
-       // houseluttin2.setExit("East",null,outside2);
-      //  houseluttin2.setExit("Up", null, null);
-      //  houseluttin2.setExit("Down", null, null);
-      //  houseluttin2.setExit("South",keyLuttin1,houseluttin1);
-        outside2.setExit("West",null,houseluttin1);
-      //  outside2.setExit("North",null,null);
-      //  outside2.setExit("East",keyLuttin1,houseluttin2);
-      //  outside2.setExit("South",null,outside1);
-     //   outside2.setExit("Up", null, null);
-      //  outside2.setExit("Down", null, null);
+        
+        outside2.setExit("West",null,ecurie);
+        outside2.setExit("North",null,outside3);
+        outside2.setExit("South",null,outside1);
+        outside2.setExit("East",null,houseluttin1);
+        
+        
+        houseluttin1.setExit("West",null,outside2);
+        houseluttin1.setExit("East",null,rdch1);
+        
+        rdch1.setExit("Up", null, toith1);
+        rdch1.setExit("Down", null, caveh1);
+        rdch1.setExit("West", null, houseluttin1);
+        
+        toith1.setExit("Down", null, rdch1);
+        caveh1.setExit("Up", null, rdch1);
+        
+        ecurie.setExit("East", null, outside2);
+        
+        outside3.setExit("West",null,potager);
+        outside3.setExit("North",null,outside4);
+        outside3.setExit("South",null,outside2);
+        outside3.setExit("East",null,fastfood);
+        
+        potager.setExit("East",null,outside3);
+        fastfood.setExit("West",null,outside3);
+        
+        outside4.setExit("West",null,supermarket);
+        outside4.setExit("North",null,manoir);
+        outside4.setExit("South",null,outside3);
+        outside4.setExit("East",null,houseluttin2);
+
+        houseluttin2.setExit("East",null,rdch2);
+        houseluttin2.setExit("West",null,outside4);
+        rdch2.setExit("Up",null,toith2);
+        rdch2.setExit("West",null,houseluttin2);
+        toith2.setExit("Down",null,rdch2);
+        
+        manoir.setExit("North",null,entreemanoir);
+        manoir.setExit("South",null,outside4);
+        
+        entreemanoir.setExit("West",null,bibliotheque);
+        entreemanoir.setExit("Up",null,couloir2);
+        entreemanoir.setExit("South",null,manoir);
+        entreemanoir.setExit("East",null,cuisine);
+        
+        bibliotheque.setExit("East", null, entreemanoir);
+        bibliotheque.setExit("Down", null, cachot);
+        cachot.setExit("Up", null, bibliotheque);
+        
+        cuisine.setExit("West",null,entreemanoir);
+        
+        couloir2.setExit("Up",null,couloir3);
+        couloir2.setExit("Down",null,entreemanoir);
+        couloir2.setExit("East",null,salledebain);
+        couloir2.setExit("West",null,portefermee);
+        
+        portefermee.setExit("West", null, chambre1);
+        portefermee.setExit("East",null,couloir2);
+        salledebain.setExit("West",null,couloir2);
+        chambre1.setExit("East",null,couloir2);
+        
+        couloir3.setExit("Up",null,portefermee2);
+        couloir3.setExit("Down",null,couloir2);
+        couloir3.setExit("East",null,chambre2);
+        couloir3.setExit("West",null,terrasse);
+        
+        portefermee2.setExit("North", null, lastroom);
+        portefermee2.setExit("South",null,couloir3);
+        chambre2.setExit("West",null,couloir3);
+        terrasse.setExit("East",null,couloir3);
+        lastroom.setExit("South", null, couloir3);
+        
+
+        
+
         
         // WHERE THE GAME START
         currentRoom = outside1;
@@ -755,104 +838,13 @@ public class InterfaceGame2 extends JFrame {
         return outside2;
     }
 
-    public static Room getHouseluttin3() {
-        return houseluttin3;
-    }
-
-    public static Room getHouseluttin4() {
-        return houseluttin4;
-    }
-
     public static Room getOutside3() {
         return outside3;
-    }
-
-    public static Room getHouseluttin5() {
-        return houseluttin5;
-    }
-
-    public static Room getHouseluttin6() {
-        return houseluttin6;
     }
 
     public static Room getOutside4() {
         return outside4;
     }
 
-    public static Room getCastlePapa() {
-        return castlePapa;
-    }
-
-    public static Room getMineCastle() {
-        return mineCastle;
-    }
-
-    public static Room getRoofCastle() {
-        return roofCastle;
-    }
-
-    public static Room getEntreCastle() {
-        return entreCastle;
-    }
-
-    public static Room getRoomCastle1() {
-        return roomCastle1;
-    }
-
-    public static Room getRoomCastle2() {
-        return roomCastle2;
-    }
-
-    public static Room getRoomCastle3() {
-        return roomCastle3;
-    }
-
-    public static Room getRoomCastle4() {
-        return roomCastle4;
-    }
-
-    public static Room getRoomCastle5() {
-        return roomCastle5;
-    }
-
-    public static Room getRoomCastle6() {
-        return roomCastle6;
-    }
-
-    public static Room getRoomMama() {
-        return roomMama;
-    }
-
-    public static Room getRoomCastle8() {
-        return roomCastle8;
-    }
-
-    public static Room getRoomCastle9() {
-        return roomCastle9;
-    }
-
-    public static Room getRoomCastle10() {
-        return roomCastle10;
-    }
-
-    public static Room getRoomCastle7() {
-        return roomCastle7;
-    }
-
-    public static Room getFloor2() {
-        return floor2;
-    }
-
-    public static Room getFloor3() {
-        return floor3;
-    }
-
-    public static Room getFloor4() {
-        return floor4;
-    }
-
-    public static Room getRoomBoos() {
-        return roomBoos;
-    }
     
 }
