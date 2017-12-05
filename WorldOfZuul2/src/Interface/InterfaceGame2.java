@@ -33,8 +33,6 @@ import FunctionnalCore.Key;
     import javax.swing.JButton;
     import javax.swing.JFrame;
     import javax.swing.JLabel;
-    import javax.swing.JMenuBar;
-    import javax.swing.JMenuItem;
     import javax.swing.JPanel;
     import javax.swing.JScrollPane;
     import javax.swing.JTextArea;
@@ -43,6 +41,7 @@ import FunctionnalCore.Key;
     import javax.swing.SwingConstants;
     import javax.swing.text.BadLocationException;
     import javax.swing.text.Document;
+    import javax.swing.JOptionPane;
 /**
  *
  * @author leov
@@ -83,7 +82,10 @@ public class InterfaceGame2 extends JFrame {
     private static JButton buttonChest;
     private static JButton buttonInventory;
     
+    JOptionPane jop1, jop2, jop3;
+    
     private JLabel labelPv;
+    private static JLabel maImage;
     
      //champ textuel
     private JTextField textField;
@@ -102,19 +104,28 @@ public class InterfaceGame2 extends JFrame {
     
     private Fight fight;
  //   protected Game room;
-    private static ImageIcon image;
-    private static ImageIcon newImage;
+  //  private Container c;
+  // private static ImageIcon newImage;
+    private ImageIcon image;
 
+    private JLabel labelImage;
     
     
      public InterfaceGame2(String playerName){
         
-         // initialise instance variables
-         createRooms();
-         newImage = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
-         setMakeImage(newImage);
+        // initialise instance variables
+        createRooms();
+        image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+        labelImage = new JLabel();
+        labelImage.setIcon(image);
+     //   labelImage.setMaximumSize(new Dimension(300, 100));
+     //   labelImage.setMinimumSize(new Dimension(300,100));
+      //  labelImage.setPreferredSize(new Dimension(300, 100));
+       
+        //setMakeImage(newImage);
+        //setMaImage(getMakeImage());
          
-         name = playerName;
+        name = playerName;
 
         //creation of buttons and label
         buttonNorth = new JButton();
@@ -124,8 +135,7 @@ public class InterfaceGame2 extends JFrame {
         buttonNorth.setBorderPainted(true);
         buttonNorth.setBackground(Color.GRAY);
         buttonNorth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        
-        
+
       //  buttonNorth.addActionListener(ae);
         
         buttonEast = new JButton();
@@ -345,18 +355,26 @@ public class InterfaceGame2 extends JFrame {
         panelInterface.add(box3, BorderLayout.EAST);
         panelInterface.add(panelMoveTot);
         panelInterface.setBackground(new Color(192,192,192));
+        
+        JPanel globalPanel = new JPanel();
+        globalPanel.setLayout(new BorderLayout());
+        globalPanel.add(labelImage, BorderLayout.CENTER);
+      //  globalPanel.add(panelInterface, BorderLayout.SOUTH);
+        
          
-        JLabel labelback = new JLabel(makeImage());
-        labelback.setPreferredSize(new Dimension(1000, 550));
+     //   JLabel labelback = new JLabel(makeImage());
+      //  labelback.setPreferredSize(new Dimension(1000, 550));
         
-        
-        Container c = new JLabel(makeImage());
+        Container c = labelImage;
+        // c = new JLabel(makeImage());
+        //Container c = maImage;
         c.setLayout(new BorderLayout());
         c.add(panelInterface,BorderLayout.SOUTH);
         c.setPreferredSize(new Dimension(1300,650));
         c.setMaximumSize(new Dimension(1300,650));
         c.setMinimumSize(new Dimension(1300,650));
         this.add(c);
+       // this.add(panelInterface,BorderLayout.SOUTH);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
@@ -373,14 +391,30 @@ public class InterfaceGame2 extends JFrame {
      
      private ImageIcon makeImage()
      {
-        return image;
-         //ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
-        
+        return image;       
      }
      
-     public static void setMakeImage (ImageIcon newPicture){
-         image = newPicture;
+     private void changePicture(){
+        image = new ImageIcon(getClass().getResource("/Images/" + currentRoom.getNameRoom() + ".jpg"));
+        labelImage.setIcon(image);
      }
+     
+//     public static void setMakeImage (ImageIcon newPicture){
+//         image = newPicture;
+//     }
+//
+//    public static JLabel getMakeImage() {
+//        return maImage;
+//    }
+//
+//    public static void setMaImage(JLabel labelImage) {
+//        //il faut clear l'image présente pour ajouter la nouvelle
+//        //maImage.repaint();
+//       // maImage.remove();
+//        maImage = labelImage;
+//    }
+    
+    
      
      public static void createRooms()
     {
@@ -411,12 +445,31 @@ public class InterfaceGame2 extends JFrame {
         
 
         // Exits 
-        outside1.setExit("North",null,houseluttin1);
-        houseluttin1.setExit("South",null,outside1);
+        outside1.setExit("North",null,outside2);
+       // outside1.setExit("East",null,houseluttin1);
+      //  outside1.setExit("South",null,null);
+     //   outside1.setExit("West", null, null);
+     //   outside1.setExit("Up", null, null);
+     //   outside1.setExit("Down", null, null);
+      //  houseluttin1.setExit("West", null, null);
         houseluttin1.setExit("North",keyLuttin1,houseluttin2);
+        houseluttin1.setExit("South",null,outside1);
         houseluttin1.setExit("East",null,outside2);
-        houseluttin2.setExit("South",keyLuttin1,houseluttin1);
+        //houseluttin1.setExit("Up", null, null);
+      //  houseluttin1.setExit("Down", null, null);
+      //  houseluttin2.setExit("West", null, null);
+        houseluttin2.setExit("North",keyLuttin1,houseluttin2);
+       // houseluttin2.setExit("South",null,outside1);
+       // houseluttin2.setExit("East",null,outside2);
+      //  houseluttin2.setExit("Up", null, null);
+      //  houseluttin2.setExit("Down", null, null);
+      //  houseluttin2.setExit("South",keyLuttin1,houseluttin1);
         outside2.setExit("West",null,houseluttin1);
+      //  outside2.setExit("North",null,null);
+      //  outside2.setExit("East",keyLuttin1,houseluttin2);
+      //  outside2.setExit("South",null,outside1);
+     //   outside2.setExit("Up", null, null);
+      //  outside2.setExit("Down", null, null);
         
         // WHERE THE GAME START
         currentRoom = outside1;
@@ -642,21 +695,29 @@ public class InterfaceGame2 extends JFrame {
         String action = move.getActionCommand();
         //this.direction = (JButton)move.getSource(); PAS A UTILISEEEEEE !!!!!
         Room nextRoom = null;
-        nextRoom = currentRoom.getExit().get(action).getNextRoom();
-        if(action.equals("North")){
+       // nextRoom = currentRoom.getExit().get(action).getNextRoom();
+      //  if(action.equals("North")){
             if (currentRoom.getExit().get(action) == null) {
+                jop1 = new JOptionPane();
+                jop1.showMessageDialog(null, "there is no door", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("There is no door!"); 
             }
             else{
                 if(currentRoom.getExit().get(action).isLocked()){
+                jop2 = new JOptionPane();
+                jop2.showMessageDialog(null, "It is a closed door", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
                     System.out.println("La porte est fermé il vous faut la clé");
                 }
                 else{
                     // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
                     System.out.println(currentRoom.getExit().get(action).isLocked());
                     currentRoom = currentRoom.getExit().get(action).getNextRoom();
+                    
                     System.out.println("You are " + currentRoom.getDescription());
                     System.out.print("Exits: ");
+                    changePicture();
                 }
 //                currentRoom = nextRoom;
 //                //Display the new room
@@ -672,113 +733,6 @@ public class InterfaceGame2 extends JFrame {
                     System.out.println();
                 }
             }
-        }
-        else if (action.equals("East")){
-            if (currentRoom.getExit().get(action) == null) {
-                System.out.println("There is no door!");
-                
-            }
-            else{
-                currentRoom = nextRoom;
-                //Display the new room
-                 System.out.println("You are " + currentRoom.getDescription());
-                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
-            }
-        }
-            
-        else if (action.equals("South")){
-            if (currentRoom.getExit().get(action) == null) {
-                System.out.println("There is no door!");
-                
-            }
-            else{
-                currentRoom = nextRoom;
-                //Display the new room
-                 System.out.println("You are " + currentRoom.getDescription());
-                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
-            }
-        }
-        else if (action.equals("West")){
-            if (currentRoom.getExit().get(action) == null) {
-                System.out.println("There is no door!");
-                
-            }
-            else{
-                currentRoom = nextRoom;
-                //Display the new room
-                System.out.println("You are " + currentRoom.getDescription());
-                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
-            }
-        }
-        else if (action.equals("Up")){
-            if (currentRoom.getExit().get(action) == null) {
-                System.out.println("There is no door!");
-                
-            }
-            else{
-                currentRoom = nextRoom;
-                //Display the new room
-                 System.out.println("You are " + currentRoom.getDescription());
-                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
-            }
-        }
-        else if (action.equals("Down")){
-            if (currentRoom.getExit().get(action) == null) {
-                System.out.println("There is no door!");
-                
-            }
-            else{
-                currentRoom = nextRoom;
-                //Display the new room
-                 System.out.println("You are " + currentRoom.getDescription());
-                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
-            }
-        }            
     }
     
     public static Room getCurrentRoom() {
