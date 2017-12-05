@@ -325,8 +325,8 @@ public class InterfaceGame2 extends JFrame {
         JPanel panelPv = new JPanel();
         panelPv.setLayout(new GridLayout(2,1));
         panelPv.setBackground(Color.GRAY);
-        panelPv.add(labelLife, BorderLayout.CENTER);
-        panelPv.add(labelPv, BorderLayout.CENTER);
+        panelPv.add(labelLife, BorderLayout.NORTH);
+        panelPv.add(labelPv, BorderLayout.NORTH);
         
         JPanel panelYolo = new JPanel();
         panelYolo.setBackground(Color.lightGray);
