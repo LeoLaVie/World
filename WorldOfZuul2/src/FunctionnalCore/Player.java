@@ -17,7 +17,7 @@ import java.util.Map.Entry;
 public class Player
 {
     /** instance variables */
-    private String name;
+    private static String name;
     /**the health points of the character
      * the max health points of the character.*/
     private int health, maxHealth;
@@ -60,7 +60,7 @@ public class Player
     /**
      * This method returns the name of the character.
      */    
-    public String getName()
+    public static String getName()
     {
         return name;
     }
