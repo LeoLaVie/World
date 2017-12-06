@@ -67,6 +67,7 @@ public class InterfaceInventory extends JFrame implements ActionListener {
     private Weapon w1;
     private Player player1;
     //private Inventory inventory;
+    private InventoryInterfaceListener evt;
     
     private static final long serialVersionUID = 1L;
     //button building
@@ -74,9 +75,9 @@ public class InterfaceInventory extends JFrame implements ActionListener {
     //store button for all items in the inventory;
     private JButton[] buttonItems;
     //label building
-    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, price, care, damages, effects;
+    private JLabel title, goldLabel, goldIconLabel, iconLabel, nom, description, care, damages, effect;
     //panel building
-    private JPanel myPanel, top, inventory, gold, view, actions, completeDescription;
+    private JPanel myPanel, top, inventory, view, actions, completeDescription;
     //frame building
     private JFrame inventoryFrame, itemFrame;
     //inventory of the player
@@ -88,7 +89,7 @@ public class InterfaceInventory extends JFrame implements ActionListener {
     //doors of the room where the player is
     private HashMap<String,Door> doors;
     //some icons
-    private Icon anIcon, backIcon, goldIcon;
+    private Icon anIcon, backIcon;
     private Items myItem;
     private String name;
     //private InventoryInterfaceListener evt;
@@ -159,8 +160,8 @@ public class InterfaceInventory extends JFrame implements ActionListener {
 
     private void designItem()
     {
-            //item view building
-            itemFrame = new JFrame("My item");
+        //item view building
+        itemFrame = new JFrame("My item");
         itemFrame.setSize(500, 500);
         top = new JPanel (new GridLayout (1,2));
         
@@ -199,27 +200,56 @@ public class InterfaceInventory extends JFrame implements ActionListener {
         description=new JLabel("");
         description.setForeground(Color.white);
         description.setFont(police2);
-        price=new JLabel("");
-        price.setForeground(Color.white);
-        price.setFont(police2);
         damages=new JLabel("");
         damages.setForeground(Color.white);
         damages.setFont(police2);
-        effects=new JLabel("");
-        effects.setForeground(Color.white);
-        effects.setFont(police2);
+        effect=new JLabel("");
+        effect.setForeground(Color.white);
+        effect.setFont(police2);
         care=new JLabel("");
         care.setForeground(Color.white);
         care.setFont(police2);
         completeDescription.add(nom);
         completeDescription.add(description);
-        completeDescription.add(price);
         completeDescription.add(damages);
-        completeDescription.add(effects);
+        completeDescription.add(effect);
         completeDescription.add(care);
         
         //actions panel creation. it contains some buttons
         actions= new JPanel(new GridLayout(1,2));
+        
+        //use button building
+        use= new JButton("USE");
+        use.setBackground(Color.black);
+        use.setOpaque(true);
+        use.setForeground(Color.yellow);
+        use.setFont(police);
+        use.addMouseListener(evt);
+        use.setBorderPainted(false);
+        
+        //equip button building
+        equip= new JButton("EQUIP");
+        equip.setBackground(Color.black);
+        equip.setOpaque(true);
+        equip.setForeground(Color.yellow);
+        equip.setFont(police);
+        equip.addMouseListener(evt);
+        equip.setBorderPainted(false);
+    
+        //unequip button building
+        unequip= new JButton("UNEQUIP");
+        unequip.setBackground(Color.black);
+        unequip.setOpaque(true);
+        unequip.setForeground(Color.yellow);
+        unequip.setFont(police);
+        unequip.addMouseListener(evt);
+        unequip.setBorderPainted(false);
+        
+        //Panel view building
+        view=new JPanel(new BorderLayout());
+        view.add(top,BorderLayout.NORTH);
+        view.add(iconLabel,BorderLayout.CENTER);
+        view.add(completeDescription,BorderLayout.EAST);
     }
 }
 
