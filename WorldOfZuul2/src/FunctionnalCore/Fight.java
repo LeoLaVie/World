@@ -7,6 +7,7 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * This class is the event for the fighting between the player and a npc.
@@ -20,8 +21,7 @@ public class Fight extends Events
     private boolean isWin;
     private int health;
     private boolean fighting = true;
-    
-
+    JOptionPane jop1;
     /**
      * Constructor for objects of class Fight
      */
@@ -43,6 +43,11 @@ public class Fight extends Events
        //appelle de l'ennemie, vie, etat..
        
        System.out.print("\nChose your action with buttons !");
+       jop1 = new JOptionPane();
+       jop1.showMessageDialog(null, "\nChose your action with buttons !", "Warning",
+               JOptionPane.INFORMATION_MESSAGE);
+       
+       InterfaceGame2.getButtonAttack().setEnabled(true);
        
        //fight system
         while(fighting) {

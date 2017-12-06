@@ -335,7 +335,7 @@ public class InterfaceGame2 extends JFrame {
         panelYolo.setMinimumSize(new Dimension(300,100));
         panelYolo.setPreferredSize(new Dimension(300, 100));
         
-         //panel interface
+        //panel interface
         JPanel panelInterface = new JPanel();
         panelInterface.setLayout(new GridLayout(1, 4));
         panelInterface.add(panelPv);
@@ -356,20 +356,21 @@ public class InterfaceGame2 extends JFrame {
         
         Container c = labelImage;
         c.setLayout(new BorderLayout());
-        c.add(panelInterface,BorderLayout.SOUTH);
-        c.setPreferredSize(new Dimension(1300,650));
-        c.setMaximumSize(new Dimension(1300,650));
-        c.setMinimumSize(new Dimension(1300,650));
-        this.add(globalPanel);
+       // c.add(panelInterface,BorderLayout.SOUTH);
+        c.setPreferredSize(new Dimension(900,500));
+        c.setMaximumSize(new Dimension(900,500));
+        c.setMinimumSize(new Dimension(900,500));
+        this.add(c, BorderLayout.NORTH);
+        this.add(panelInterface, BorderLayout.CENTER);
        // this.add(panelInterface,BorderLayout.SOUTH);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.getContentPane().setBackground(Color.GRAY);
         this.setResizable(false);
-        this.setPreferredSize(new Dimension(1000,550));
-        this.setMaximumSize(new Dimension(1000,550));
-        this.setMinimumSize(new Dimension(1000,550));
+        this.setPreferredSize(new Dimension(1300,650));
+        this.setMaximumSize(new Dimension(1300,650));
+        this.setMinimumSize(new Dimension(1300,650));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         
@@ -440,6 +441,9 @@ public class InterfaceGame2 extends JFrame {
         
         
         //CREATION OF WEAPON
+        
+        
+        //CREATION OF NPC
         
 
         // Exits 
@@ -756,7 +760,7 @@ public class InterfaceGame2 extends JFrame {
                 jop2 = new JOptionPane();
                 jop2.showMessageDialog(null, "It is a closed door", "Warning",
                         JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println("La porte est fermé il vous faut la clé");
+                    System.out.println("La porte est fermée il vous faut la clé");
                 }
                 else{
                     // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
