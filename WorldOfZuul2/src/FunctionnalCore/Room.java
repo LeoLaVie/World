@@ -25,6 +25,12 @@ public class Room
     
     private Chest chest;
     
+    private Items item;
+    
+    private KindNPC kNPC;
+    
+    private MeanNPC mNPC;
+    
     /**
      * Constructor for objects of class Room
      * @param roomName The name of the Room
@@ -97,4 +103,26 @@ public class Room
         else
             return false;
     }
+    /** 
+     * 
+     * @param it
+     */
+    public void addItem(Items it) {
+        item = it;
+    }
+    
+    /** 
+     * 
+     */
+    public void addkNPC(KindNPC kiNPC) {
+        kNPC = kiNPC;
+    }
+    
+    /** 
+     * 
+     */
+    public void addmNPC(MeanNPC meNPC) {
+        mNPC = meNPC;
+    }
+    
 }
