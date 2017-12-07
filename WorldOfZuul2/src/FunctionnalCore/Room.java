@@ -25,12 +25,16 @@ public class Room
     // Name of the Room.
     
     private Chest chest;
+    // Chest in the room
     
     private Items item;
+    // Item in the room
     
     private KindNPC kNPC;
+    // Kind NPC in the room
     
     private MeanNPC mNPC;
+    // Mean NPC in the room
     
     /**
      * Constructor for objects of class Room
