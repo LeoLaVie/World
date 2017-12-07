@@ -9,6 +9,8 @@ package Interface;
 import FunctionnalCore.Game;
 import FunctionnalCore.Inventory;
     import FunctionnalCore.Key;
+import FunctionnalCore.KindNPC;
+import FunctionnalCore.MeanNPC;
 import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
@@ -115,6 +117,20 @@ public class InterfaceGame2 extends JFrame {
     private Player aPlayer;
     private Game aGame;
     
+    // Kind NPC
+    private static KindNPC kNPC1;
+    private static KindNPC kNPC2;
+    private static KindNPC kNPC3;
+    private static KindNPC kNPC4;
+    private static KindNPC kNPC5;
+    
+    //Mean NPC
+    private static MeanNPC mNPC1;
+    private static MeanNPC mNPC2;
+    private static MeanNPC mNPC3;
+    private static MeanNPC mNPC4;
+    private static MeanNPC mNPC5;
+    private static MeanNPC mNPC6;
     
      public InterfaceGame2(String playerName){
          
@@ -452,7 +468,20 @@ public class InterfaceGame2 extends JFrame {
         //CREATION OF WEAPON
         
         
-        //CREATION OF NPC
+        //CREATION OF KIND NPC
+        kNPC1 = new KindNPC("Lupin", "What can be a color and a pain ?", "blue", true);
+        kNPC2 = new KindNPC("Galopin", "What is bigger than the Eiffel Tower but infinitely less heavy ?", "shadow", true);
+        kNPC3 = new KindNPC("Baluchon", "I have a heart but I am neither a human nor an animal. Who am I ?", "lettuce", true);
+        kNPC4 = new KindNPC("Atchoum", "When I turn, I cry. Who am I ?", "tap", true);
+        kNPC5 = new KindNPC("Mother Christmas", "If you approach me, I kill you. But without me, you could not live. Who am I ?", "sun", true);
+        
+        //CREATION OF MEAN NPC
+        mNPC1 = new MeanNPC("Franklin", 100, 10, true);
+        mNPC2 = new MeanNPC("Frisquet", 100, 10, true);
+        mNPC3 = new MeanNPC("Fripouille", 100, 15, true);
+        mNPC4 = new MeanNPC("Frodon", 100, 15, true);
+        mNPC5 = new MeanNPC("Frisson", 100, 20, true);
+        mNPC6 = new MeanNPC("Santa Claus", 100, 25, true);
         
 
         // Exits 
