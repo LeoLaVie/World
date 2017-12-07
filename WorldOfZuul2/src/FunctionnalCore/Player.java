@@ -17,7 +17,7 @@ import java.util.Map.Entry;
 public class Player
 {
     /** instance variables */
-    private String name;
+    private static String name;
     /**the health points of the character
      * the max health points of the character.*/
     private int health, maxHealth;
@@ -28,7 +28,7 @@ public class Player
     /**where the character is in the town.*/
     private Room location;
     /**the inventory of the character*/
-    private Inventory inventory;    
+    public Inventory inventory;    
     private int attPower;
     private Weapon weapon;
     private Usable usable;
@@ -41,14 +41,15 @@ public class Player
      */
     public Player(String newName)
     {
-       if (newName.equals(""))
-       {
+        if (newName.equals(""))
+        {
            name = "Feignant";
-       }
+        }
        else
        {
            name = newName;
        }
+       
        health = 100;
        maxHealth = 100;
        inFight = false;
@@ -60,10 +61,23 @@ public class Player
     /**
      * This method returns the name of the character.
      */    
-    public String getName()
+    public static String getName()
     {
         return name;
     }
+
+//    public static void setName(String newName) {
+//        if (newName == null)
+//       {
+//           name = "Feignant";
+//       }
+//       else
+//       {
+//           name = newName;
+//       }
+//    }
+    
+    
     
     /**
      * This method returns the health points of the character.
@@ -91,6 +105,19 @@ public class Player
     {
         return maxHealth;
      }
+     
+         /**
+     * Return true if the player has a specific key
+     * @param key The specific key
+     * @return Return true if the player has a specific key
+     */
+    public boolean haveKey(Key key){
+        for (Items item : items) {
+            if(item.equals(key))
+                return true;
+        }
+        return false;
+    }
 
     /**
      * This method allows to loose points when the character loose a fight.. .

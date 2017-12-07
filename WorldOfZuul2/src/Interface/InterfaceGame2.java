@@ -4,20 +4,29 @@
  * and open the template in the editor.
  */
 package Interface;
+    import FunctionnalCore.Door;
+    import FunctionnalCore.Fight; 
+import FunctionnalCore.Game;
+import FunctionnalCore.Inventory;
+    import FunctionnalCore.Key;
+import FunctionnalCore.Player;
+   // import FunctionnalCore.Game;
+    import FunctionnalCore.Room;
     import java.awt.BorderLayout;
     import java.awt.Color;
     import java.awt.Container;
     import java.awt.Dimension;
     import java.awt.FlowLayout;
     import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+    import java.awt.GridBagConstraints;
+    import java.awt.GridBagLayout;
     import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.PopupMenu;
+    import java.awt.Insets;
+    import java.awt.PopupMenu;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
     import java.awt.event.*;
+    import static java.lang.System.exit;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -27,8 +36,6 @@ import java.awt.PopupMenu;
     import javax.swing.JButton;
     import javax.swing.JFrame;
     import javax.swing.JLabel;
-    import javax.swing.JMenuBar;
-    import javax.swing.JMenuItem;
     import javax.swing.JPanel;
     import javax.swing.JScrollPane;
     import javax.swing.JTextArea;
@@ -37,34 +44,61 @@ import java.awt.PopupMenu;
     import javax.swing.SwingConstants;
     import javax.swing.text.BadLocationException;
     import javax.swing.text.Document;
+    import javax.swing.JOptionPane;
 /**
  *
  * @author leov
  */
 public class InterfaceGame2 extends JFrame {
     
+    private JButton direction;
+    
+
+    
+    protected static Room currentRoom; 
+    private static Room outside1, houseluttin1, houseluttin2, outside2, ecurie, rdch1, caveh1, toith1, outside3, potager, fastfood, outside4, supermarket, toith2, rdch2;
+    private static Room manoir, entreemanoir, bibliotheque, cuisine, cachot, couloir2, chambre1, salledebain, couloir3, terrasse, chambre2, portefermee, portefermee2, lastroom;
+    private static Key keyLuttin1;
+    
     private JPanel myPanel;
     
-    private JButton buttonNorth;
-    private JButton buttonEast;
-    private JButton buttonSouth;
-    private JButton buttonWest;
-    private JButton button;
-    private JButton buttonUp;
-    private JButton buttonDown;
-    private JButton buttonLife;
-    private JButton buttonAttack;
-    private JButton buttonChest;
-    private JButton buttonInventory;
+        /**
+     * Attributes button
+     * @param buttonNorth
+     * @param buttonEast
+     * @param buttonSouth
+     * @param buttonWest
+     * @param buttonUp
+     * @param buttonDown
+     * @param buttonLife
+     * @param buttonAttack
+     * @param buttonChest
+     * @param buttonInventory
+    */
+    private static JButton buttonNorth;
+    private static JButton buttonEast;
+    private static JButton buttonSouth;
+    private static JButton buttonWest;
+    private static JButton button;
+    private static JButton buttonUp;
+    private static JButton buttonDown;
+    private static JButton buttonLife;
+    private static JButton buttonAttack;
+    private static JButton buttonChest;
+    private static JButton buttonInventory;
+    
+    JOptionPane jop1, jop2, jop3;
     
     private JLabel labelPv;
+    private JLabel labelImage;
+    private JLabel labelText;
     
      //champ textuel
     private JTextField textField;
     private JTextArea textArea;
     protected final static String newline = "\n";
     private JPanel panelText;
-    private JLabel labelText;
+
     
     private String name;
     private Document doc; 
@@ -74,10 +108,36 @@ public class InterfaceGame2 extends JFrame {
     private String stri;
     private String reponse;
     
+    private Fight fight;
+    private ImageIcon image;
+    
+    private Inventory anInventory;
+    private Player aPlayer;
+    private Game aGame;
+    
+    
      public InterfaceGame2(String playerName){
+         
         
-         name = playerName;
+        // initialise instance variables
+        createRooms();
+        image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+        labelImage = new JLabel();
+        labelImage.setIcon(image);
+        this.labelImage.setHorizontalAlignment(JLabel.CENTER);
+        this.labelImage.setVerticalAlignment(JLabel.CENTER);
+     //   labelImage.setMaximumSize(new Dimension(300, 100));
+     //   labelImage.setMinimumSize(new Dimension(300,100));
+      //  labelImage.setPreferredSize(new Dimension(300, 100));
+       
+        //setMakeImage(newImage);
+        //setMaImage(getMakeImage());
+        name = playerName; 
+        new Player(name);
+        
+        //buttonInventory.addActionListener((ActionListener) this);
 
+        
         //creation of buttons and label
         buttonNorth = new JButton();
         buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheNorth.gif")));
@@ -86,7 +146,7 @@ public class InterfaceGame2 extends JFrame {
         buttonNorth.setBorderPainted(true);
         buttonNorth.setBackground(Color.GRAY);
         buttonNorth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        
+
       //  buttonNorth.addActionListener(ae);
         
         buttonEast = new JButton();
@@ -175,11 +235,17 @@ public class InterfaceGame2 extends JFrame {
         
         //listener mouse for directiv button 
         buttonNorth.addMouseListener(m);
+        buttonNorth.setActionCommand("North");
         buttonEast.addMouseListener(m);
+        buttonEast.setActionCommand("East");
         buttonSouth.addMouseListener(m);
+        buttonSouth.setActionCommand("South");
         buttonWest.addMouseListener(m);
+        buttonWest.setActionCommand("West");
         buttonUp.addMouseListener(m);
+        buttonUp.setActionCommand("Up");
         buttonDown.addMouseListener(m);
+        buttonDown.setActionCommand("Down");
         
         ListenerMove x = new ListenerMove(this);
         
@@ -190,6 +256,11 @@ public class InterfaceGame2 extends JFrame {
         buttonWest.addActionListener(x);
         buttonUp.addActionListener(x);
         buttonDown.addActionListener(x);
+        
+        ListenerFight a = new ListenerFight(fight);
+        //listener for action during the fight
+        buttonAttack.addActionListener(a);
+        buttonLife.addActionListener(a);
         
        //add to panel up/down
         JPanel panelUpDown = new JPanel();
@@ -227,20 +298,6 @@ public class InterfaceGame2 extends JFrame {
         panelMoveTot.add(panelUpDown);
         
         
-        //panel life and attakc button
-       // JPanel panelLifeAttack = new JPanel();
-     //   panelLifeAttack.setLayout(new GridLayout(2,2));
-     //   panelLifeAttack.setMaximumSize(new Dimension(30, 30));
-     //   panelLifeAttack.setPreferredSize(new Dimension(30,30));
-    //    panelLifeAttack.setMinimumSize(new Dimension(30, 30));
-      //  JLabel labelvide = new JLabel(" ");
-    //    JLabel labelvide2= new JLabel(" ");
-    //    panelLifeAttack.setBackground(Color.lightGray);
-    //    panelLifeAttack.add(buttonLife);
-     //   panelLifeAttack.add(buttonChest);
-     //   panelLifeAttack.add(buttonInventory);
-     //   panelLifeAttack.add(buttonAttack);
-        
         Box box1 = Box.createHorizontalBox();
         box1.add(buttonLife);
         box1.add(buttonChest);
@@ -277,8 +334,8 @@ public class InterfaceGame2 extends JFrame {
         JPanel panelPv = new JPanel();
         panelPv.setLayout(new GridLayout(2,1));
         panelPv.setBackground(Color.GRAY);
-        panelPv.add(labelLife, BorderLayout.CENTER);
-        panelPv.add(labelPv, BorderLayout.CENTER);
+        panelPv.add(labelLife, BorderLayout.NORTH);
+        panelPv.add(labelPv, BorderLayout.NORTH);
         
         JPanel panelYolo = new JPanel();
         panelYolo.setBackground(Color.lightGray);
@@ -287,7 +344,7 @@ public class InterfaceGame2 extends JFrame {
         panelYolo.setMinimumSize(new Dimension(300,100));
         panelYolo.setPreferredSize(new Dimension(300, 100));
         
-         //panel interface
+        //panel interface
         JPanel panelInterface = new JPanel();
         panelInterface.setLayout(new GridLayout(1, 4));
         panelInterface.add(panelPv);
@@ -295,35 +352,192 @@ public class InterfaceGame2 extends JFrame {
         panelInterface.add(box3, BorderLayout.EAST);
         panelInterface.add(panelMoveTot);
         panelInterface.setBackground(new Color(192,192,192));
+        
+        JPanel globalPanel = new JPanel();
+        globalPanel.setLayout(new BorderLayout());
+        globalPanel.add(labelImage, BorderLayout.CENTER);
+        globalPanel.add(panelInterface, BorderLayout.SOUTH);
+        globalPanel.setBackground(Color.GRAY);
+        
          
-        JLabel labelback = new JLabel(makeImage());
-        labelback.setPreferredSize(new Dimension(1000, 550));
+     //   JLabel labelback = new JLabel(makeImage());
+      //  labelback.setPreferredSize(new Dimension(1000, 550));
         
-        
-        Container c = new JLabel(makeImage());
+        Container c = labelImage;
         c.setLayout(new BorderLayout());
-        c.add(panelInterface,BorderLayout.SOUTH);
-        c.setPreferredSize(new Dimension(1300,650));
-        c.setMaximumSize(new Dimension(1300,650));
-        c.setMinimumSize(new Dimension(1300,650));
-        this.add(c);
+       // c.add(panelInterface,BorderLayout.SOUTH);
+        c.setPreferredSize(new Dimension(900,500));
+        c.setMaximumSize(new Dimension(900,500));
+        c.setMinimumSize(new Dimension(900,500));
+        this.add(c, BorderLayout.NORTH);
+        this.add(panelInterface, BorderLayout.CENTER);
+       // this.add(panelInterface,BorderLayout.SOUTH);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
         this.getContentPane().setBackground(Color.GRAY);
         this.setResizable(false);
-        this.setPreferredSize(new Dimension(1000,550));
-        this.setMaximumSize(new Dimension(1000,550));
-        this.setMinimumSize(new Dimension(1000,550));
+        this.setPreferredSize(new Dimension(1300,650));
+        this.setMaximumSize(new Dimension(1300,650));
+        this.setMinimumSize(new Dimension(1300,650));
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        
+        jop1 = new JOptionPane();
+        jop1.showMessageDialog(null, "Bienvenue à toi, " + Player.getName() + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?", "Warning",
+        JOptionPane.INFORMATION_MESSAGE);
+        
      }
+     
+    
      
      private ImageIcon makeImage()
      {
-       return new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
-        
+        return image;       
      }
+     
+     private void changePicture(){
+        image = new ImageIcon(getClass().getResource("/Images/" + currentRoom.getNameRoom() + ".jpg"));
+        labelImage.setIcon(image);
+     }   
+    
+     
+     public static void createRooms()
+    {
+        // CREATION OF THE DOORS (ROOMS)
+        outside1 = new Room("outside1","outside the main entrance of the Santa claus village");
+        houseluttin1 = new Room("houseluttin1","in a luttin's house");
+        houseluttin2 = new Room("houseluttin2","in a luttin's house");
+        outside2 = new Room("outside2","outside of the Santa claus village");
+        ecurie = new Room("ecurie", " blab");
+        rdch1= new Room("rdch1", " blab");
+        caveh1= new Room("caveh1", " blab");
+        toith1= new Room("toith1", " blab");
+        outside3 = new Room("outside3", " blab");
+        potager = new Room("potager", " blab");
+        fastfood = new Room("fastfood", " blab");
+        outside4 = new Room("outside4", " blab");
+        rdch2 = new Room("rdch2", " blab");
+        toith2 = new Room("toith2", " blab");
+        manoir = new Room("manoir", " blab");
+        entreemanoir = new Room("entreemanoir", " blab");
+        bibliotheque = new Room("bibliotheque", " blab");;
+        cachot= new Room("cachot", " blab");
+        cuisine= new Room("cuisine", " blab");
+        couloir2 = new Room("couloir2", " blab");
+        portefermee = new Room("portefermee", " blab");
+        salledebain = new Room("salledebain", " blab");
+        chambre1= new Room("chambre1", " blab");
+        couloir3 = new Room("couloir3", " blab");
+        portefermee2 = new Room("portefermee2", " blab");
+        chambre2 = new Room("chambre2", " blab");
+        terrasse = new Room("terrasse", " blab");
+        lastroom = new Room("lastroom", " blab");
+        
+
+        // CREATION OF THE EXITS
+
+        
+        // CREATION OF KEYS
+         keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin2 = new Key("Key2","Key of the second luttin house");
+        
+        //CREATION OF CHEST
+        
+        
+        //CREATION OF POTION
+        
+        
+        //CREATION OF WEAPON
+        
+        
+        //CREATION OF NPC
+        
+
+        // Exits 
+        outside1.setExit("North",null,outside2);
+        
+        outside2.setExit("West",null,ecurie);
+        outside2.setExit("North",null,outside3);
+        outside2.setExit("South",null,outside1);
+        outside2.setExit("East",null,houseluttin1);
+        
+        
+        houseluttin1.setExit("West",null,outside2);
+        houseluttin1.setExit("East",null,rdch1);
+        
+        rdch1.setExit("Up", null, toith1);
+        rdch1.setExit("Down", null, caveh1);
+        rdch1.setExit("West", null, houseluttin1);
+        
+        toith1.setExit("Down", null, rdch1);
+        caveh1.setExit("Up", null, rdch1);
+        
+        ecurie.setExit("East", null, outside2);
+        
+        outside3.setExit("West",null,potager);
+        outside3.setExit("North",null,outside4);
+        outside3.setExit("South",null,outside2);
+        outside3.setExit("East",null,fastfood);
+        
+        potager.setExit("East",null,outside3);
+        fastfood.setExit("West",null,outside3);
+        
+        outside4.setExit("West",null,supermarket);
+        outside4.setExit("North",null,manoir);
+        outside4.setExit("South",null,outside3);
+        outside4.setExit("East",null,houseluttin2);
+
+        houseluttin2.setExit("East",null,rdch2);
+        houseluttin2.setExit("West",null,outside4);
+        rdch2.setExit("Up",null,toith2);
+        rdch2.setExit("West",null,houseluttin2);
+        toith2.setExit("Down",null,rdch2);
+        
+        manoir.setExit("North",null,entreemanoir);
+        manoir.setExit("South",null,outside4);
+        
+        entreemanoir.setExit("West",null,bibliotheque);
+        entreemanoir.setExit("Up",null,couloir2);
+        entreemanoir.setExit("South",null,manoir);
+        entreemanoir.setExit("East",null,cuisine);
+        
+        bibliotheque.setExit("East", null, entreemanoir);
+        bibliotheque.setExit("Down", null, cachot);
+        cachot.setExit("Up", null, bibliotheque);
+        
+        cuisine.setExit("West",null,entreemanoir);
+        
+        couloir2.setExit("Up",null,couloir3);
+        couloir2.setExit("Down",null,entreemanoir);
+        couloir2.setExit("East",null,salledebain);
+        couloir2.setExit("West",null,portefermee);
+        
+        portefermee.setExit("West", null, chambre1);
+        portefermee.setExit("East",null,couloir2);
+        salledebain.setExit("West",null,couloir2);
+        chambre1.setExit("East",null,couloir2);
+        
+        couloir3.setExit("Up",null,portefermee2);
+        couloir3.setExit("Down",null,couloir2);
+        couloir3.setExit("East",null,chambre2);
+        couloir3.setExit("West",null,terrasse);
+        
+        portefermee2.setExit("North", null, lastroom);
+        portefermee2.setExit("South",null,couloir3);
+        chambre2.setExit("West",null,couloir3);
+        terrasse.setExit("East",null,couloir3);
+        lastroom.setExit("South", null, couloir3);
+        
+
+        
+
+        
+        // WHERE THE GAME START
+        currentRoom = outside1;
+        
+    }
      
      protected void compteurMouse (MouseEvent evt){
          if (evt.getSource() == buttonNorth){
@@ -384,33 +598,13 @@ public class InterfaceGame2 extends JFrame {
           }
      }
      
-     protected void moveGame (ActionEvent move){
-         if (move.getSource() == buttonNorth){
- 
-         }
-         else if (move.getSource() == buttonEast){
-
-         }
-          else if (move.getSource() == buttonSouth){
-
-         }
-          else if (move.getSource() == buttonWest){
-
-         }
-          else if (move.getSource() == buttonUp){
-
-         }
-          else if (move.getSource() == buttonDown){
-             
-         }
-     }
      
      protected void interactionItem(ActionEvent item){
          if (item.getSource() == buttonLife){
              
          }
          else if (item.getSource() == buttonAttack){
-             
+             //Fight.runFight();
          }
          else if (item.getSource()== buttonChest){
              
@@ -419,6 +613,7 @@ public class InterfaceGame2 extends JFrame {
              
          }
      }
+     
      
      
      protected void actionItem(ActionEvent activation){
@@ -432,9 +627,7 @@ public class InterfaceGame2 extends JFrame {
         textArea.setLineWrap(true);
         //JScrollPane scrollPane = new JScrollPane(textArea);
         doc = textArea.getDocument();
-        insert("Bienvenue à toi, " + name + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?");
-        
-        
+        insert("Bienvenue à toi, " + Player.getName() + " au pays du père Nöel.");
         // output.setEditable(false);
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -514,4 +707,135 @@ public class InterfaceGame2 extends JFrame {
        }
     }
 
+    public static JButton getButtonNorth() {
+        return buttonNorth;
+    }
+
+    public static JButton getButtonEast() {
+        return buttonEast;
+    }
+
+    public static JButton getButtonSouth() {
+        return buttonSouth;
+    }
+
+    public static JButton getButtonWest() {
+        return buttonWest;
+    }
+
+    public static JButton getButtonUp() {
+        return buttonUp;
+    }
+
+    public static JButton getButtonDown() {
+        return buttonDown;
+    }
+
+    public static JButton getButtonLife() {
+        return buttonLife;
+    }
+
+    public static JButton getButtonAttack() {
+        return buttonAttack;
+    }
+
+    public static JButton getButtonChest() {
+        return buttonChest;
+    }
+
+    public static JButton getButtonInventory() {
+        return buttonInventory;
+    }
+
+        /** 
+     * Try to go to one direction. If there is an exit, enter
+     * the new room, otherwise print an error message.
+     */
+    public void goRoom(ActionEvent move)
+    {
+        String action = move.getActionCommand();
+        //this.direction = (JButton)move.getSource(); PAS A UTILISEEEEEE !!!!!
+        Room nextRoom = null;
+       // nextRoom = currentRoom.getExit().get(action).getNextRoom();
+      //  if(action.equals("North")){
+            if (currentRoom.getExit().get(action) == null) {
+                jop1 = new JOptionPane();
+                jop1.showMessageDialog(null, "There is no door", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("There is no door!"); 
+            }
+            else{
+                if(currentRoom.getExit().get(action).isLocked()){
+                jop2 = new JOptionPane();
+                jop2.showMessageDialog(null, "It is a closed door", "Warning",
+                        JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println("La porte est fermée il vous faut la clé");
+                }
+                else{
+                    // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
+                    System.out.println(currentRoom.getExit().get(action).isLocked());
+                    currentRoom = currentRoom.getExit().get(action).getNextRoom();
+                    
+                    System.out.println("You are " + currentRoom.getDescription());
+                    System.out.print("Exits: ");
+                    changePicture();
+                }
+//                currentRoom = nextRoom;
+//                //Display the new room
+//                System.out.println("You are " + currentRoom.getDescription());
+//                System.out.print("Exits: ");
+            
+                for (String key : currentRoom.getExit().keySet())
+                {
+                    if (currentRoom.getExit().get(key)!=null)
+                    {
+                        System.out.println(key);
+                    }
+                    System.out.println();
+                }
+            }
+    }
+    
+    public static Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public static Room getOutside1() {
+        return outside1;
+    }
+
+    public static Room getHouseluttin1() {
+        return houseluttin1;
+    }
+
+    public static Room getHouseluttin2() {
+        return houseluttin2;
+    }
+
+    public static Room getOutside2() {
+        return outside2;
+    }
+
+    public static Room getOutside3() {
+        return outside3;
+    }
+
+    public static Room getOutside4() {
+        return outside4;
+    }
+
+    
+//    //@Override
+//    public void actionPerformed(ActionEvent e)
+//    {
+//      // When the user click on Marion's picture, the button Start and Change 
+//      //become accessible but all the other hero button become unaccessible 
+//      
+//      if (e.getSource() == buttonInventory)
+//        {
+//         new InterfaceInventory(anInventory, aPlayer, aGame);
+//        }
+//      
+//    }
+    
 }
