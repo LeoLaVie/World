@@ -14,6 +14,7 @@ import FunctionnalCore.MeanNPC;
 import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
+import FunctionnalCore.Weapon;
     import java.awt.BorderLayout;
     import java.awt.Color;
     import java.awt.Container;
@@ -52,6 +53,10 @@ import FunctionnalCore.Player;
  * @author leov
  */
 public class InterfaceGame2 extends JFrame {
+
+    private static void addKNPC(KindNPC kNPC1) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private JButton direction;
     
@@ -131,6 +136,11 @@ public class InterfaceGame2 extends JFrame {
     private static MeanNPC mNPC4;
     private static MeanNPC mNPC5;
     private static MeanNPC mNPC6;
+    
+    //Weapon
+    private static Weapon gun;
+    private static Weapon sword;
+    private static Weapon submachineGun;
     
      public InterfaceGame2(String playerName){
          
@@ -400,7 +410,7 @@ public class InterfaceGame2 extends JFrame {
         this.setVisible(true);
         
         jop1 = new JOptionPane();
-        jop1.showMessageDialog(null, "Bienvenue à toi, " + Player.getName() + " au pays du père Nöel. \n Pays féerique et coloré emplit de magie ! Enfin..euh.. à vrai dire.. là ça devient n'importe quoi. \nUn virus vegan a atteint le pôle Nord et a transformé le père noël et toute sa clique en monstres de véganisme. Veux-tu en apprendre plus ?", "Warning",
+        jop1.showMessageDialog(null, "Welcome to you, " + Player.getName() + " in Santa Claus country. \n Fairytale and colorful country fills with magic! Well... Uh... To tell the truth... It's not really like that anymore. \nA vegan virus has reached the North Pole and has turned Santa Claus and all his team into vegan monsters. Do you want to learn more ?", "Warning",
         JOptionPane.INFORMATION_MESSAGE);
         
      }
@@ -425,7 +435,11 @@ public class InterfaceGame2 extends JFrame {
         houseluttin1 = new Room("houseluttin1","in a luttin's house");
         houseluttin2 = new Room("houseluttin2","in a luttin's house");
         outside2 = new Room("outside2","outside of the Santa claus village");
+        //test ecurie
         ecurie = new Room("ecurie", " blab");
+        addKNPC(kNPC1);
+        //beginEnigma();
+        
         rdch1= new Room("rdch1", " blab");
         caveh1= new Room("caveh1", " blab");
         toith1= new Room("toith1", " blab");
@@ -466,7 +480,9 @@ public class InterfaceGame2 extends JFrame {
         
         
         //CREATION OF WEAPON
-        
+        gun = new Weapon ("Gun","This gun is silent, precise and makes you lose 20 points of life to your opponent.", 20);
+        sword = new Weapon ("Sword", "This sword is powerful and will be your best ally. It will lose 25 points of life to your opponent each time.", 25);
+        submachineGun = new Weapon ("Submachine gun", "The most powerful weapon !", 30);
         
         //CREATION OF KIND NPC
         kNPC1 = new KindNPC("Lupin", "What can be a color and a pain ?", "blue", true);
@@ -656,7 +672,7 @@ public class InterfaceGame2 extends JFrame {
         textArea.setLineWrap(true);
         //JScrollPane scrollPane = new JScrollPane(textArea);
         doc = textArea.getDocument();
-        insert("Bienvenue à toi, " + Player.getName() + " au pays du père Nöel.");
+        insert("Welcome to you, " + Player.getName() + " in Santa Claus country.");
         // output.setEditable(false);
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -670,7 +686,7 @@ public class InterfaceGame2 extends JFrame {
         textField.setMaximumSize(new Dimension(228, 30));
         textField.setMinimumSize(new Dimension(228,30));
 
-        JButton boutonText = new JButton(new ActionText(this, "Entrer"));
+        JButton boutonText = new JButton(new ActionText(this, "Enter"));
  
         Box bt1 = Box.createHorizontalBox();
         bt1.add(pa);

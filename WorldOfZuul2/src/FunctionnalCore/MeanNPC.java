@@ -13,13 +13,13 @@ import java.util.Map.Entry;
 public class MeanNPC
 {
     /** NPC's name */
-    private String nameMNPC, nameMPC;
+    private String nameMNPC;
     /** Number of NPC health points */
-    private int health, health1;
+    private int health;
     /** Damage caused by a NPC attack */
-    private int attack, attack1;
+    private int attack;
     /** Boolean that says if the boolean is alive or not */
-    private boolean alive, live;
+    private boolean alive;
 
     /**
      * Constructor for objects of class NPC
@@ -110,4 +110,15 @@ public class MeanNPC
         System.out.println("*** Do you want to confront me ? ***");
     }
 
+    /**
+     * Method displaySantaClaus - This method displays the Santa Claus dialogue on the terminal
+     *
+     * @param  
+     * @return    
+     */
+    public void displaySantaClaus()
+    {
+        System.out.println("*** Hello dear Enemy ! I am the " + nameMNPC + " You are lucky to have arrived here ! ***");
+        System.out.println("*** Are you ready to die ? ***");
+    }
 }
