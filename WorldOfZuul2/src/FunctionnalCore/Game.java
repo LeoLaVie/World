@@ -381,7 +381,7 @@ public class Game
 //        }
 //    }
     
-      /**
+    /**
      * Method beginEnigma - This method allows to ask a question to the player.
      * The player can answer to the question.
      *
@@ -410,5 +410,36 @@ public class Game
     }
     
   }
+    
+        /**
+     * Method beginEnigmaMX - Mother Xmas's enigma
+     * The player can answer to the question.
+     *
+     * @param  
+     * @return    
+     */
+    public void beginEnigmaMX()
+    {
+       // NPC instantiation
+       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+        
+        String answer1;
+        
+        Scanner sc = new Scanner(System.in);
+        
+        kNPC1.displayMotherXmas();
+        
+        System.out.println(kNPC1.getAnswer());
+        answer1 = sc.nextLine();
+        if (answer1.equals("Jonathan")) {
+            System.out.println("THANK YOU VERY MUCH ! YOU LIBERATED ME !");
+            kNPC1.getAvailability();
+        }
+        else {System.out.println("Bad answer ! :( Try again !");
+        beginEnigma();
+    }
+    
+  }
+    
 }
 
