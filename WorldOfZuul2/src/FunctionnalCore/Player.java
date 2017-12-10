@@ -1,5 +1,7 @@
 package FunctionnalCore;
 
+
+import Interface.InterfaceGameOver;
 import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
@@ -65,18 +67,6 @@ public class Player
     {
         return name;
     }
-
-//    public static void setName(String newName) {
-//        if (newName == null)
-//       {
-//           name = "Feignant";
-//       }
-//       else
-//       {
-//           name = newName;
-//       }
-//    }
-    
     
     
     /**
@@ -124,10 +114,9 @@ public class Player
      */
     public void looseHealth(int hp)
     {
-        if (health + hp < 0)
-        {
-            health = 0;
+        if(health < 0 | health == 0){
             aLive = false;
+            new InterfaceGameOver();
         }
         else
         {
@@ -241,4 +230,7 @@ public class Player
     public void addItemPlayer(Items items) {
         this.inventory.addItem(items);
     }
+    
+    
+    
 }

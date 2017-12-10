@@ -5,15 +5,17 @@
  */
 package Interface;
 
-import FunctionnalCore.Door;
-import FunctionnalCore.Game;
-import FunctionnalCore.Inventory;
-import FunctionnalCore.Items;
-import FunctionnalCore.Player;
-import FunctionnalCore.Game;
-import FunctionnalCore.Inventory;
-import FunctionnalCore.Player;
-import Interface.InterfaceInventory;
+    import FunctionnalCore.Door;
+    import FunctionnalCore.Game;
+    import FunctionnalCore.Inventory;
+    import FunctionnalCore.Items;
+    import FunctionnalCore.Player;
+    import FunctionnalCore.Game;
+    import FunctionnalCore.Inventory;
+    import FunctionnalCore.Player;
+    import Interface.InterfaceInventory;
+    import java.applet.Applet;
+    import java.applet.AudioClip;
     import java.awt.*;
     import javax.swing.*;
     import java.awt.event.*;
@@ -22,6 +24,7 @@ import Interface.InterfaceInventory;
     import java.awt.GridLayout;
     import java.awt.event.ActionEvent;
     import java.awt.event.ActionListener;
+    import java.net.URL;
     import javax.swing.*;
     
 /**
@@ -59,7 +62,17 @@ public class InterfaceMain extends JFrame implements ActionListener
     
     public InterfaceMain ()
     {
-        
+        URL url = InterfaceGameOver.class.getResource("/Sound/wind.wav");
+        final AudioClip clip = Applet.newAudioClip(url);
+ 
+ 
+	// pour l'exécuter au moment ou la fenêtre s'ouvre
+	this.addWindowListener(new WindowAdapter() {
+		@Override
+		public void windowOpened(WindowEvent e) {
+	            clip.play();
+		}
+	});
         
        
        this.setTitle("World Of Zuul");// Titre
@@ -169,7 +182,9 @@ public class InterfaceMain extends JFrame implements ActionListener
       {
          playerName = fieldName.getText();
          //new InterfaceInventory(anInventory, aPlayer, aGame);
-         new InterfaceGame2(playerName);
+         //new InterfaceGame2(playerName);
+        // new InterfaceGameOver();
+         new InterfaceGameWin();
          this.dispose();
       }
       
