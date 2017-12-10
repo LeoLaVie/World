@@ -81,5 +81,17 @@ public class KindNPC
         System.out.println("*** Hello my Friend ! My name is " + nameKNPC + " and I would like to help you ! ***");
         System.out.println("*** Can you solve the following riddle please ? " + enigma + " ***");
     }
+    
+   /**
+     * Method displayEnigma - This method displays the NPC enigma on the terminal
+     *
+     * @param  
+     * @return    
+     */
+    public void displayMotherXmas()
+    {
+        System.out.println("*** Hello my Friend ! I am the " + nameKNPC + " I have been locked in this room for far too long... ***");
+        System.out.println("*** Can you help me to free myself by answering the following riddle please ? " + enigma + " ***");
+    } 
 
 }
