@@ -182,9 +182,9 @@ public class InterfaceMain extends JFrame implements ActionListener
       {
          playerName = fieldName.getText();
          //new InterfaceInventory(anInventory, aPlayer, aGame);
-         //new InterfaceGame2(playerName);
+         new InterfaceGame2(playerName);
         // new InterfaceGameOver();
-         new InterfaceGameWin();
+         //new InterfaceGameWin();
          this.dispose();
       }
       
