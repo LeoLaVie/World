@@ -54,9 +54,9 @@ import FunctionnalCore.Weapon;
  */
 public class InterfaceGame2 extends JFrame {
 
-    private static void addKNPC(KindNPC kNPC1) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    //private static void addKNPC(KindNPC kNPC1) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //}
     
     private JButton direction;
     
@@ -435,10 +435,12 @@ public class InterfaceGame2 extends JFrame {
         houseluttin1 = new Room("houseluttin1","in a luttin's house");
         houseluttin2 = new Room("houseluttin2","in a luttin's house");
         outside2 = new Room("outside2","outside of the Santa claus village");
+        
         //test ecurie
         ecurie = new Room("ecurie", " blab");
-        addKNPC(kNPC1);
-        //beginEnigma();
+        //addKNPC(kNPC1);
+        //ecurie.getkNPC();
+        //kNPC1.beginEnigma();
         
         rdch1= new Room("rdch1", " blab");
         caveh1= new Room("caveh1", " blab");

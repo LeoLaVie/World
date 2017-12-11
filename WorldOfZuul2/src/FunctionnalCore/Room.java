@@ -142,5 +142,17 @@ public class Room
     public void addmNPC(MeanNPC meNPC) {
         mNPC = meNPC;
     }
+
+    public Items getItem() {
+        return item;
+    }
+
+    public KindNPC getkNPC() {
+        return kNPC;
+    }
+
+    public MeanNPC getmNPC() {
+        return mNPC;
+    }
     
 }

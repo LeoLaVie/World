@@ -436,7 +436,7 @@ public class Game
             kNPC1.getAvailability();
         }
         else {System.out.println("Bad answer ! :( Try again !");
-        beginEnigma();
+        beginEnigmaMX();
     }
     
   }
