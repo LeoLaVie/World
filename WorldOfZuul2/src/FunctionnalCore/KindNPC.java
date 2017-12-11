@@ -94,4 +94,8 @@ public class KindNPC
         System.out.println("*** Can you help me to free myself by answering the following riddle please ? " + enigma + " ***");
     } 
 
+    public void beginEnigma() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
