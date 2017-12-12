@@ -13,26 +13,37 @@ import java.util.Map.Entry;
 public class Usable extends Items
 {
     // instance variables - replace the example below with your own
-    private int pdv;
+    private int care;
     private String effect;
 
     /**
      * Constructor for objects of class Usable
      */
-    public Usable(String name, String description, int Health)
+    public Usable(String newName, String aDescription, String anEffect, int HPcare)
     {
-        super(name,description);
-        pdv = Health;
+        super(newName,aDescription);
+        if (HPcare<0)
+        {
+            care = 0;
+        }
+        else
+        {
+            care=HPcare;
+        }
     }
-
     
+    public String getEffect()
+    {
+        return effect;
+    }
+       
     /**
       * This method returns the number of health points give by the consumable.
       * @return integer : number of health points
       */
-    public int getHealth()
+    public int getCare()
     {
-        return pdv;
+        return care;
     }
-
 }
+

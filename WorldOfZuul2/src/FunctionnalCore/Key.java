@@ -14,17 +14,16 @@ import java.util.UUID;
 public class Key extends Items
 {
     private String keyToken;
-    private String description;
-    private int index;
+
+
 
     /**
      * Constructor for objects of class Key
      */
-    public Key(String newItem, String newDescription)
+    public Key(String name, String description)
     {
-        super(newItem,newDescription);
+        super(name,description);
         keyToken = UUID.randomUUID().toString();
-        index = 0;
     }
     
     /**
@@ -32,18 +31,8 @@ public class Key extends Items
       */
     public String getKeyToken()
     {
-	return keyToken;
-    }
-    
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return index + y;
+    return keyToken;
     }
 }
+
+

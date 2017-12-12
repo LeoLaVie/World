@@ -42,23 +42,25 @@ public class Lock
     
     public void addKey(Key newKey)
     {
-	if (associatedKey == null)
-	{
+    if (associatedKey == null)
+    {
             associatedKey = newKey; 
         }
     }
     
     public boolean unlock(Key keyTest)
     {
-	if (keyTest.getKeyToken() == associatedKey.getKeyToken())
-	{
-		locked = false; 
-		return true;
-	}
-	else
-	{
-		locked = true;
-		return false;
-	}
+    if (keyTest.getKeyToken() == associatedKey.getKeyToken())
+    {
+        locked = false; 
+        return true;
+    }
+    else
+    {
+        locked = true;
+        return false;
+    }
     }
 }
+
+

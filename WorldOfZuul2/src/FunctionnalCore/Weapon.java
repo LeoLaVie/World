@@ -18,15 +18,15 @@ public class Weapon extends Items
     /** the player is equiped or not*/
     private boolean equiped;
     /**the weapon causes a number of damage*/
-    private int damage;
+    private int damages;
 
     /**
      * Constructor for objects of class weapon
      */
-    public Weapon(String name, String description, int nbDamage)
+    public Weapon(String newName, String aDescription, int nbDamage)
     {
-        super(name,description);
-        damage = nbDamage;
+        super(newName,aDescription);
+        damages = nbDamage;
         equiped = false;
     }
     
@@ -44,7 +44,7 @@ public class Weapon extends Items
       */
     public int getDamages()
     {
-        return damage;
+      return damages;
     }
     
     /**
@@ -63,4 +63,5 @@ public class Weapon extends Items
         }
     }   
 }
+
 

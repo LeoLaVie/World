@@ -14,17 +14,19 @@ public class Items
 {
     // instance variables 
     /** The name of the item */ 
-    private String nameItem;
+    private String name;
     /** The description of the item */ 
-    private String descriptionItem;
+    private String description;
+    private boolean display;
 
     /**
      * Constructor for objects of class Items
      */
-    public Items(String name, String description)
+    public Items(String newName, String aDescription)
     {
-        nameItem = name;
-        descriptionItem = description;
+        name = newName;
+        description = aDescription;
+        display = false;
     }
 
     /**
@@ -33,16 +35,16 @@ public class Items
      */
     public String getDescription()
     {
-        return descriptionItem;
+        return description;
     }
     
     /**
       * This method returns the name of an item.
-      * @return String	name of the item
+      * @return String    name of the item
      */
     public String getName()
     {
-        return nameItem;
+        return name;
     }
     
     /** 
@@ -50,7 +52,32 @@ public class Items
      * Allow to know if the character us equiped or not
      */
     public void equip()
-    {		 
+    {         
+    }
+    
+        /**
+     * This method returns if the item is managed.
+     * @return Boolean : true if this item is displayed.
+     */
+    public boolean getDisplay()
+    {
+        return display;
+    }
+    
+        /**
+     * This method returns if the item is managed.
+     * @return Boolean : true if this item is displayed.
+     */
+    public void setManaged()
+    {
+        if (this.getDisplay()==true)
+        {
+            this.display=false;
+        }
+        else
+        {
+            this.display=true;
+        }
     }
 }
 

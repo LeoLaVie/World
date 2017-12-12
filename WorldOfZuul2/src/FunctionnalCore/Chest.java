@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.*;
 import java.util.Map.Entry;
 
+
 /**
  * The class chest allows to lead the chests: the name, the description,
  * if it is open or not with a key.
@@ -11,22 +12,24 @@ import java.util.Map.Entry;
  * @author G10
  * @version nov 2017
  */
-public class Chest
+public class Chest extends Inventory
 {
     // instance variables - replace the example below with your own
-    private Lock alock;
+    private Lock lock;
     private String name;
     private String description;
+    private Inventory inventory;
 
 
     /**
      * Constructor for objects of class Chest
      */
-    public Chest(String nameChest, String descriptionChest, Lock aLock)
+    public Chest(String aName, String aDescription, int maxItems, int golds, Lock aLock)
     {
-        name = nameChest;
-        description = descriptionChest;
-        alock = aLock;        
+        super(maxItems,golds);
+        name = aName;
+        description = aDescription;
+        lock = aLock;        
     }
 
     /**
@@ -35,7 +38,7 @@ public class Chest
       */
     public String getName()
     {
-	return name;
+    return name;
     }
     
     /**
@@ -44,7 +47,7 @@ public class Chest
       */
     public String getDescription()
     {
-	return description;
+    return description;
     }
     
     /**
@@ -53,12 +56,12 @@ public class Chest
       */
     public Lock getLock()
     {
-        return alock;
+        return lock;
     }
     
     public boolean openChest(Key key)
     {
-        if (alock.unlock(key) == true)
+        if (lock.unlock(key) == true)
         {
             return false;
         }
@@ -67,4 +70,41 @@ public class Chest
             return true;
         }
     }
+    
+    /**
+     * This method deletes one item in a chest.
+     * New method for chest : test if the chest is open or not
+     * @param item: The item deleted to the inventory
+     * @return True if it works or false if it don't (chest close)
+     */
+    public boolean deleteItem(Items itemToDelete) {
+        if(lock.getLock() == false)
+        {
+            inventory.deleteItem(itemToDelete);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+        /**
+     * This method allow to add or remove money (by minus int) from the inventory
+     * @param money the money you try to add
+     * @return If the money can be add or not : depending if the chest is open or not
+     */
+    public boolean manageGold(int money) 
+    {
+        if(lock.getLock() == false)
+        {
+            return super.manageGold(money);
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
+
+

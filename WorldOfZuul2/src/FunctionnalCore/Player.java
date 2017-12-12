@@ -56,7 +56,7 @@ public class Player
        maxHealth = 100;
        inFight = false;
        aLive = true;
-       // inventory = new Inventory();
+       inventory = new Inventory(10);
        // location = new Room("Start");       
     }
     
@@ -129,13 +129,13 @@ public class Player
      */
     public void addHealth()
     {       
-        if (health + usable.getHealth() > maxHealth)
+        if (health + usable.getCare() > maxHealth)
         {
             health = maxHealth;
         }
         else
         {
-             health += usable.getHealth();         
+             health += usable.getCare();         
         }
     }
     
@@ -147,17 +147,17 @@ public class Player
      */
     public int calculSoin()
     {
-        if (health + usable.getHealth() > maxHealth)
+        if (health + usable.getCare() > maxHealth)
         {
             soin = maxHealth - health;
         }
-        else if (health > usable.getHealth())
+        else if (health > usable.getCare())
         {
-            soin = health - usable.getHealth();
+            soin = health - usable.getCare();
         }
         else
         {
-            nouvHealth += usable.getHealth();
+            nouvHealth += usable.getCare();
             soin = health - health;
         }
         return soin;
@@ -217,20 +217,37 @@ public class Player
         return location;
     }
     
+    public void moveRoom(Room newRoom)
+    {
+        location = newRoom;
+    }
+
+    
     /**
      * return the inventory of the player
      */
-    public Inventory getInventoryPlayer() {
+    public Inventory getInventory() {
         return inventory;
     }
 
-    /**
-     * 
+        /**
+     * This method modifies HP of the character
+     *
+     * @param hp HP added to the character. Negative value to take damages. HP max are 20
      */
-    public void addItemPlayer(Items items) {
-        this.inventory.addItem(items);
+    public void manageHealth(int hp)
+    {
+        if (health + hp > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else if (health + hp < 0)
+        {
+            health = 0;
+        }
+        else
+        {
+            health += hp;
+        }
     }
-    
-    
-    
 }

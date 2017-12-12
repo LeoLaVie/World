@@ -4,16 +4,20 @@
  * and open the template in the editor.
  */
 package Interface;
+    import FunctionnalCore.Chest;
     import FunctionnalCore.Door;
     import FunctionnalCore.Fight; 
 import FunctionnalCore.Game;
 import FunctionnalCore.Inventory;
+import FunctionnalCore.Items;
     import FunctionnalCore.Key;
 import FunctionnalCore.KindNPC;
+import FunctionnalCore.Lock;
 import FunctionnalCore.MeanNPC;
 import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
+import FunctionnalCore.Usable;
 import FunctionnalCore.Weapon;
     import java.awt.BorderLayout;
     import java.awt.Color;
@@ -30,6 +34,7 @@ import FunctionnalCore.Weapon;
     import java.awt.event.ActionListener;
     import java.awt.event.*;
     import static java.lang.System.exit;
+import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -52,7 +57,7 @@ import FunctionnalCore.Weapon;
  *
  * @author leov
  */
-public class InterfaceGame2 extends JFrame {
+public class InterfaceGame2 extends JFrame implements ActionListener{
 
     //private static void addKNPC(KindNPC kNPC1) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -60,12 +65,19 @@ public class InterfaceGame2 extends JFrame {
     
     private JButton direction;
     
+    private Weapon w1, w2;
+    private Usable c1;
+    private Key k1;
+    private Lock l1;
+    private Chest ch1;
+
 
     
     protected static Room currentRoom; 
     private static Room outside1, houseluttin1, houseluttin2, outside2, ecurie, rdch1, caveh1, toith1, outside3, potager, fastfood, outside4, supermarket, toith2, rdch2;
     private static Room manoir, entreemanoir, bibliotheque, cuisine, cachot, couloir2, chambre1, salledebain, couloir3, terrasse, chambre2, portefermee, portefermee2, lastroom;
     private static Key keyLuttin1;
+    private InterfaceInventory showInventory;
     
     private JPanel myPanel;
     
@@ -146,7 +158,10 @@ public class InterfaceGame2 extends JFrame {
          
         
         // initialise instance variables
+        aPlayer = new Player(playerName);
         createRooms();
+        createObject();
+
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         labelImage = new JLabel();
         labelImage.setIcon(image);
@@ -158,8 +173,8 @@ public class InterfaceGame2 extends JFrame {
        
         //setMakeImage(newImage);
         //setMaImage(getMakeImage());
-        name = playerName; 
-        new Player(name);
+//        name = playerName; 
+//        new Player(name);
         
         //buttonInventory.addActionListener((ActionListener) this);
 
@@ -254,7 +269,7 @@ public class InterfaceGame2 extends JFrame {
         buttonInventory.setBorderPainted(false);
         buttonInventory.setBackground(Color.lightGray);
        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-       
+       buttonInventory.addActionListener(this);
        
         //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
@@ -421,6 +436,72 @@ public class InterfaceGame2 extends JFrame {
      {
         return image;       
      }
+     
+    private void createObject() {
+        w1 = new Weapon ("couteau1", "cut all", 50);
+        w2 = new Weapon("epee2", "cut", 100);
+        
+        c1 = new Usable ("potiontest", "care people", "care", 20);
+        
+        k1 = new Key("keytest", "open all doors");
+        
+        l1 = new Lock();
+        l1.addKey(k1);
+        
+        ch1 = new Chest ("superBox", "countains all", 2, 0, l1);
+        ch1.addItem(w1);
+        aPlayer.inventory.addItem(w1);     
+        aPlayer.inventory.addItem(w2);
+//        aPlayer.addItemPlayer(couteau1);
+//        aPlayer.addItemPlayer(epee2);
+//        System.out.println(aPlayer.inventory.getName());
+    }
+    
+      /**
+    * Method used to add a chest in a room
+    * @param aChest: The chest adding to the room
+    */ 
+      public void getItemsFromChest(Chest aChest)
+      {
+          ArrayList<Items> chestInv = aChest.getItems();
+          int i = 0;
+          String textToAdd="";
+          String itemAdded="You won ";
+          if (aChest.getNbItems()==0)
+          {
+                System.out.println("This chest is empty.");
+          }
+          else
+          {
+              int gold=0;
+              if (aChest.getGold() > 0)
+              {
+                  aPlayer.getInventory().manageGold(aChest.getGold());
+                  gold = aChest.getGold();
+                  aChest.manageGold(- gold);
+              }
+              for (Items item: chestInv)
+              {
+                  if (aPlayer.getInventory().addItem(item))
+                  {
+                      i+=1;
+                      itemAdded=itemAdded+item.getName()+", ";
+                  }
+                  else
+                  {
+                      textToAdd="Your bag is full. You need to sell some items. Come back later";
+                  }
+              }
+              itemAdded=itemAdded+" and "+gold+" gold."+textToAdd;
+              //textEvent.setText(itemAdded); 
+              while (i!=0)
+              {
+                  aChest.deleteItem(chestInv.get(0));
+                  i-=1;
+              }
+          }
+          
+      }
      
      private void changePicture(){
         image = new ImageIcon(getClass().getResource("/Images/" + currentRoom.getNameRoom() + ".jpg"));
@@ -871,18 +952,36 @@ public class InterfaceGame2 extends JFrame {
         return outside4;
     }
 
+       /**
+     * Method used to open the inventory
+     * @param open
+     */
+    public void openInventory() {
+        if (showInventory==null)
+        {
+            showInventory = new InterfaceInventory(aPlayer.getInventory(), aPlayer,this);
+        }
+        else
+        {
+            showInventory.manageInventory();
+        }
+    }
     
-//    //@Override
-//    public void actionPerformed(ActionEvent e)
-//    {
-//      // When the user click on Marion's picture, the button Start and Change 
-//      //become accessible but all the other hero button become unaccessible 
-//      
-//      if (e.getSource() == buttonInventory)
-//        {
-//         new InterfaceInventory(anInventory, aPlayer, aGame);
-//        }
-//      
-//    }
+    public InterfaceInventory getShowInventory()
+    {
+        return showInventory;
+    }
     
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+      // When the user click on Marion's picture, the button Start and Change 
+      //become accessible but all the other hero button become unaccessible 
+      
+      if (e.getSource() == buttonInventory)
+        {
+         this.openInventory();
+        }
+      
+    }   
 }
