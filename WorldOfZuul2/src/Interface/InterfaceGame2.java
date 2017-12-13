@@ -55,7 +55,7 @@ package Interface;
     import javax.swing.JOptionPane;
 /**
  *
- * @author leov
+ * @author leov blalba
  */
 public class InterfaceGame2 extends JFrame implements ActionListener{
 
