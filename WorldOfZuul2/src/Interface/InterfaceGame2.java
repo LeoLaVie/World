@@ -7,18 +7,18 @@ package Interface;
     import FunctionnalCore.Chest;
     import FunctionnalCore.Door;
     import FunctionnalCore.Fight; 
-import FunctionnalCore.Game;
-import FunctionnalCore.Inventory;
-import FunctionnalCore.Items;
+    import FunctionnalCore.Game;
+    import FunctionnalCore.Inventory;
+    import FunctionnalCore.Items;
     import FunctionnalCore.Key;
-import FunctionnalCore.KindNPC;
-import FunctionnalCore.Lock;
-import FunctionnalCore.MeanNPC;
-import FunctionnalCore.Player;
+    import FunctionnalCore.KindNPC;
+    import FunctionnalCore.Lock;
+    import FunctionnalCore.MeanNPC;
+    import FunctionnalCore.Player;
    // import FunctionnalCore.Game;
     import FunctionnalCore.Room;
-import FunctionnalCore.Usable;
-import FunctionnalCore.Weapon;
+    import FunctionnalCore.Usable;
+    import FunctionnalCore.Weapon;
     import java.awt.BorderLayout;
     import java.awt.Color;
     import java.awt.Container;
@@ -34,7 +34,7 @@ import FunctionnalCore.Weapon;
     import java.awt.event.ActionListener;
     import java.awt.event.*;
     import static java.lang.System.exit;
-import java.util.ArrayList;
+    import java.util.ArrayList;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -133,6 +133,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     private Inventory anInventory;
     private Player aPlayer;
     private Game aGame;
+    private String answer;
     
     // Kind NPC
     private static KindNPC kNPC1;
@@ -260,7 +261,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         buttonChest.setContentAreaFilled(true);
         buttonChest.setBorderPainted(false);
         buttonChest.setBackground(Color.lightGray);
-        buttonChest.setEnabled(true);
+       // buttonChest.setEnabled(false);
        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
        buttonChest.addActionListener(this);
       
@@ -791,6 +792,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         textField.setPreferredSize(new Dimension(228,30));
         textField.setMaximumSize(new Dimension(228, 30));
         textField.setMinimumSize(new Dimension(228,30));
+        
+        answer = textField.getText();
 
         JButton boutonText = new JButton(new ActionText(this, "Enter"));
  
