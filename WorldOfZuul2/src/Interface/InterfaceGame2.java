@@ -163,6 +163,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         createRooms();
         createObject();
         aGame = new Game();
+        //testChest();
+        //aPlayer.getLocation().hasChest();
 
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         labelImage = new JLabel();
