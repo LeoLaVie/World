@@ -161,6 +161,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         aPlayer = new Player(playerName);
         createRooms();
         createObject();
+        //testChest();
+        //aPlayer.getLocation().hasChest();
 
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         labelImage = new JLabel();
@@ -258,8 +260,9 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         buttonChest.setContentAreaFilled(true);
         buttonChest.setBorderPainted(false);
         buttonChest.setBackground(Color.lightGray);
-        buttonChest.setEnabled(false);
+        buttonChest.setEnabled(true);
        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+       buttonChest.addActionListener(this);
       
         buttonInventory = new JButton();
         buttonInventory.setIcon(new ImageIcon(getClass().getResource("/Images/buttonInventaire.gif")));
@@ -452,14 +455,29 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         ch1.addItem(w1);
         
         outside1.addChest(ch1);
+
+   
         
-        aPlayer.inventory.addItem(w1);     
+        //aPlayer.inventory.addItem(w1);     
         aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
         aPlayer.inventory.addItem(c1);
 //        aPlayer.addItemPlayer(couteau1);
 //        aPlayer.addItemPlayer(epee2);
 //        System.out.println(aPlayer.inventory.getName());
+    }
+    
+    public void testChest() {
+                if (this.aPlayer.getLocation().hasChest() == true)
+                {
+                    //return true;
+                    System.out.println("good");
+                }
+        else
+        {
+            //return false;
+            System.out.println("bad");
+        }
     }
     
       /**
@@ -908,7 +926,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
                     // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
                     System.out.println(currentRoom.getExit().get(action).isLocked());
                     currentRoom = currentRoom.getExit().get(action).getNextRoom();
-                    
+                    aPlayer.moveRoom(currentRoom);
                     System.out.println("You are " + currentRoom.getDescription());
                     System.out.print("Exits: ");
                     changePicture();
@@ -977,6 +995,14 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         return showInventory;
     }
     
+    /**
+     * Accessor for the "player" attribute
+     * @return player: The player which plays the game
+     */
+    public Player getPlayer() {
+    	return aPlayer;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -987,6 +1013,20 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         {
          this.openInventory();
         }
+      else if (e.getSource() == buttonChest)
+      {
+          if (this.getPlayer().getLocation().hasChest()){
+        			if (this.getPlayer().getLocation().getChest().getLock().getLock() == true){
+        				this.buttonChest.setText("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+        			} else {
+        				this.getItemsFromChest(this.getPlayer().getLocation().getChest());
+        			}
+        		} else 
+                            {
+        			this.buttonChest.setText("There is no chest in this room !");
+                            }
+      }
       
-    }   
+    }
+     
 }

@@ -121,14 +121,7 @@ public class Room
         else
             return false;
     }
-//    /** 
-//     * 
-//     * @param it
-//     */
-//    public void addItem(Items it) {
-//        item = it;
-//    }
-//    
+
     /** 
      * 
      */
