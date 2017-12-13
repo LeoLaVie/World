@@ -35,6 +35,7 @@ import FunctionnalCore.Weapon;
     import java.awt.event.*;
     import static java.lang.System.exit;
 import java.util.ArrayList;
+import java.util.Scanner;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -106,7 +107,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     private static JButton buttonChest;
     private static JButton buttonInventory;
     
-    JOptionPane jop1, jop2, jop3;
+    JOptionPane jop1, jop2, jop3, enigma;
     
     private JLabel labelPv;
     private JLabel labelImage;
@@ -161,6 +162,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         aPlayer = new Player(playerName);
         createRooms();
         createObject();
+        aGame = new Game();
 
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
         labelImage = new JLabel();
@@ -517,10 +519,11 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         houseluttin2 = new Room("houseluttin2","in a luttin's house");
         outside2 = new Room("outside2","outside of the Santa claus village");
         
+        kNPC1 = new KindNPC("Lupin", "What can be a color and a pain ?", "blue", true);
         //test ecurie
         ecurie = new Room("ecurie", " blab");
-        //addKNPC(kNPC1);
-        //ecurie.getkNPC();
+        ecurie.addkNPC(kNPC1);
+        //beginEnigma(ecurie.getkNPC());
         //kNPC1.beginEnigma();
         
         rdch1= new Room("rdch1", " blab");
@@ -726,6 +729,29 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
           }
      }
      
+     public void beginEnigma(KindNPC kNPC1)
+    {   enigma = new JOptionPane();
+        enigma.showMessageDialog(null, "*** Hello my Friend ! My name is " + kNPC1.getNameKNPC() + " and I would like to help you ! *** \n" + "*** Can you solve the following riddle please ? " + kNPC1.getEnigma() + " ***", kNPC1.getNameKNPC(),
+        JOptionPane.INFORMATION_MESSAGE);
+       // NPC instantiation
+       //kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+        
+        //String answer1;
+        
+        //Scanner sc = new Scanner(System.in);
+        
+        //kNPC1.displayEnigma();
+        
+        //System.out.println(kNPC1.getAnswer());
+        //answer1 = sc.nextLine();
+        //if (answer1.equals(kNPC1.getAnswer())) {
+            //System.out.println("Good answer !");
+            //kNPC1.getAvailability();
+        //}
+        //else {System.out.println("Bad answer ! :( Try again !");
+        //beginEnigma(kNPC1);
+        //}
+    }
      
      protected void interactionItem(ActionEvent item){
          if (item.getSource() == buttonLife){
@@ -907,6 +933,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
                     System.out.println("You are " + currentRoom.getDescription());
                     System.out.print("Exits: ");
                     changePicture();
+                    beginEnigma(currentRoom.getkNPC());
                 }
 //                currentRoom = nextRoom;
 //                //Display the new room
