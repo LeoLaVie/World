@@ -319,7 +319,7 @@ public class InterfaceInventory extends JFrame {
         else
         {
             actions.add(use);
-            //if the item is a key,  the button use is disabled is there are no locked door and no chest in the room where the player is
+//            //if the item is a key,  the button use is disabled is there are no locked door and no chest in the room where the player is
 //            if (anItem instanceof Key)
 //            {
 //                if (searchLock()==false)
@@ -433,11 +433,11 @@ public class InterfaceInventory extends JFrame {
             {
                 if (anItem.getDescription().contains("door"))
                 {
-                    anIcon = new ImageIcon(this.getClass().getResource("/Images/key1.png"));
+                    anIcon = new ImageIcon(this.getClass().getResource("/Images/keytest.png"));
                 }
                 else if (anItem.getDescription().contains("chest") || anItem.getDescription().contains("treasure"))
                 {
-                    anIcon = new ImageIcon(this.getClass().getResource("/Images/keytest.png"));
+                    anIcon = new ImageIcon(this.getClass().getResource("/Images/"+name+".png"));
                 }
             }
             //else 
@@ -594,4 +594,30 @@ public class InterfaceInventory extends JFrame {
     {
         return back2;
     }   
+    
+        /**
+     * This method searches if the player is in a room with something is locked.
+     * @return lock (true if there is a locker, false if there is not.)
+     */
+//    private boolean searchLock()
+//    {
+//        //doors=player.getLocation().getDoors();
+//        boolean lock=false;
+//////        for (Map.Entry<String,Door> door : doors.entrySet())
+//////        {
+////            if (door.getValue().isLocked()==true)
+////            {
+////                lock=true;
+////            }
+////        }
+//        if (player.getLocation().hasChest()==true)
+//        {
+//            if (player.getLocation().getChest().getLock().getLock()==true)
+//            {
+//                lock=true;
+//            }
+//        }
+//        return lock;
+//        
+//    }
 }
