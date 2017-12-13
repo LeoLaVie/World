@@ -546,7 +546,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         chambre2 = new Room("chambre2", " blab");
         terrasse = new Room("terrasse", " blab");
         lastroom = new Room("lastroom", " blab");
-        
+    
 
         // CREATION OF THE EXITS
 
