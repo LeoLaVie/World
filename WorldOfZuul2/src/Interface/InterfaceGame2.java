@@ -450,8 +450,13 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         
         ch1 = new Chest ("superBox", "countains all", 2, 0, l1);
         ch1.addItem(w1);
+        
+        outside1.addChest(ch1);
+        
         aPlayer.inventory.addItem(w1);     
         aPlayer.inventory.addItem(w2);
+        aPlayer.inventory.addItem(k1);
+        aPlayer.inventory.addItem(c1);
 //        aPlayer.addItemPlayer(couteau1);
 //        aPlayer.addItemPlayer(epee2);
 //        System.out.println(aPlayer.inventory.getName());
