@@ -121,6 +121,26 @@ public class Room
         else
             return false;
     }
+    
+    /** boolean true if there is a chest in the room
+     * @return true
+     */
+    public boolean hasKNPC() {
+        if (this.kNPC != null)
+            return true;
+        else
+            return false;
+    }
+        
+            /** boolean true if there is a chest in the room
+     * @return true
+     */
+    public boolean hasMNPC() {
+        if (this.mNPC != null)
+            return true;
+        else
+            return false;
+    }
 
     /** 
      * 
