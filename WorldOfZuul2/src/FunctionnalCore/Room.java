@@ -48,6 +48,7 @@ public class Room
 
         // instanciation of the HashMap that will contains the exits of the room
         myExit = new HashMap <String, Door>(); 
+        chest = null;
         
 
     }

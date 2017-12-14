@@ -68,9 +68,9 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     
     private Weapon w1, w2;
     private Usable c1;
-    private Key k1;
-    private Lock l1;
-    private Chest ch1;
+    private Key k1, k2;
+    private Lock l1, l2;
+    private Chest ch1, ch2;
 
 
     
@@ -449,25 +449,37 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         
         c1 = new Usable ("potion", "care people", "care", 20);
         
-        k1 = new Key("keytest", "open all doors");
+        k1 = new Key("key", "open all chest");
+        k2 = new Key ("key", "open really all treasure");
         
         l1 = new Lock();
         l1.addKey(k1);
         
-        ch1 = new Chest ("superBox", "countains all", 2, 0, l1);
+        l2 = new Lock();
+        l2.addKey(k2);
+        
+        ch1 = new Chest ("superBox", "countains all", 2, 20, l1);
         ch1.addItem(w1);
         
-        outside1.addChest(ch1);
+        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
+        ch2.addItem(w2);
 
    
         
         //aPlayer.inventory.addItem(w1);     
-        aPlayer.inventory.addItem(w2);
+        //aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
+        aPlayer.inventory.addItem(k2);
         aPlayer.inventory.addItem(c1);
+        
 //        aPlayer.addItemPlayer(couteau1);
 //        aPlayer.addItemPlayer(epee2);
 //        System.out.println(aPlayer.inventory.getName());
+    }
+    
+    private void addChestToRoom() {
+        outside2.addChest(ch1);
+        outside3.addChest(ch2);
     }
     
     public void testChest() {
@@ -537,7 +549,50 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
      
      public static void createRooms()
     {
-                //CREATION OF CHEST
+        // CREATION OF THE DOORS (ROOMS)
+        outside1 = new Room("outside1","outside the main entrance of the Santa claus village");
+        houseluttin1 = new Room("houseluttin1","in a luttin's house");
+        houseluttin2 = new Room("houseluttin2","in a luttin's house");
+        outside2 = new Room("outside2","outside of the Santa claus village");
+        
+        //test ecurie
+        ecurie = new Room("ecurie", " blab");
+
+        
+        rdch1= new Room("rdch1", " blab");
+        caveh1= new Room("caveh1", " blab");
+        toith1= new Room("toith1", " blab");
+        outside3 = new Room("outside3", " blab");
+        potager = new Room("potager", " blab");
+        fastfood = new Room("fastfood", " blab");
+        outside4 = new Room("outside4", " blab");
+        rdch2 = new Room("rdch2", " blab");
+        toith2 = new Room("toith2", " blab");
+        manoir = new Room("manoir", " blab");
+        entreemanoir = new Room("entreemanoir", " blab");
+        bibliotheque = new Room("bibliotheque", " blab");;
+        cachot= new Room("cachot", " blab");
+        cuisine= new Room("cuisine", " blab");
+        couloir2 = new Room("couloir2", " blab");
+        portefermee = new Room("portefermee", " blab");
+        salledebain = new Room("salledebain", " blab");
+        chambre1= new Room("chambre1", " blab");
+        couloir3 = new Room("couloir3", " blab");
+        portefermee2 = new Room("portefermee2", " blab");
+        chambre2 = new Room("chambre2", " blab");
+        terrasse = new Room("terrasse", " blab");
+        lastroom = new Room("lastroom", " blab");
+        
+
+        // CREATION OF THE EXITS
+
+        
+        // CREATION OF KEYS
+         keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin2 = new Key("Key2","Key of the second luttin house");
+        
+        //CREATION OF CHEST
         
         
         //CREATION OF POTION
@@ -1065,6 +1120,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     	return aPlayer;
     }
     
+    
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -1079,13 +1135,15 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
       {
           if (this.getPlayer().getLocation().hasChest()){
         			if (this.getPlayer().getLocation().getChest().getLock().getLock() == true){
-        				this.buttonChest.setText("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+        				//this.buttonChest.setText
+                                        System.out.println("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
         			} else {
         				this.getItemsFromChest(this.getPlayer().getLocation().getChest());
         			}
         		} else 
                             {
-        			this.buttonChest.setText("There is no chest in this room !");
+        			//this.buttonChest.setText
+                                System.out.println("There is no chest in this room !");
                             }
       }
       
