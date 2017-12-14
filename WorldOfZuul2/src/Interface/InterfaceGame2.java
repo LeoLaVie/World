@@ -647,12 +647,14 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         //fastfood
         fastfood = new Room("fastfood", " blab");
         fastfood.addmNPC(mNPC2);
+        fastfood.addFight(fight);
         
         outside4 = new Room("outside4", " blab");
         
         //Rez-de-chaussee 2
         rdch2 = new Room("rdch2", " blab");
-        rdch2.addkNPC(kNPC3);
+        rdch2.addmNPC(mNPC3);
+        rdch2.addFight(fight);
         
         toith2 = new Room("toith2", " blab");
         manoir = new Room("manoir", " blab");
@@ -662,6 +664,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         //cachot
         cachot= new Room("cachot", " blab");
         cachot.addmNPC(mNPC4);
+        cachot.addFight(fight);
         
         //cuisine
         cuisine= new Room("cuisine", " blab");
@@ -673,6 +676,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         //salle de bain
         salledebain = new Room("salledebain", " blab");
         salledebain.addmNPC(mNPC5);
+        salledebain.addFight(fight);
         
         chambre1= new Room("chambre1", " blab");
         chambre1.addkNPC(kNPC5);
@@ -685,6 +689,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         //last room
         lastroom = new Room("lastroom", " blab");
         lastroom.addmNPC(mNPC6);
+        lastroom.addFight(fight);
         
 
         // CREATION OF THE EXITS
