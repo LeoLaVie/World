@@ -71,6 +71,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     private Key k1;
     private Lock l1;
     private Chest ch1;
+    private Fight fight;
 
 
     
@@ -128,7 +129,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     private String stri;
     private String reponse;
     
-    private Fight fight;
+    //private Fight fight;
     private ImageIcon image;
     
     private Inventory anInventory;
@@ -1000,6 +1001,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
                     {if (currentRoom.hasMNPC() == true)
                     {if (currentRoom == lastroom){
                     dialogueSC(currentRoom.getmNPC());
+                    fight.runFight(move);
                     }
                     else
                     dialogueMeanNPC(currentRoom.getmNPC());
