@@ -163,4 +163,23 @@ public class Fight extends Events
     private void youLose() {
         System.out.print("\nSorry but you have lose!");
     }
+
+    public boolean isIsWin() {
+        return isWin;
+    }
+
+    public void setIsWin(boolean isWin) {
+        this.isWin = isWin;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+    
+    
+    
 }

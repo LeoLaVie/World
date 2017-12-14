@@ -22,9 +22,9 @@ public class ListenerFight implements ActionListener{
     }
     
         @Override
-    public void actionPerformed(ActionEvent fight)
+    public void actionPerformed(ActionEvent fightRun)
     {
-        game.runFight(fight);
+        game.runFight(fightRun);
     }
     
 }

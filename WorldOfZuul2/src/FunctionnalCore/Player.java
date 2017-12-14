@@ -57,7 +57,7 @@ public class Player
        inFight = false;
        aLive = true;
        inventory = new Inventory(10);
-       // location = new Room("Start");       
+       location = new Room("Start", "good to start");       
     }
     
     /**
