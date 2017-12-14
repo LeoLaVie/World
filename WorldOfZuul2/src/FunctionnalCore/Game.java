@@ -388,10 +388,10 @@ public class Game
      * @param  
      * @return    
      */
-    public void beginEnigma()
+    public void beginEnigma(KindNPC kNPC1)
     {
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+       //kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
         
         String answer1;
         
@@ -399,14 +399,14 @@ public class Game
         
         kNPC1.displayEnigma();
         
-        System.out.println(kNPC1.getAnswer());
+        //System.out.println(kNPC1.getAnswer());
         answer1 = sc.nextLine();
-        if (answer1.equals("Jonathan")) {
+        if (answer1.equals(kNPC1.getAnswer())) {
             System.out.println("Good answer !");
             kNPC1.getAvailability();
         }
         else {System.out.println("Bad answer ! :( Try again !");
-        beginEnigma();
+        beginEnigma(kNPC1);
     }
     
   }

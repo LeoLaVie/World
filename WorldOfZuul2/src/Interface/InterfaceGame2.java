@@ -35,6 +35,7 @@ import FunctionnalCore.Weapon;
     import java.awt.event.*;
     import static java.lang.System.exit;
 import java.util.ArrayList;
+import java.util.Scanner;
     import javax.swing.*;
     import javax.swing.BorderFactory;
     import javax.swing.Box;
@@ -106,7 +107,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     private static JButton buttonChest;
     private static JButton buttonInventory;
     
-    JOptionPane jop1, jop2, jop3;
+    JOptionPane jop1, jop2, jop3, enigma, dial;
     
     private JLabel labelPv;
     private JLabel labelImage;
@@ -161,8 +162,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         aPlayer = new Player(playerName);
         createRooms();
         createObject();
-        addChestToRoom();
-        testChest();
+        aGame = new Game();
+        //testChest();
         //aPlayer.getLocation().hasChest();
 
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
@@ -616,6 +617,83 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         mNPC5 = new MeanNPC("Frisson", 100, 20, true);
         mNPC6 = new MeanNPC("Santa Claus", 100, 25, true);
         
+        
+        // CREATION OF THE DOORS (ROOMS)
+        outside1 = new Room("outside1","outside the main entrance of the Santa claus village");
+        houseluttin1 = new Room("houseluttin1","in a luttin's house");
+        houseluttin2 = new Room("houseluttin2","in a luttin's house");
+        outside2 = new Room("outside2","outside of the Santa claus village");
+        
+        //test ecurie
+        ecurie = new Room("ecurie", " blab");
+        ecurie.addkNPC(kNPC1);
+        //beginEnigma(ecurie.getkNPC());
+        //kNPC1.beginEnigma();
+        
+        rdch1= new Room("rdch1", " blab");
+        caveh1= new Room("caveh1", " blab");
+        
+        //toith1
+        toith1= new Room("toith1", " blab");
+        toith1.addmNPC(mNPC1);
+        
+        outside3 = new Room("outside3", " blab");
+        
+        //potager
+        potager = new Room("potager", " blab");
+        potager.addkNPC(kNPC2);
+        
+        //fastfood
+        fastfood = new Room("fastfood", " blab");
+        fastfood.addmNPC(mNPC2);
+        
+        outside4 = new Room("outside4", " blab");
+        
+        //Rez-de-chaussee 2
+        rdch2 = new Room("rdch2", " blab");
+        rdch2.addkNPC(kNPC3);
+        
+        toith2 = new Room("toith2", " blab");
+        manoir = new Room("manoir", " blab");
+        entreemanoir = new Room("entreemanoir", " blab");
+        bibliotheque = new Room("bibliotheque", " blab");
+        
+        //cachot
+        cachot= new Room("cachot", " blab");
+        cachot.addmNPC(mNPC4);
+        
+        //cuisine
+        cuisine= new Room("cuisine", " blab");
+        cuisine.addkNPC(kNPC4);
+        
+        couloir2 = new Room("couloir2", " blab");
+        portefermee = new Room("portefermee", " blab");
+        
+        //salle de bain
+        salledebain = new Room("salledebain", " blab");
+        salledebain.addmNPC(mNPC5);
+        
+        chambre1= new Room("chambre1", " blab");
+        chambre1.addkNPC(kNPC5);
+        
+        couloir3 = new Room("couloir3", " blab");
+        portefermee2 = new Room("portefermee2", " blab");
+        chambre2 = new Room("chambre2", " blab");
+        terrasse = new Room("terrasse", " blab");
+        
+        //last room
+        lastroom = new Room("lastroom", " blab");
+        lastroom.addmNPC(mNPC6);
+        
+
+        // CREATION OF THE EXITS
+
+        
+        // CREATION OF KEYS
+         keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin1 = new Key("Key1","Key of the first luttin house");
+        //keyLuttin2 = new Key("Key2","Key of the second luttin house");
+        
 
         // Exits 
         outside1.setExit("North",null,outside2);
@@ -760,6 +838,29 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
           }
      }
      
+     public void beginEnigma(KindNPC kNPC1)
+    {   enigma = new JOptionPane();
+        enigma.showMessageDialog(null, "*** Hello my Friend ! My name is " + kNPC1.getNameKNPC() + " and I would like to help you ! *** \n" + "*** Can you solve the following riddle please ? *** \n" + " --> " + kNPC1.getEnigma() + " <-- ", kNPC1.getNameKNPC(),
+        JOptionPane.INFORMATION_MESSAGE);
+    }
+     
+      public void beginEnigmaMX(KindNPC kNPC5)
+    {   enigma = new JOptionPane();
+        enigma.showMessageDialog(null, "*** Hello my Friend ! I am the " + kNPC5.getNameKNPC() + " I have been locked in this room for far too long... *** \n" + "*** Can you help me to free myself by answering the following riddle please ? \n" + " --> " + kNPC5.getEnigma() + " <-- ", kNPC5.getNameKNPC(),
+        JOptionPane.INFORMATION_MESSAGE);
+    }
+      
+     public void dialogueMeanNPC(MeanNPC mNPC1)
+    {   dial = new JOptionPane();
+        dial.showMessageDialog(null, "*** Hello dear Enemy ! My name is " + mNPC1.getNameMNPC() + " and I would like to KILL you ! *** \n" + "*** Do you want to confront me ? ***", mNPC1.getNameMNPC(),
+        JOptionPane.INFORMATION_MESSAGE);
+    }
+     
+      public void dialogueSC(MeanNPC mNPC6)
+    {   dial = new JOptionPane();
+        dial.showMessageDialog(null, "*** Hello dear Enemy ! I am the " + mNPC6.getNameMNPC() + " You are lucky to have arrived here ! *** \n" + "*** Are you ready to die ? ***", mNPC6.getNameMNPC(),
+        JOptionPane.INFORMATION_MESSAGE);
+    }
      
      protected void interactionItem(ActionEvent item){
          if (item.getSource() == buttonLife){
@@ -941,14 +1042,34 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
                     System.out.println("You are " + currentRoom.getDescription());
                     System.out.print("Exits: ");
                     changePicture();
-                    testChest();
+                    
+                    if (currentRoom.hasKNPC() == true)
+                    {
+                        if (currentRoom == chambre1){
+                        beginEnigmaMX(currentRoom.getkNPC());
+                    }
+                        else
+                      beginEnigma(currentRoom.getkNPC());  
+                    }
+                    else
+                    {if (currentRoom.hasMNPC() == true)
+                    {if (currentRoom == lastroom){
+                    dialogueSC(currentRoom.getmNPC());
+                    }
+                    else
+                    dialogueMeanNPC(currentRoom.getmNPC());
+                    }}
                 }
+            }
+    
+
+
 //                currentRoom = nextRoom;
 //                //Display the new room
 //                System.out.println("You are " + currentRoom.getDescription());
 //                System.out.print("Exits: ");
             }
-    }
+    
     
     public static Room getCurrentRoom() {
         return currentRoom;
