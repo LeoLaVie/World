@@ -270,6 +270,20 @@ public class InterfaceInventory extends JFrame {
         view.add(completeDescription,BorderLayout.EAST);
     }
     
+    private boolean searchLock()
+    {
+        boolean lock = false;
+        if (player.getLocation().hasChest() == true)
+        {
+            if (player.getLocation().getChest().getLock().getLock() == true)
+            {
+                lock=true;
+            }
+        }
+        return lock;
+    }
+    
+    
     /**
      * 
      * @param anItem
@@ -319,14 +333,14 @@ public class InterfaceInventory extends JFrame {
         else
         {
             actions.add(use);
-//            //if the item is a key,  the button use is disabled is there are no locked door and no chest in the room where the player is
-//            if (anItem instanceof Key)
-//            {
-//                if (searchLock()==false)
-//                {
-//                    use.setEnabled(false);
-//                }
-//            }
+            //if the item is a key,  the button use is disabled is there are no locked door and no chest in the room where the player is
+            if (anItem instanceof Key)
+            {
+                if (searchLock()==false)
+                {
+                    use.setEnabled(false);
+                }
+            }
             //if the item is a consumable
             if(anItem instanceof Usable)
             {
@@ -336,42 +350,15 @@ public class InterfaceInventory extends JFrame {
                 {
                     care.setText("Care : "+((Usable) anItem).getCare()+" HP");
                 }
-//                else
-//                {
-//                    if (((Usable) anItem).getWeapon()==true)
-//                    {
-//                        damages.setText("Damages added to your weapon : "+((Usable) anItem).getDamage()+" HP");
-//                    }
-//                    else
-//                    {
-//                        damages.setText("Damages added : "+((Usable) anItem).getDamage()+" HP");
-//
-//                    }
-//                }
             }
-//            //if the item is a consumable and it needs to act with a weapon
-//            if (searchEquiped()==false)
-//            {
-//                if (anItem instanceof Usable)
-//                {
-//                    if (((Usable) anItem).getWeapon()==true)
-//                    {
-//                        use.setEnabled(false);
-//                    }
-//                }
-//            }
         }
-        //actions.add(sell);
-        //if the item is not sellable, the sell button is disabled
-//        if (anItem.getSellAble()==false)
-//        {
-//            sell.setEnabled(false);
-//        }
-            view.add(actions,BorderLayout.SOUTH);
+        view.add(actions,BorderLayout.SOUTH);
         itemFrame.add(view);
         itemFrame.pack();
         itemFrame.setVisible(true);
-    }
+        }
+    
+        
     
     public Items searchItem(String name)
     {
@@ -433,11 +420,11 @@ public class InterfaceInventory extends JFrame {
             {
                 if (anItem.getDescription().contains("door"))
                 {
-                    anIcon = new ImageIcon(this.getClass().getResource("/Images/keytest.png"));
+                    anIcon = new ImageIcon(this.getClass().getResource("/Images/"+name+".png"));
                 }
                 else if (anItem.getDescription().contains("chest") || anItem.getDescription().contains("treasure"))
                 {
-                    anIcon = new ImageIcon(this.getClass().getResource("/Images/"+name+".png"));
+                    anIcon = new ImageIcon(this.getClass().getResource("/Images/key.png"));
                 }
             }
             //else 
@@ -594,30 +581,4 @@ public class InterfaceInventory extends JFrame {
     {
         return back2;
     }   
-    
-        /**
-     * This method searches if the player is in a room with something is locked.
-     * @return lock (true if there is a locker, false if there is not.)
-     */
-//    private boolean searchLock()
-//    {
-//        //doors=player.getLocation().getDoors();
-//        boolean lock=false;
-//////        for (Map.Entry<String,Door> door : doors.entrySet())
-//////        {
-////            if (door.getValue().isLocked()==true)
-////            {
-////                lock=true;
-////            }
-////        }
-//        if (player.getLocation().hasChest()==true)
-//        {
-//            if (player.getLocation().getChest().getLock().getLock()==true)
-//            {
-//                lock=true;
-//            }
-//        }
-//        return lock;
-//        
-//    }
 }
