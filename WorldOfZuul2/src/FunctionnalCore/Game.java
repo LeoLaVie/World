@@ -45,8 +45,8 @@ public class Game
         parser = new Parser();
         
        // NPC instantiation
-       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
-       mNPC1 = new MeanNPC("Joker", 100, 20, true);
+      // kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+       //mNPC1 = new MeanNPC("Joker", 100, 20, true);
        
        
                
@@ -388,27 +388,27 @@ public class Game
      * @param  
      * @return    
      */
-    public void beginEnigma()
-    {
-       // NPC instantiation
-       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
-        
-        String answer1;
-        
-        Scanner sc = new Scanner(System.in);
-        
-        kNPC1.displayEnigma();
-        
-        System.out.println(kNPC1.getAnswer());
-        answer1 = sc.nextLine();
-        if (answer1.equals("Jonathan")) {
-            System.out.println("Good answer !");
-            kNPC1.getAvailability();
-        }
-        else {System.out.println("Bad answer ! :( Try again !");
-        beginEnigma();
-    }
-    
+//    public void beginEnigma(KindNPC kNPC1)
+//    {
+//       // NPC instantiation
+//       //kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+//        
+//        String answer1;
+//        
+//        Scanner sc = new Scanner(System.in);
+//        
+//        kNPC1.displayEnigma();
+//        
+//        //System.out.println(kNPC1.getAnswer());
+//        answer1 = sc.nextLine();
+//        if (answer1.equals(kNPC1.getAnswer())) {
+//            System.out.println("Good answer !");
+//            kNPC1.getAvailability();
+//        }
+//        else {System.out.println("Bad answer ! :( Try again !");
+//        beginEnigma(kNPC1);
+//    }
+//    
   }
     
         /**
@@ -418,28 +418,28 @@ public class Game
      * @param  
      * @return    
      */
-    public void beginEnigmaMX()
-    {
-       // NPC instantiation
-       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
-        
-        String answer1;
-        
-        Scanner sc = new Scanner(System.in);
-        
-        kNPC1.displayMotherXmas();
-        
-        System.out.println(kNPC1.getAnswer());
-        answer1 = sc.nextLine();
-        if (answer1.equals("Jonathan")) {
-            System.out.println("THANK YOU VERY MUCH ! YOU LIBERATED ME !");
-            kNPC1.getAvailability();
-        }
-        else {System.out.println("Bad answer ! :( Try again !");
-        beginEnigmaMX();
-    }
+//    public void beginEnigmaMX()
+//    {
+//       // NPC instantiation
+//       kNPC1 = new KindNPC("Batman", "Qu'est-ce qui est jaune et qui attend ?", "Jonathan", true);
+//        
+//        String answer1;
+//        
+//        Scanner sc = new Scanner(System.in);
+//        
+//        kNPC1.displayMotherXmas();
+//        
+//        System.out.println(kNPC1.getAnswer());
+//        answer1 = sc.nextLine();
+//        if (answer1.equals("Jonathan")) {
+//            System.out.println("THANK YOU VERY MUCH ! YOU LIBERATED ME !");
+//            kNPC1.getAvailability();
+//        }
+//        else {System.out.println("Bad answer ! :( Try again !");
+//        beginEnigmaMX();
+//    }
     
-  }
+ // }
     
-}
+//}
 

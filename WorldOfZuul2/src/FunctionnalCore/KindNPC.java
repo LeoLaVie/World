@@ -52,7 +52,6 @@ public class KindNPC
      */
     public String getAnswer()
     {
-
         return answer;
     }
     
@@ -69,6 +68,7 @@ public class KindNPC
         available = false;
         return available;
     }
+    
     
     /**
      * Method displayEnigma - This method displays the NPC enigma on the terminal
@@ -97,5 +97,9 @@ public class KindNPC
     //public void beginEnigma() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     //}
+
+    public String getEnigma() {
+        return enigma;
+    }
 
 }

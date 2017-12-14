@@ -1,6 +1,7 @@
 package Interface;
 
 import FunctionnalCore.Game;
+import static Interface.InterfaceGame2.currentRoom;
 import java.awt.event.*; 
 import javax.swing.*;
 import java.awt.*;
@@ -12,9 +13,10 @@ import java.awt.*;
  */
 public class ActionText extends AbstractAction { 
 
+    
     // instance variables - replace the example below with your own
-    private InterfaceGame2 interfaceGame;
-
+    private InterfaceGame2 interfaceGame;  
+    JOptionPane dial;
     /**
      * Constructor for objects of class ActionText
      */
@@ -36,14 +38,21 @@ public class ActionText extends AbstractAction {
         String texteUtilisateur = interfaceGame.getTextField().getText();
         interfaceGame.getTextArea().setText(texteUtilisateur);
         
-    // String text = game.textField.getText();
-        // game.textArea.append(text + game.newline);
-        // game.textField.selectAll();
- 
-        // //Make sure the new text is visible, even if there
-        // //was a selection in the text area.
-        // game.textArea.setCaretPosition(game.textArea.getDocument().getLength());
-        
+        System.out.println(currentRoom.getkNPC().getAnswer());
+        // answer = sc.nextLine();
+        if (texteUtilisateur.equals(currentRoom.getkNPC().getAnswer())){
+            System.out.println("THANK YOU VERY MUCH ! Good answer !");
+            dial = new JOptionPane();
+            dial.showMessageDialog(null, "*** THANK YOU VERY MUCH ! YOU LIBERATED ME ! *** ", null,
+            JOptionPane.INFORMATION_MESSAGE);
+        }
+        else{
+            System.out.println("Bad answer ! :( Try again !");
+            dial = new JOptionPane();
+            dial.showMessageDialog(null, "*** Bad answer ! :( Try again ! *** ", null,
+            JOptionPane.INFORMATION_MESSAGE);
+            interfaceGame.beginEnigma(currentRoom.getkNPC());
+        }         
 } 
 
 }
