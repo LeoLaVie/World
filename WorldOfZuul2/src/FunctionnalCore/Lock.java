@@ -12,16 +12,16 @@ import java.util.Map.Entry;
  */
 public class Lock
 {
-    private Key associatedKey;
-    private boolean locked;
+    private Key key;
+    private boolean lock;
 
     /**
      * Constructor for objects of class Lock
      */
     public Lock()
     {
-        locked = true;
-        associatedKey = null;
+        lock = true;
+        key = null;
     }
     
     /**
@@ -29,7 +29,7 @@ public class Lock
      */
     public boolean getLock()
     {
-        return locked;
+        return lock;
     }
     
     /**
@@ -37,27 +37,26 @@ public class Lock
      */
     public Key getKey()
     {
-        return associatedKey;
+        return key;
     }
     
     public void addKey(Key newKey)
     {
-    if (associatedKey == null)
+    if (key == null)
     {
-            associatedKey = newKey; 
+            key = newKey; 
         }
     }
     
     public boolean unlock(Key keyTest)
     {
-    if (keyTest.getKeyToken() == associatedKey.getKeyToken())
+    if (keyTest.getKeyToken() == key.getKeyToken())
     {
-        locked = false; 
+        lock = false; 
         return true;
     }
     else
     {
-        locked = true;
         return false;
     }
     }

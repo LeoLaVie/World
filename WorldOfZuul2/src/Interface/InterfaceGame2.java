@@ -67,9 +67,9 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     
     private Weapon w1, w2;
     private Usable c1;
-    private Key k1;
-    private Lock l1;
-    private Chest ch1;
+    private Key k1, k2;
+    private Lock l1, l2;
+    private Chest ch1, ch2;
 
 
     
@@ -161,7 +161,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         aPlayer = new Player(playerName);
         createRooms();
         createObject();
-        //testChest();
+        addChestToRoom();
+        testChest();
         //aPlayer.getLocation().hasChest();
 
         image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
@@ -446,25 +447,37 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         
         c1 = new Usable ("potiontest", "care people", "care", 20);
         
-        k1 = new Key("keytest", "open all doors");
+        k1 = new Key("key", "open all chest");
+        k2 = new Key ("key", "open really all treasure");
         
         l1 = new Lock();
         l1.addKey(k1);
         
-        ch1 = new Chest ("superBox", "countains all", 2, 0, l1);
+        l2 = new Lock();
+        l2.addKey(k2);
+        
+        ch1 = new Chest ("superBox", "countains all", 2, 20, l1);
         ch1.addItem(w1);
         
-        outside1.addChest(ch1);
+        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
+        ch2.addItem(w2);
 
    
         
         //aPlayer.inventory.addItem(w1);     
-        aPlayer.inventory.addItem(w2);
+        //aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
+        aPlayer.inventory.addItem(k2);
         aPlayer.inventory.addItem(c1);
+        
 //        aPlayer.addItemPlayer(couteau1);
 //        aPlayer.addItemPlayer(epee2);
 //        System.out.println(aPlayer.inventory.getName());
+    }
+    
+    private void addChestToRoom() {
+        outside2.addChest(ch1);
+        outside3.addChest(ch2);
     }
     
     public void testChest() {
@@ -542,9 +555,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
         
         //test ecurie
         ecurie = new Room("ecurie", " blab");
-        //addKNPC(kNPC1);
-        //ecurie.getkNPC();
-        //kNPC1.beginEnigma();
+
         
         rdch1= new Room("rdch1", " blab");
         caveh1= new Room("caveh1", " blab");
@@ -930,20 +941,12 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
                     System.out.println("You are " + currentRoom.getDescription());
                     System.out.print("Exits: ");
                     changePicture();
+                    testChest();
                 }
 //                currentRoom = nextRoom;
 //                //Display the new room
 //                System.out.println("You are " + currentRoom.getDescription());
 //                System.out.print("Exits: ");
-            
-                for (String key : currentRoom.getExit().keySet())
-                {
-                    if (currentRoom.getExit().get(key)!=null)
-                    {
-                        System.out.println(key);
-                    }
-                    System.out.println();
-                }
             }
     }
     
@@ -1003,6 +1006,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
     	return aPlayer;
     }
     
+    
     @Override
     public void actionPerformed(ActionEvent e)
     {
@@ -1017,13 +1021,15 @@ public class InterfaceGame2 extends JFrame implements ActionListener{
       {
           if (this.getPlayer().getLocation().hasChest()){
         			if (this.getPlayer().getLocation().getChest().getLock().getLock() == true){
-        				this.buttonChest.setText("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+        				//this.buttonChest.setText
+                                        System.out.println("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
         			} else {
         				this.getItemsFromChest(this.getPlayer().getLocation().getChest());
         			}
         		} else 
                             {
-        			this.buttonChest.setText("There is no chest in this room !");
+        			//this.buttonChest.setText
+                                System.out.println("There is no chest in this room !");
                             }
       }
       
