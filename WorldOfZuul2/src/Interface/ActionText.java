@@ -1,7 +1,7 @@
 package Interface;
 
 import FunctionnalCore.Game;
-import static Interface.InterfaceGame2.currentRoom;
+import Interface.InterfaceGame2;
 import java.awt.event.*; 
 import javax.swing.*;
 import java.awt.*;
@@ -38,9 +38,9 @@ public class ActionText extends AbstractAction {
         String texteUtilisateur = interfaceGame.getTextField().getText();
         interfaceGame.getTextArea().setText(texteUtilisateur);
         
-        System.out.println(currentRoom.getkNPC().getAnswer());
+        System.out.println(interfaceGame.getCurrentRoom().getkNPC().getAnswer());
         // answer = sc.nextLine();
-        if (texteUtilisateur.equals(currentRoom.getkNPC().getAnswer())){
+        if (texteUtilisateur.equals(interfaceGame.getCurrentRoom().getkNPC().getAnswer())){
             System.out.println("THANK YOU VERY MUCH ! Good answer !");
             dial = new JOptionPane();
             dial.showMessageDialog(null, "*** THANK YOU VERY MUCH ! YOU LIBERATED ME ! *** ", null,
@@ -51,7 +51,7 @@ public class ActionText extends AbstractAction {
             dial = new JOptionPane();
             dial.showMessageDialog(null, "*** Bad answer ! :( Try again ! *** ", null,
             JOptionPane.INFORMATION_MESSAGE);
-            interfaceGame.beginEnigma(currentRoom.getkNPC());
+            interfaceGame.beginEnigma(interfaceGame.getCurrentRoom().getkNPC());
         }         
 } 
 

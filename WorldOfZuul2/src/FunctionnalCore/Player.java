@@ -52,6 +52,7 @@ public class Player
            name = newName;
        }
        
+       attPower = 30;
        health = 100;
        maxHealth = 100;
        inFight = false;

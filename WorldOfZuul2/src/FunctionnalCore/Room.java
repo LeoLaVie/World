@@ -36,6 +36,8 @@ public class Room
     private MeanNPC mNPC;
     // Mean NPC in the room
     
+    private Fight f;
+    
     /**
      * Constructor for objects of class Room
      * @param roomName The name of the Room
@@ -158,6 +160,10 @@ public class Room
     public void addmNPC(MeanNPC meNPC) {
         mNPC = meNPC;
     }
+    
+    public void addFight(Fight f1) {
+        f = f1;
+    }
 
     public Items getItem() {
         return item;
@@ -170,5 +176,14 @@ public class Room
     public MeanNPC getmNPC() {
         return mNPC;
     }
+
+    public String getDescriptionRoom() {
+        return descriptionRoom;
+    }
+
+    public Fight getF1() {
+        return f;
+    }
+    
     
 }
