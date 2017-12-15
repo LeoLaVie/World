@@ -10,30 +10,31 @@ import java.util.Map.Entry;
  * @author G10
  * @version nov 2017
  */
-public class Inventory
-{
+public class Inventory {
+
     // instance variables 
-    /** List of the all the items of the inventory */
+    /**
+     * List of the all the items of the inventory
+     */
     private ArrayList<Items> items;
     private int maxItems;
     private int gold;
-   
+
     /**
      * Constructor for objects of class Inventory
      */
-    public Inventory(int nbMaxItems)
-    {
+    public Inventory(int nbMaxItems) {
         items = new ArrayList<Items>();
         gold = 100;
         maxItems = nbMaxItems;
     }
-    
-        /**
-     * Constructor used only to create a chest
+
+    /**
+     * Constructor used only to create a player's inventory
      *
      * @param nbMaxItems int : number max of items in the inventory
-     * @param gold       int : number of gold in the inventory
-     *                   By default the inventory has any item.
+     * @param gold int : number of gold in the inventory By default the
+     * inventory has any item.
      */
     public Inventory(int nbMaxItems, int golds) {
         items = new ArrayList<Items>();
@@ -48,33 +49,37 @@ public class Inventory
             maxItems = nbMaxItems;
         }
     }
+
     /**
      * This method returns a list of item from the inventory
      */
     public ArrayList<Items> getItems() {
         return items;
     }
+
     /**
-     * This method returns the number of items in the inventory - simple accessor
+     * This method returns the number of items in the inventory
+     * 
      */
     public int getNbItems() {
         return this.getItems().size();
     }
-    
+
     /**
+     * Method to get the number of items max in the inventory
      * @return the maxItems
      */
     public int getMaxItems() {
         return maxItems;
     }
-    
+
     /**
      * This method deletes all items in an inventory.
      */
     public void resetInventory() {
         items.clear();
     }
-    
+
     /**
      * This method deletes one item in an inventory.
      *
@@ -85,7 +90,7 @@ public class Inventory
         items.remove(itemToDelete);
         return true;
     }
-    
+
     /**
      * This method adds one item in an inventory.
      *
@@ -102,29 +107,30 @@ public class Inventory
             return true;
         }
     }
-    
-        public void addInventory(Items itemToAdd) {
-            items.add(itemToAdd);
-        }
-        
-            /**
-     * This method allow to add or remove money (by minus int) from the inventory
+
+    public void addInventory(Items itemToAdd) {
+        items.add(itemToAdd);
+    }
+
+    /**
+     * This method allow to add or remove money (by minus int) from the
+     * inventory
      */
     public boolean manageGold(int money) {
         if (gold + money >= 0) {
             gold += money;
             return true;
-        } else
+        } else {
             return false;
+        }
     }
-    
-        /**
-     * This method returns gold from the inventory of a character - simple accessor
+
+    /**
+     * This method returns gold from the inventory of a character - simple
+     * accessor
      */
     public int getGold() {
         return gold;
     }
 }
-   
-
 

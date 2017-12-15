@@ -70,14 +70,14 @@ public class MeanNPCTest
     @Test
 	public void testlostHP0() 
 	{	//ennemyNPC.Health = (ennemyNPC.Health)-300;
-	    ennemyNPC.losePointNPC(300);
+	    ennemyNPC.setHealth(20, 0);
 	    assertEquals(0, ennemyNPC.getHealth());
     }
     
       @Test
 	public void testlostHP50() 
 	{	//ennemyNPC.Health = (ennemyNPC.Health)-300;
-	    ennemyNPC.losePointNPC(50);
+	    ennemyNPC.setHealth(100, 50);
 	    assertEquals(50, ennemyNPC.getHealth());
     }
 }
