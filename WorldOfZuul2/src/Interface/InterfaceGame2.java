@@ -68,8 +68,23 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     //private static void addKNPC(KindNPC kNPC1) {
     //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     //}
-    private JButton direction;
-
+    
+    /**
+     * Attributes for the world. There is attributes for rooms, for weapons, for useables,..    *
+     * 
+     * @param w1 attribute for a knife
+     * @param w2 attribute for a sword
+     * @param c1 attribute for a potion
+     * @param c2 attribute for a second potion
+     * @param k1 attribute for a key
+     * @param k2 attribute for a second key
+     * @param l1 attribute for a chest locked
+     * @param l2 attribute for a chest locked
+     * @param ch1 attribute for a chest
+     * @param ch2 attribute for a second chest
+     * @param otherParametreRoom Those are the globality of parameters for the rooms of the world
+     * 
+     */
     private Weapon w1, w2;
     private Usable c1, c2;
     private Key k1, k2, klastRoom;
@@ -87,16 +102,18 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     /**
      * Attributes button
      *
-     * @param buttonNorth
-     * @param buttonEast
-     * @param buttonSouth
-     * @param buttonWest
-     * @param buttonUp
-     * @param buttonDown
-     * @param buttonLife
-     * @param buttonAttack
-     * @param buttonChest
-     * @param buttonInventory
+     * @param buttonNorth button to move to the north of the map
+     * @param buttonEast button to move to the east of the map
+     * @param buttonSouth button to move to the south of the map
+     * @param buttonWest button to move to the west of the map
+     * @param buttonUp button to move to the up in buildings
+     * @param buttonDown button to move to the down in buildings
+     * @param buttonLife button to regain life for the player
+     * @param buttonAttack button to attack the different monster
+     * @param buttonChest button to open the chests
+     * @param buttonInventory button to look your item in your inventory
+     * @param direction 
+     * 
      */
     private static JButton buttonNorth;
     private static JButton buttonEast;
@@ -109,9 +126,22 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     private static JButton buttonAttack;
     private static JButton buttonChest;
     private static JButton buttonInventory;
+    private JButton direction;
 
     JOptionPane jop1, jop2, jop3, enigma, dial, ans;
 
+    /**
+     * Attributes Label, panel, JScroolPane
+     *
+     * @param labelPv label to display the player's life
+     * @param labelImage label to display the room's picture
+     * @param labelText label to display the text box
+     * @param textField textField to write
+     * @param textArea textArea 
+     * @param panelText panelText to display 
+     * 
+     */
+    
     private JLabel labelPv;
     private JLabel labelImage;
     private JLabel labelText;
@@ -122,6 +152,36 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     protected final static String newline = "\n";
     private JPanel panelText;
 
+        /**
+     * Attributes Kind NPC and Mean NPC
+     *
+     * @param KindNPC attribute for a kind npc who request an enigma
+     * @param MeanNPC attribute for a bad npc who attack
+     * 
+     */
+    
+    // Kind NPC
+    private static KindNPC kNPC1;
+    private static KindNPC kNPC2;
+    private static KindNPC kNPC3;
+    private static KindNPC kNPC4;
+    private static KindNPC kNPC5;
+
+    //Mean NPC
+    private static MeanNPC mNPC1;
+    private static MeanNPC mNPC2;
+    private static MeanNPC mNPC3;
+    private static MeanNPC mNPC4;
+    private static MeanNPC mNPC5;
+    private static MeanNPC mNPC6;
+    private MeanNPC meanNpc;
+
+    //Weapon
+    private static Weapon gun;
+    private static Weapon sword;
+    private static Weapon submachineGun;
+    
+    //other attributes
     private String name;
     private Document doc;
     private JScrollPane pa;
@@ -137,30 +197,11 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     private Player aPlayer;
     private Game aGame;
     private String answer;
-
-    // Kind NPC
-    private static KindNPC kNPC1;
-    private static KindNPC kNPC2;
-    private static KindNPC kNPC3;
-    private static KindNPC kNPC4;
-    private static KindNPC kNPC5;
-
-    //Mean NPC
-    private static MeanNPC mNPC1;
-    private static MeanNPC mNPC2;
-    private static MeanNPC mNPC3;
-    private static MeanNPC mNPC4;
-    private static MeanNPC mNPC5;
-    private static MeanNPC mNPC6;
-
-    //Weapon
-    private static Weapon gun;
-    private static Weapon sword;
-    private static Weapon submachineGun;
-
-    //fight
     private boolean fighting = true;
-    private MeanNPC meanNpc;
+
+    
+
+    
 
     public InterfaceGame2(String playerName) {
 
@@ -179,16 +220,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         labelImage.setIcon(image);
         this.labelImage.setHorizontalAlignment(JLabel.CENTER);
         this.labelImage.setVerticalAlignment(JLabel.CENTER);
-        //   labelImage.setMaximumSize(new Dimension(300, 100));
-        //   labelImage.setMinimumSize(new Dimension(300,100));
-        //  labelImage.setPreferredSize(new Dimension(300, 100));
 
-        //setMakeImage(newImage);
-        //setMaImage(getMakeImage());
-//        name = playerName; 
-//        new Player(name);
-        //buttonInventory.addActionListener((ActionListener) this);
-        //creation of buttons and label
         buttonNorth = new JButton();
         buttonNorth.setIcon(new ImageIcon(getClass().getResource("/Images/flecheNorth.gif")));
         buttonNorth.setOpaque(true);
@@ -197,7 +229,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonNorth.setBackground(Color.GRAY);
         buttonNorth.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        //  buttonNorth.addActionListener(ae);
         buttonEast = new JButton();
         buttonEast.setIcon(new ImageIcon(getClass().getResource("/Images/flecheEast.gif")));
         buttonEast.setOpaque(true);
@@ -232,7 +263,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
         buttonDown = new JButton();
         buttonDown.setIcon(new ImageIcon(getClass().getResource("/Images/flecheDown.gif")));
-        // buttonDown.setPreferredSize(new Dimension(80, 30)); 
         buttonDown.setOpaque(true);
         buttonDown.setContentAreaFilled(true);
         buttonDown.setBorderPainted(true);
@@ -247,7 +277,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonLife.setBorderPainted(false);
         buttonLife.setBackground(Color.lightGray);
         buttonLife.setEnabled(false);
-        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
         buttonAttack = new JButton();
         buttonAttack.setIcon(new ImageIcon(getClass().getResource("/Images/buttonSword_1.gif")));
@@ -257,7 +286,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonAttack.setBorderPainted(false);
         buttonAttack.setBackground(Color.lightGray);
         buttonAttack.setEnabled(false);
-        //  buttonAttack.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
         buttonChest = new JButton();
         buttonChest.setIcon(new ImageIcon(getClass().getResource("/Images/buttonChest2.gif")));
@@ -266,8 +294,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonChest.setContentAreaFilled(true);
         buttonChest.setBorderPainted(false);
         buttonChest.setBackground(Color.lightGray);
-        // buttonChest.setEnabled(false);
-        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         buttonChest.addActionListener(this);
 
         buttonInventory = new JButton();
@@ -277,11 +303,12 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonInventory.setContentAreaFilled(true);
         buttonInventory.setBorderPainted(false);
         buttonInventory.setBackground(Color.lightGray);
-        // buttonLife.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         buttonInventory.addActionListener(this);
 
         //Creation of listener
         ListenerMouse m = new ListenerMouse(this);
+        ListenerMove x = new ListenerMove(this);
+        ListenerFight a = new ListenerFight(this);
 
         //listener mouse for directiv button 
         buttonNorth.addMouseListener(m);
@@ -297,8 +324,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonDown.addMouseListener(m);
         buttonDown.setActionCommand("Down");
 
-        ListenerMove x = new ListenerMove(this);
-
         //listener move in the game
         buttonNorth.addActionListener(x);
         buttonEast.addActionListener(x);
@@ -307,7 +332,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         buttonUp.addActionListener(x);
         buttonDown.addActionListener(x);
 
-        ListenerFight a = new ListenerFight(this);
         //listener for action during the fight
         buttonAttack.addActionListener(a);
         buttonAttack.setActionCommand("attack");
@@ -408,17 +432,13 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         globalPanel.add(panelInterface, BorderLayout.SOUTH);
         globalPanel.setBackground(Color.GRAY);
 
-        //   JLabel labelback = new JLabel(makeImage());
-        //  labelback.setPreferredSize(new Dimension(1000, 550));
         Container c = labelImage;
         c.setLayout(new BorderLayout());
-        // c.add(panelInterface,BorderLayout.SOUTH);
         c.setPreferredSize(new Dimension(900, 500));
         c.setMaximumSize(new Dimension(900, 500));
         c.setMinimumSize(new Dimension(900, 500));
         this.add(c, BorderLayout.NORTH);
         this.add(panelInterface, BorderLayout.CENTER);
-        // this.add(panelInterface,BorderLayout.SOUTH);
         this.setTitle("World Of Zuul");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.pack();
@@ -440,32 +460,36 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return image;
     }
 
+    
+    /**
+     * Method to creat different object in our game
+     */
     private void createObject() {
-        w1 = new Weapon("couteau1", "cut all", 50);
-        w2 = new Weapon("epee2", "cut", 100);
+        w1 = new Weapon("couteau1", "cut all", 25);
+        w2 = new Weapon("epee2", "cut", 35);
 
         c1 = new Usable("potion", "care people", "care", 20);
         c2 = new Usable("potion", "care people", "care", 50);
 
         k1 = new Key("key", "open all chest");
-        k2 = new Key("key", "open really all treasure");
-        klastRoom = new Key("key", "open the boss room");
+        //k2 = new Key("key", "open really all treasure");
+        //klastRoom = new Key("key", "open the boss room");
 
         l1 = new Lock();
         l1.addKey(k1);
 
-        l2 = new Lock();
-        l2.addKey(k2);
+//        l2 = new Lock();
+//        l2.addKey(k2);
 
         ch1 = new Chest("superBox", "countains all", 2, 20, l1);
-        ch1.addItem(w1);
+        ch1.addItem(w2);
 
-        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
-        ch2.addItem(w2);
-        ch2.addItem(c2);
-        ch2.addItem(klastRoom);
+//        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
+//        ch2.addItem(w2);
+//        ch2.addItem(c2);
+//        ch2.addItem(klastRoom);
 
-        //aPlayer.inventory.addItem(w1);     
+        aPlayer.inventory.addItem(w1);     
         //aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
         // aPlayer.inventory.addItem(k2);
@@ -473,14 +497,19 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
 //        aPlayer.addItemPlayer(couteau1);
 //        aPlayer.addItemPlayer(epee2);
-//        System.out.println(aPlayer.inventory.getName());
     }
 
+    /**
+     * Method for add the chests in the good room
+     */
     private void addChestToRoom() {
-        rdch1.addChest(ch1);
-        bibliotheque.addChest(ch2);
+        //rdch1.addChest(ch1);
+        bibliotheque.addChest(ch1);
     }
 
+    /**
+     * Method to test if the room has a chest
+     */
     public void testChest() {
         if (this.aPlayer.getLocation().hasChest() == true) {
             //return true;
@@ -492,7 +521,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     }
 
     /**
-     * Method used to add a chest in a room
+     * Method used to add a item of a chest in your inventory
      *
      * @param aChest: The chest adding to the room
      */
@@ -524,21 +553,33 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-            while (i != 0)
+            itemAdded = itemAdded + " and " + gold + " gold." + textToAdd;
+            //textEvent.setText(itemAdded); 
+//            if (!aChest.getInventory().getItems().isEmpty()) {
+//                for (Items item : aChest.getInventory().getItems()) {
+//                    aChest.deleteItem(item);
+//                }
+//            }
+            while (i!=0)
             {
                 aChest.deleteItem(chestInv.get(0));
-                i -= 1;
+                i-=1;
+                
             }
-
         }
-
     }
 
+    /**
+     * Method to change a picture in function on your localisation
+     */
     private void changePicture() {
         image = new ImageIcon(getClass().getResource("/Images/" + currentRoom.getNameRoom() + ".jpg"));
         labelImage.setIcon(image);
     }
 
+    /**
+     * Method used to creat the different rooms in our game
+     */
     public void createRooms() {
         // CREATION OF THE DOORS (ROOMS)
         outside1 = new Room("outside1", "outside the main entrance of the Santa claus village");
@@ -606,36 +647,22 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         houseluttin2 = new Room("houseluttin2", "in a luttin's house");
         outside2 = new Room("outside2", "outside of the Santa claus village");
 
+        // ADDING OF NPC IN ROOMS
         ecurie.addkNPC(kNPC1);
-
         toith1.addmNPC(mNPC1);
-
         toith1.addFight(fight);
-
         potager.addkNPC(kNPC2);
-
         fastfood.addmNPC(mNPC2);
-
         fastfood.addFight(fight);
-
         rdch2.addmNPC(mNPC3);
-
         rdch2.addFight(fight);
-
         cachot.addmNPC(mNPC4);
-
         cachot.addFight(fight);
-
         cuisine.addkNPC(kNPC4);
-
         salledebain.addmNPC(mNPC5);
-
         salledebain.addFight(fight);
-
         chambre1.addkNPC(kNPC5);
-
         lastroom.addmNPC(mNPC6);
-
         lastroom.addFight(fight);
 
         // Exits 
@@ -720,6 +747,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Method to change the color of the buttons when you pass your mouse on the buttons
+     * @param evt the event to change the color
+     */
     protected void compteurMouse(MouseEvent evt) {
         if (evt.getSource() == buttonNorth) {
             buttonNorth.setBackground(Color.lightGray);
@@ -773,18 +804,30 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Method to display a pop up with the text of the kind NPC
+     * @param kNPC1 
+     */
     public void beginEnigma(KindNPC kNPC1) {
         enigma = new JOptionPane();
         enigma.showMessageDialog(null, "*** Hello my Friend ! My name is " + kNPC1.getNameKNPC() + " and I would like to help you ! *** \n" + "*** Can you solve the following riddle please ? *** \n" + " --> " + kNPC1.getEnigma() + " <-- ", kNPC1.getNameKNPC(),
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+        /**
+     * Method to display a pop up with the mother claus
+     * @param kNPC1 
+     */
     public void beginEnigmaMX(KindNPC kNPC5) {
         enigma = new JOptionPane();
         enigma.showMessageDialog(null, "*** Hello my Friend ! I am the " + kNPC5.getNameKNPC() + " I have been locked in this room for far too long... *** \n" + "*** Can you help me to free myself by answering the following riddle please ? \n" + " --> " + kNPC5.getEnigma() + " <-- ", kNPC5.getNameKNPC(),
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Method to display a pop up with the MeanNPC
+     * @param kNPC1 
+     */
     public void dialogueMeanNPC(MeanNPC mNPC1) {
         dial = new JOptionPane();
         dial.showMessageDialog(null, "*** Hello dear Enemy ! My name is " + mNPC1.getNameMNPC() + " and I would like to KILL you ! *** \n" + "*** Do you want to confront me ? ***", mNPC1.getNameMNPC(),
@@ -792,35 +835,28 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Method to display a pop up with the Santa Claus
+     * @param kNPC1 
+     */
     public void dialogueSC(MeanNPC mNPC6) {
         dial = new JOptionPane();
         dial.showMessageDialog(null, "*** Hello dear Enemy ! I am the " + mNPC6.getNameMNPC() + " You are lucky to have arrived here ! *** \n" + "*** Are you ready to die ? ***", mNPC6.getNameMNPC(),
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
-    protected void interactionItem(ActionEvent item) {
-        if (item.getSource() == buttonLife) {
-
-        } else if (item.getSource() == buttonAttack) {
-            //Fight.runFight();
-        } else if (item.getSource() == buttonChest) {
-
-        } else if (item.getSource() == buttonInventory) {
-
-        }
-    }
-
-//     protected void actionItem(ActionEvent activation){
-//         
-//     }
+    /**
+     * Method used to creat TextField and TexArea in the interface
+     * @return panelText 
+     */
     private Box buildContentPane() {
         textArea = new JTextArea(10, 50);
         textArea.setEditable(false);
         textArea.setLineWrap(true);
-        //JScrollPane scrollPane = new JScrollPane(textArea);
+
         doc = textArea.getDocument();
         insert("Welcome to you, " + Player.getName() + " in Santa Claus country.");
-        // output.setEditable(false);
+     
         pa = new JScrollPane(textArea); //scroll
         pa.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         pa.setMaximumSize(new Dimension(300, 100));
@@ -849,20 +885,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return panelText;
     }
 
-//    public void setReponse(String newReponse){
-//        if (newReponse == "oui" | newReponse == "yes"){
-//            reponseBoolean = true;
-//        }
-//        else if(newReponse == "non" | newReponse == "no"){
-//            reponseBoolean = false;
-//        }
-//        else{
-//            reponseBoolean = false;
-//        }
-//    }
-//    public boolean getReponse(){
-//        return reponseBoolean;
-//    } 
+    
     public JTextField getTextField() {
         return textField;
     }
@@ -871,6 +894,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return textArea;
     }
 
+    /**
+     * Method used to put on line the text
+     * @param s 
+     */
     public void insert(String s) {
         try {
             doc.insertString(0, s + "\n", null);
@@ -879,6 +906,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Methods getter to return the button
+     * @return all the buttons
+     */
     public static JButton getButtonNorth() {
         return buttonNorth;
     }
@@ -922,6 +953,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     /**
      * Try to go to one direction. If there is an exit, enter the new room,
      * otherwise print an error message.
+     * This method launch an event if the room has one.
      */
     public void goRoom(ActionEvent move) {
 
@@ -1027,6 +1059,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         }
     }
 
+    /**
+    * Methods getter to return the rooms
+    * @return all the rooms
+    */
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -1056,9 +1092,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     }
 
     /**
-     * Method used to open the inventory
+     * Method used to open the player's inventory
      *
-     * @param open
      */
     public void openInventory() {
         if (showInventory == null) {
@@ -1067,13 +1102,16 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
             showInventory.manageInventory();
         }
     }
-
+    /**
+    * Method getter to return the player's inventory
+    * @return showInventory
+    */
     public InterfaceInventory getShowInventory() {
         return showInventory;
     }
 
     /**
-     * Accessor for the "player" attribute
+     * Method getter for the "player" attribute
      *
      * @return player: The player which plays the game
      */
@@ -1081,6 +1119,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return aPlayer;
     }
 
+    /**
+     * Method action performed to retrieve items from a chest in the player's inventory
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // When the user click on Marion's picture, the button Start and Change 
@@ -1104,6 +1146,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     }
 
+    /**
+    * Methods getter to return the Kind NPC
+    * @return all the NPC
+    */
     public static KindNPC getkNPC1() {
         return kNPC1;
     }
@@ -1124,6 +1170,11 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return kNPC5;
     }
 
+    
+    /**
+     * Method to actualize the fight
+     * @param fightRun 
+     */
     public void runFight(ActionEvent fightRun) {
         //appelle du joueur, vie, etat...
         //appelle de l'ennemie, vie, etat..

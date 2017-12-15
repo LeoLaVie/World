@@ -84,6 +84,10 @@ public class InterfaceGameOver extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
+    /**
+     * Method action performed to restart the game
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         // exit page
@@ -95,13 +99,13 @@ public class InterfaceGameOver extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * method to add the picture of game over
+     * @return Image icon of game over
+     */
     private ImageIcon makeImage() {
         return new ImageIcon(getClass().getResource("/Images/gameover.gif"));
 
     }
 
-//    @Override
-//    public void actionPerformed(ActionEvent ae) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
 }

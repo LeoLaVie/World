@@ -105,6 +105,14 @@ public class Chest extends Inventory
             return false;
         }
     }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+
+    
+    
 }
 
 
