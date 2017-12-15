@@ -68,8 +68,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     private JButton direction;
 
     private Weapon w1, w2;
-    private Usable c1;
-    private Key k1, k2;
+    private Usable c1, c2;
+    private Key k1, k2, klastRoom;
     private Lock l1, l2;
     private Chest ch1, ch2;
 
@@ -165,6 +165,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         aPlayer = new Player(playerName);
         createRooms();
         createObject();
+        addChestToRoom();
+
         aGame = new Game();
         //testChest();
         //aPlayer.getLocation().hasChest();
@@ -440,9 +442,11 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         w2 = new Weapon("epee2", "cut", 100);
 
         c1 = new Usable("potion", "care people", "care", 20);
+        c2 = new Usable("potion", "care people", "care", 50);
 
         k1 = new Key("key", "open all chest");
         k2 = new Key("key", "open really all treasure");
+        klastRoom = new Key("key", "open the boss room");
 
         l1 = new Lock();
         l1.addKey(k1);
@@ -455,11 +459,13 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
         ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
         ch2.addItem(w2);
+        ch2.addItem(c2);
+        ch2.addItem(klastRoom);
 
         //aPlayer.inventory.addItem(w1);     
         //aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
-        aPlayer.inventory.addItem(k2);
+        // aPlayer.inventory.addItem(k2);
         aPlayer.inventory.addItem(c1);
 
 //        aPlayer.addItemPlayer(couteau1);
@@ -468,8 +474,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     }
 
     private void addChestToRoom() {
-        outside2.addChest(ch1);
-        outside3.addChest(ch2);
+        rdch1.addChest(ch1);
+        bibliotheque.addChest(ch2);
     }
 
     public void testChest() {
@@ -494,6 +500,9 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         String itemAdded = "You won ";
         if (aChest.getNbItems() == 0) {
             System.out.println("This chest is empty.");
+            dial = new JOptionPane();
+            dial.showMessageDialog(null, "This chest is empty.", null,
+                    JOptionPane.INFORMATION_MESSAGE);
         } else {
             int gold = 0;
             if (aChest.getGold() > 0) {
@@ -507,14 +516,19 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                     itemAdded = itemAdded + item.getName() + ", ";
                 } else {
                     textToAdd = "Your bag is full. You need to sell some items. Come back later";
+                    dial = new JOptionPane();
+                    dial.showMessageDialog(null, "Your bag is full. You need to sell some items. Come back later", null,
+                            JOptionPane.INFORMATION_MESSAGE);
                 }
             }
             itemAdded = itemAdded + " and " + gold + " gold." + textToAdd;
             //textEvent.setText(itemAdded); 
-            while (i != 0) {
-                aChest.deleteItem(chestInv.get(0));
-                i -= 1;
+            if (!aChest.getInventory().getItems().isEmpty()) {
+                for (Items item : aChest.getInventory().getItems()) {
+                    aChest.deleteItem(item);
+                }
             }
+
         }
 
     }
@@ -527,36 +541,35 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     public void createRooms() {
         // CREATION OF THE DOORS (ROOMS)
         outside1 = new Room("outside1", "outside the main entrance of the Santa claus village");
-        houseluttin1 = new Room("houseluttin1", "in a luttin's house");
-        houseluttin2 = new Room("houseluttin2", "in a luttin's house");
+        houseluttin1 = new Room("houseluttin1", "in front of a luttin's house");
+        houseluttin2 = new Room("houseluttin2", "in front of a luttin's house");
         outside2 = new Room("outside2", "outside of the Santa claus village");
-
         //test ecurie
-        ecurie = new Room("ecurie", " blab");
-
-        rdch1 = new Room("rdch1", " blab");
-        caveh1 = new Room("caveh1", " blab");
-        toith1 = new Room("toith1", " blab");
-        outside3 = new Room("outside3", " blab");
-        potager = new Room("potager", " blab");
-        fastfood = new Room("fastfood", " blab");
-        outside4 = new Room("outside4", " blab");
-        rdch2 = new Room("rdch2", " blab");
-        toith2 = new Room("toith2", " blab");
-        manoir = new Room("manoir", " blab");
-        entreemanoir = new Room("entreemanoir", " blab");
-        bibliotheque = new Room("bibliotheque", " blab");;
-        cachot = new Room("cachot", " blab");
-        cuisine = new Room("cuisine", " blab");
-        couloir2 = new Room("couloir2", " blab");
-        portefermee = new Room("portefermee", " blab");
-        salledebain = new Room("salledebain", " blab");
+        ecurie = new Room("ecurie", " in the barn of the Santa clause village.");
+        rdch1 = new Room("rdch1", " in the floor level in house's luttin.");
+        caveh1 = new Room("caveh1", " in the cave in house's luttin.");
+        toith1 = new Room("toith1", " in the last floor level in house's luttin.");
+        outside3 = new Room("outside3", " outside of the Santa claus village");
+        potager = new Room("potager", " in the garden of the Santa claus village");
+        fastfood = new Room("fastfood", " in front of the vegan coffee");
+        outside4 = new Room("outside4", " outside of the Santa claus village");
+        supermarket = new Room("supermarket", "on the supermarket of Santa Claus Village");
+        rdch2 = new Room("rdch2", " in the floor level in house's luttin.");
+        toith2 = new Room("toith2", " in the last floor level in house's luttin.");
+        manoir = new Room("manoir", " in front of the manoir");
+        entreemanoir = new Room("entreemanoir", " in the entrance of manoir");
+        bibliotheque = new Room("bibliotheque", " in the library");
+        cachot = new Room("cachot", " in the dungeon");
+        cuisine = new Room("cuisine", " in the kitchen");
+        couloir2 = new Room("couloir2", " in the first floor");
+        portefermee = new Room("portefermee", " in front of a closed door.");
+        salledebain = new Room("salledebain", " in the bathroom");
         chambre1 = new Room("chambre1", " blab");
-        couloir3 = new Room("couloir3", " blab");
-        portefermee2 = new Room("portefermee2", " blab");
-        chambre2 = new Room("chambre2", " blab");
-        terrasse = new Room("terrasse", " blab");
-        lastroom = new Room("lastroom", " blab");
+        couloir3 = new Room("couloir3", " in the second floor.");
+        portefermee2 = new Room("portefermee2", " in front of a closed door.");
+        chambre2 = new Room("chambre2", " in the mother claus's bedroom");
+        terrasse = new Room("terrasse", " in the balcony.");
+        lastroom = new Room("lastroom", " in the Santa Claus's room.");
 
         // CREATION OF THE EXITS
         // CREATION OF KEYS
@@ -581,10 +594,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         //CREATION OF MEAN NPC
         mNPC1 = new MeanNPC("Franklin", 100, 10, true);
         mNPC2 = new MeanNPC("Frisquet", 100, 10, true);
-        mNPC3 = new MeanNPC("Fripouille", 100, 15, true);
-        mNPC4 = new MeanNPC("Frodon", 100, 15, true);
-        mNPC5 = new MeanNPC("Frisson", 100, 20, true);
-        mNPC6 = new MeanNPC("Santa Claus", 100, 25, true);
+        mNPC3 = new MeanNPC("Fripouille", 150, 15, true);
+        mNPC4 = new MeanNPC("Frodon", 150, 15, true);
+        mNPC5 = new MeanNPC("Frisson", 150, 20, true);
+        mNPC6 = new MeanNPC("Santa Claus", 200, 25, true);
 
         // CREATION OF THE DOORS (ROOMS)
         outside1 = new Room("outside1", "outside the main entrance of the Santa claus village");
@@ -592,90 +605,37 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         houseluttin2 = new Room("houseluttin2", "in a luttin's house");
         outside2 = new Room("outside2", "outside of the Santa claus village");
 
-        //test ecurie
-        ecurie = new Room("ecurie", " in ecurie");
         ecurie.addkNPC(kNPC1);
 
-        rdch1 = new Room("rdch1", " blab");
-        caveh1 = new Room("caveh1", " blab");
-
-        //toith1
-        toith1 = new Room("toith1", " blab");
         toith1.addmNPC(mNPC1);
-        // toith1.addFight(fight);
 
         toith1.addFight(fight);
 
-        outside3 = new Room("outside3", " blab");
-
-        //potager
-        potager = new Room("potager", " blab");
         potager.addkNPC(kNPC2);
 
-        //fastfood
-        fastfood = new Room("fastfood", " blab");
         fastfood.addmNPC(mNPC2);
-        //fastfood.addFight(fight);
 
         fastfood.addFight(fight);
 
-        outside4 = new Room("outside4", " blab");
-        supermarket = new Room("supermarket", "on the supermarket of Santa Claus Village");
-        houseluttin2 = new Room("houseluttin2", "in the second house luttin");
-
-        //Rez-de-chaussee 2
-        rdch2 = new Room("rdch2", " blab");
         rdch2.addmNPC(mNPC3);
 
-        // rdch2.addFight(fight);
         rdch2.addFight(fight);
 
-        toith2 = new Room("toith2", " blab");
-        manoir = new Room("manoir", " blab");
-        entreemanoir = new Room("entreemanoir", " blab");
-        bibliotheque = new Room("bibliotheque", " blab");
-
-        //cachot
-        cachot = new Room("cachot", " blab");
         cachot.addmNPC(mNPC4);
 
-        // cachot.addFight(fight);
         cachot.addFight(fight);
 
-        //cuisine
-        cuisine = new Room("cuisine", " blab");
         cuisine.addkNPC(kNPC4);
 
-        couloir2 = new Room("couloir2", " blab");
-        portefermee = new Room("portefermee", " blab");
-
-        //salle de bain
-        salledebain = new Room("salledebain", " blab");
         salledebain.addmNPC(mNPC5);
 
-        // salledebain.addFight(fight);
         salledebain.addFight(fight);
 
-        chambre1 = new Room("chambre1", " blab");
         chambre1.addkNPC(kNPC5);
 
-        couloir3 = new Room("couloir3", " blab");
-        portefermee2 = new Room("portefermee2", " blab");
-        chambre2 = new Room("chambre2", " blab");
-        terrasse = new Room("terrasse", " blab");
-
-        //last room
-        lastroom = new Room("lastroom", " blab");
         lastroom.addmNPC(mNPC6);
 
-        // lastroom.addFight(fight);
         lastroom.addFight(fight);
-
-        // CREATION OF THE EXITS
-        // CREATION OF KEYS
-        keyLuttin1 = new Key("Key1", "Key of the first luttin house");
-        //keyLuttin1 = new Key("Key1","Key of the first luttin house");
-        //keyLuttin2 = new Key("Key2","Key of the second luttin house");
 
         // Exits 
         outside1.setExit("North", null, outside2);
@@ -976,8 +936,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         } else {
             if (currentRoom.getExit().get(action).isLocked()) {
                 jop2 = new JOptionPane();
-                jop2.showMessageDialog(null, "It is a closed door", "Warning",
-                        JOptionPane.INFORMATION_MESSAGE);
+                jop2.showMessageDialog(null, "It is a closed door", "Warning", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("La porte est fermée il vous faut la clé");
             } else {
                 // condition le joueur à la clé coorespondante et donc ouvre la porte (a faire)
@@ -987,6 +946,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                 System.out.println("You are " + currentRoom.getDescription());
                 System.out.print("Exits: ");
                 changePicture();
+                jop2 = new JOptionPane();
+                jop2.showMessageDialog(null, "You are " + currentRoom.getDescription(), null, JOptionPane.INFORMATION_MESSAGE);
 
                 if (currentRoom.hasKNPC() == true) {
                     if (currentRoom == chambre1) {
@@ -999,6 +960,14 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                         if (currentRoom == lastroom) {
                             dialogueSC(currentRoom.getmNPC());
                             //fight.runFight(move);
+                            this.getButtonAttack().setEnabled(true);
+                            // this.getButtonLife().setEnabled(true);
+                            this.getButtonNorth().setEnabled(false);
+                            this.getButtonEast().setEnabled(false);
+                            this.getButtonSouth().setEnabled(false);
+                            this.getButtonWest().setEnabled(false);
+                            this.getButtonUp().setEnabled(false);
+                            this.getButtonDown().setEnabled(false);
                             jop1 = new JOptionPane();
                             jop1.showMessageDialog(null, "\n*** Chose your action with buttons ! ***", null,
                                     JOptionPane.INFORMATION_MESSAGE);
@@ -1006,7 +975,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             dialogueMeanNPC(currentRoom.getmNPC());
                             // voir pour le runFight
                             this.getButtonAttack().setEnabled(true);
-                            this.getButtonLife().setEnabled(true);
+                            // this.getButtonLife().setEnabled(true);
                             this.getButtonNorth().setEnabled(false);
                             this.getButtonEast().setEnabled(false);
                             this.getButtonSouth().setEnabled(false);
@@ -1021,23 +990,18 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                     }
                 }
             }
-            
 
 //                    {if (currentRoom.hasMNPC() == true)
 //                    {if (currentRoom == lastroom){
 //                    dialogueSC(currentRoom.getmNPC());
 //                    //fight.runFight(move);
 //                    }
-            }
-        
+        }
 
         for (String key : currentRoom.getExit().keySet()) {
-            if (currentRoom.getExit().get(key) != null) 
-            {
+            if (currentRoom.getExit().get(key) != null) {
                 System.out.println(key);
-            }
-            else
-            {
+            } else {
                 dialogueMeanNPC(currentRoom.getmNPC());
                 // voir pour le runFight
                 //fight.runFight(move);
@@ -1045,11 +1009,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         }
     }
 
-
-
-    
-    
-    
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -1078,61 +1037,53 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         return outside4;
     }
 
-       /**
+    /**
      * Method used to open the inventory
+     *
      * @param open
      */
     public void openInventory() {
-        if (showInventory==null)
-        {
-            showInventory = new InterfaceInventory(aPlayer.getInventory(), aPlayer,this);
-        }
-        else
-        {
+        if (showInventory == null) {
+            showInventory = new InterfaceInventory(aPlayer.getInventory(), aPlayer, this);
+        } else {
             showInventory.manageInventory();
         }
     }
-    
-    public InterfaceInventory getShowInventory()
-    {
+
+    public InterfaceInventory getShowInventory() {
         return showInventory;
     }
-    
+
     /**
      * Accessor for the "player" attribute
+     *
      * @return player: The player which plays the game
      */
     public Player getPlayer() {
-    	return aPlayer;
+        return aPlayer;
     }
-    
-    
+
     @Override
-        public void actionPerformed(ActionEvent e)
-    {
-      // When the user click on Marion's picture, the button Start and Change 
-      //become accessible but all the other hero button become unaccessible 
-      
-      if (e.getSource() == buttonInventory)
-        {
-         this.openInventory();
+    public void actionPerformed(ActionEvent e) {
+        // When the user click on Marion's picture, the button Start and Change 
+        //become accessible but all the other hero button become unaccessible 
+
+        if (e.getSource() == buttonInventory) {
+            this.openInventory();
+        } else if (e.getSource() == buttonChest) {
+            if (this.getPlayer().getLocation().hasChest()) {
+                if (this.getPlayer().getLocation().getChest().getLock().getLock() == true) {
+                    //this.buttonChest.setText
+                    System.out.println("The chest " + this.getPlayer().getLocation().getChest().getName() + " is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+                } else {
+                    this.getItemsFromChest(this.getPlayer().getLocation().getChest());
+                }
+            } else {
+                //this.buttonChest.setText
+                System.out.println("There is no chest in this room !");
+            }
         }
-      else if (e.getSource() == buttonChest)
-      {
-          if (this.getPlayer().getLocation().hasChest()){
-        			if (this.getPlayer().getLocation().getChest().getLock().getLock() == true){
-        				//this.buttonChest.setText
-                                        System.out.println("The chest "+this.getPlayer().getLocation().getChest().getName()+" is locked. You need a key to open this chest. Try to open it by opening your inventory !");
-        			} else {
-        				this.getItemsFromChest(this.getPlayer().getLocation().getChest());
-        			}
-        		} else 
-                            {
-        			//this.buttonChest.setText
-                                System.out.println("There is no chest in this room !");
-                            }
-      }
-      
+
     }
 
     public static KindNPC getkNPC1() {
@@ -1154,43 +1105,40 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     public static KindNPC getkNPC5() {
         return kNPC5;
     }
-    
-    public void runFight(ActionEvent fightRun)
-    {
-       //appelle du joueur, vie, etat...
-       //appelle de l'ennemie, vie, etat..
-      // String action = fightRun.getActionCommand();
-       Fight firstfight = new Fight(getaPlayer(),currentRoom.getmNPC());
-       //fight system
-      //  while(fighting) {
+
+    public void runFight(ActionEvent fightRun) {
+        //appelle du joueur, vie, etat...
+        //appelle de l'ennemie, vie, etat..
+        // String action = fightRun.getActionCommand();
+        Fight firstfight = new Fight(getaPlayer(), currentRoom.getmNPC());
+        //fight system
+        //  while(fighting) {
         this.getButtonAttack().setEnabled(true);
-        this.getButtonLife().setEnabled(true);
+        // this.getButtonLife().setEnabled(true);
         this.getButtonNorth().setEnabled(false);
         this.getButtonEast().setEnabled(false);
         this.getButtonSouth().setEnabled(false);
         this.getButtonWest().setEnabled(false);
         this.getButtonUp().setEnabled(false);
         this.getButtonDown().setEnabled(false);
-            if (aPlayer.getHealth() <= 0 || currentRoom.getmNPC().getHealth() <= 0){
-                fighting = false;
-               // break;
-            }
-           // ((JButton)fightRun.getSource()).getActionCommand().equals("attack")
-            else if (fightRun.getSource() == this.getButtonAttack()) {
-                //start the fight
-                firstfight.fight1();
-             //  fight.enemyAttack();
-              //  fight.statusUpdate();
-                labelPv.setText(Integer.toString(aPlayer.getHealth()));
-            }
-            else if (fightRun.getSource() == this.getButtonLife()){
-                //take a potion
-                firstfight.takePotion();
-               // fight.takePotion();
-              //  fight.enemyAttack();
-               // fight.statusUpdate();
-                labelPv.setText(Integer.toString(aPlayer.getHealth()));
-            }
+        if (aPlayer.getHealth() <= 0 || currentRoom.getmNPC().getHealth() <= 0) {
+            fighting = false;
+            // break;
+        } // ((JButton)fightRun.getSource()).getActionCommand().equals("attack")
+        else if (fightRun.getSource() == this.getButtonAttack()) {
+            //start the fight
+            firstfight.fight1();
+            //  fight.enemyAttack();
+            //  fight.statusUpdate();
+            labelPv.setText(Integer.toString(aPlayer.getHealth()));
+        } else if (fightRun.getSource() == this.getButtonLife()) {
+            //take a potion
+            firstfight.takePotion();
+            // fight.takePotion();
+            //  fight.enemyAttack();
+            // fight.statusUpdate();
+            labelPv.setText(Integer.toString(aPlayer.getHealth()));
+        }
 //            else{
 //                fight.enemyAttack();
 //                fight.statusUpdate();
@@ -1198,30 +1146,29 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 //                
 //            }
 
-      if (!fighting){
-        if (aPlayer.getHealth() <= 0){
-            firstfight.youLose();
-            new InterfaceGameOver();
-        }
-        else if (currentRoom.getmNPC().getHealth() <= 0){
-            if (currentRoom == lastroom){
+        if (!fighting) {
+            if (aPlayer.getHealth() <= 0) {
+                firstfight.youLose();
+                new InterfaceGameOver();
+                this.dispose();
+            } else if (currentRoom.getmNPC().getHealth() <= 0) {
+                if (currentRoom == lastroom) {
+                    firstfight.youWin();
+                    new InterfaceGameWin();
+                    this.dispose();
+                }
                 firstfight.youWin();
-                new InterfaceGameWin();
+                this.getButtonAttack().setEnabled(false);
+                // this.getButtonLife().setEnabled(true);
+                this.getButtonNorth().setEnabled(true);
+                this.getButtonEast().setEnabled(true);
+                this.getButtonSouth().setEnabled(true);
+                this.getButtonWest().setEnabled(true);
+                this.getButtonUp().setEnabled(true);
+                this.getButtonDown().setEnabled(true);
             }
-            firstfight.youWin();
-            this.getButtonAttack().setEnabled(false);
-            this.getButtonLife().setEnabled(true);
-            this.getButtonNorth().setEnabled(true);
-            this.getButtonEast().setEnabled(true);
-            this.getButtonSouth().setEnabled(true);
-            this.getButtonWest().setEnabled(true);
-            this.getButtonUp().setEnabled(true);
-            this.getButtonDown().setEnabled(true);
         }
-       }
-    } 
-
-
+    }
 
     public Player getaPlayer() {
         return aPlayer;
@@ -1230,8 +1177,5 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     public JLabel getLabelPv() {
         return labelPv;
     }
-    
-    
-    
-     
+
 }
