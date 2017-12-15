@@ -55,10 +55,9 @@ public class InterfaceMain extends JFrame implements ActionListener
      /////////////////////////
     private String playerName;
     
-     /*
-   The constructor of the class game is composed of button, panel for each herol and label.
-   
-   */
+    /*
+    * The constructor of the class game is composed of button, panel for each herol and label.
+    */
     
     public InterfaceMain ()
     {
@@ -167,9 +166,9 @@ public class InterfaceMain extends JFrame implements ActionListener
         
      }
 
-      /*
-   The method actionPerformed allows to make action in fonction of the button 
-   clicked by the player.
+   /**
+   *The method actionPerformed allows to launch the interface game so start the game
+   *clicked by the player.
    */
    
    @Override

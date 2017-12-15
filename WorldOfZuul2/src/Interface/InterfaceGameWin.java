@@ -60,6 +60,10 @@ public class InterfaceGameWin extends JFrame {
        this.setVisible(true);
     }
     
+    /**
+     * method to add the picture of game win
+     * @return Image icon of game win
+     */
      private ImageIcon makeImage()
      {
        return new ImageIcon(getClass().getResource("/Images/gamewin.gif"));
