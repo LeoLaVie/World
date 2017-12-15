@@ -524,12 +524,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             JOptionPane.INFORMATION_MESSAGE);
                 }
             }
-            itemAdded = itemAdded + " and " + gold + " gold." + textToAdd;
-            //textEvent.setText(itemAdded); 
-            if (!aChest.getInventory().getItems().isEmpty()) {
-                for (Items item : aChest.getInventory().getItems()) {
-                    aChest.deleteItem(item);
-                }
+            while (i != 0)
+            {
+                aChest.deleteItem(chestInv.get(0));
+                i -= 1;
             }
 
         }

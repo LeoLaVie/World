@@ -27,11 +27,11 @@ public class KindNPCTest
      *
      * Called before every test case method.
      */
-    @Before
-    public void setUp()
-    {
-        kindNPC = new KindNPC("Loulou", "Qu'est-ce qui est vert et long?", "Un poireau", true);
-    }
+//    @Before
+//    public void setUp()
+//    {
+//        kindNPC = new KindNPC("Loulou", "Qu'est-ce qui est vert et long?", "Un poireau", true);
+//    }
 
     /**
      * Tears down the test fixture.
