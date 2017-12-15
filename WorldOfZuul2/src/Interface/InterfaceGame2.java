@@ -20,6 +20,8 @@ import FunctionnalCore.Player;
 import FunctionnalCore.Room;
 import FunctionnalCore.Usable;
 import FunctionnalCore.Weapon;
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -35,6 +37,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.*;
 import static java.lang.System.exit;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.*;
@@ -171,7 +174,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         //testChest();
         //aPlayer.getLocation().hasChest();
 
-        image = new ImageIcon(getClass().getResource("/Images/Outside1.jpg"));
+        image = new ImageIcon(getClass().getResource("/Images/outside1.jpg"));
         labelImage = new JLabel();
         labelImage.setIcon(image);
         this.labelImage.setHorizontalAlignment(JLabel.CENTER);
@@ -955,9 +958,20 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                     } else {
                         beginEnigma(currentRoom.getkNPC());
                     }
-                } else {
+                } 
+                else {
                     if (currentRoom.hasMNPC() == true) {
                         if (currentRoom == lastroom) {
+                            URL url = InterfaceGameOver.class.getResource("/Sound/combat.wav");
+                            final AudioClip clip = Applet.newAudioClip(url);
+
+                            // pour l'exécuter au moment ou la fenêtre s'ouvre
+                             this.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowOpened(WindowEvent e) {
+                            clip.play();
+                            }   
+                            });
                             dialogueSC(currentRoom.getmNPC());
                             //fight.runFight(move);
                             this.getButtonAttack().setEnabled(true);
@@ -971,7 +985,19 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             jop1 = new JOptionPane();
                             jop1.showMessageDialog(null, "\n*** Chose your action with buttons ! ***", null,
                                     JOptionPane.INFORMATION_MESSAGE);
-                        } else {
+                        } 
+                        else {
+                            URL url = InterfaceGameOver.class.getResource("/Sound/combat.wav");
+                            final AudioClip clip = Applet.newAudioClip(url);
+
+                            // pour l'exécuter au moment ou la fenêtre s'ouvre
+                             this.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowOpened(WindowEvent e) {
+                            clip.play();
+                            }   
+                            });
+                             
                             dialogueMeanNPC(currentRoom.getmNPC());
                             // voir pour le runFight
                             this.getButtonAttack().setEnabled(true);
@@ -990,12 +1016,6 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                     }
                 }
             }
-
-//                    {if (currentRoom.hasMNPC() == true)
-//                    {if (currentRoom == lastroom){
-//                    dialogueSC(currentRoom.getmNPC());
-//                    //fight.runFight(move);
-//                    }
         }
 
         for (String key : currentRoom.getExit().keySet()) {
@@ -1112,54 +1132,34 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
         // String action = fightRun.getActionCommand();
         Fight firstfight = new Fight(getaPlayer(), currentRoom.getmNPC());
         //fight system
-        //  while(fighting) {
-        this.getButtonAttack().setEnabled(true);
-        // this.getButtonLife().setEnabled(true);
-        this.getButtonNorth().setEnabled(false);
-        this.getButtonEast().setEnabled(false);
-        this.getButtonSouth().setEnabled(false);
-        this.getButtonWest().setEnabled(false);
-        this.getButtonUp().setEnabled(false);
-        this.getButtonDown().setEnabled(false);
+       
         if (aPlayer.getHealth() <= 0 || currentRoom.getmNPC().getHealth() <= 0) {
             fighting = false;
-            // break;
-        } // ((JButton)fightRun.getSource()).getActionCommand().equals("attack")
+        }
         else if (fightRun.getSource() == this.getButtonAttack()) {
             //start the fight
             firstfight.fight1();
-            //  fight.enemyAttack();
-            //  fight.statusUpdate();
             labelPv.setText(Integer.toString(aPlayer.getHealth()));
-        } else if (fightRun.getSource() == this.getButtonLife()) {
+        } 
+        else if (fightRun.getSource() == this.getButtonLife()) {
             //take a potion
             firstfight.takePotion();
-            // fight.takePotion();
-            //  fight.enemyAttack();
-            // fight.statusUpdate();
             labelPv.setText(Integer.toString(aPlayer.getHealth()));
         }
-//            else{
-//                fight.enemyAttack();
-//                fight.statusUpdate();
-//                labelPv.setText(Integer.toString(aPlayer.getHealth()));
-//                
-//            }
-
+        
         if (!fighting) {
             if (aPlayer.getHealth() <= 0) {
                 firstfight.youLose();
                 new InterfaceGameOver();
                 this.dispose();
-            } else if (currentRoom.getmNPC().getHealth() <= 0) {
+            } 
+            else if (currentRoom.getmNPC().getHealth() <= 0) {
                 if (currentRoom == lastroom) {
                     firstfight.youWin();
                     new InterfaceGameWin();
                     this.dispose();
                 }
-                firstfight.youWin();
                 this.getButtonAttack().setEnabled(false);
-                // this.getButtonLife().setEnabled(true);
                 this.getButtonNorth().setEnabled(true);
                 this.getButtonEast().setEnabled(true);
                 this.getButtonSouth().setEnabled(true);

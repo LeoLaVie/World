@@ -31,25 +31,25 @@ import javax.swing.SwingConstants;
  * @author leov
  */
 public class InterfaceGameOver extends JFrame implements ActionListener {
-    
+
     private JButton buttonRestart;
-    
-    public InterfaceGameOver(){
-    
+    private InterfaceGame2 interfaceGame;
+
+    public InterfaceGameOver() {
+
         URL url = InterfaceGameOver.class.getResource("/Sound/gameOver.wav");
         final AudioClip clip = Applet.newAudioClip(url);
- 
- 
-	// pour l'exécuter au moment ou la fenêtre s'ouvre
-	this.addWindowListener(new WindowAdapter() {
-		@Override
-		public void windowOpened(WindowEvent e) {
-	            clip.play();
-		}
-	});
-        
+
+        // pour l'exécuter au moment ou la fenêtre s'ouvre
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                clip.play();
+            }
+        });
+
         buttonRestart = new JButton();
-        buttonRestart.setPreferredSize(new Dimension(200,60));
+        buttonRestart.setPreferredSize(new Dimension(200, 60));
         buttonRestart.setIcon(new ImageIcon(getClass().getResource("/Images/boutton_game.png")));
         buttonRestart.setText("RESTART GAME");
         buttonRestart.setForeground(Color.black);
@@ -57,51 +57,51 @@ public class InterfaceGameOver extends JFrame implements ActionListener {
         buttonRestart.setContentAreaFilled(false);
         buttonRestart.setBorderPainted(false);
         buttonRestart.setDisabledIcon(new ImageIcon(getClass().getResource("/Images/boutton_game.png")));
-        buttonRestart.setFont(new java.awt.Font(Font.SERIF,Font.BOLD,25));
+        buttonRestart.setFont(new java.awt.Font(Font.SERIF, Font.BOLD, 25));
         buttonRestart.setVerticalTextPosition(SwingConstants.CENTER);
         buttonRestart.setHorizontalTextPosition(SwingConstants.CENTER);
         buttonRestart.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
+
+        buttonRestart.addActionListener(this);
+
         JPanel panel = new JPanel();
         panel.add(buttonRestart);
-        
-        // restart the game
-       buttonRestart.addActionListener(new ActionListener(){
-        public void actionPerformed (ActionEvent e)
-        {
-          // exit page
-          System.exit(0);
-          new InterfaceMain();
-         // this.dispose();
-          
-        }       
-     });
-        
-       Container c = new JLabel(makeImage());
-       c.setLayout(new FlowLayout());
-       c.add(panel, BorderLayout.SOUTH);
-       c.setPreferredSize(new Dimension(920,650));
-       c.setMaximumSize(new Dimension(920,650));
-       c.setMinimumSize(new Dimension(920,650)); 
-       this.add(c);
-       this.setTitle("World Of Zuul");// Titre
-       this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       this.setResizable(false);
-       this.setPreferredSize(new Dimension(920,700));
-       this.setMaximumSize(new Dimension(920,700));
-       this.setMinimumSize(new Dimension(920,700));
-       this.setLocationRelativeTo(null);
-       this.setVisible(true);
-}
-    
-    private ImageIcon makeImage()
-     {
-       return new ImageIcon(getClass().getResource("/Images/gameover.gif"));
-        
-     }
+
+        Container c = new JLabel(makeImage());
+        c.setLayout(new FlowLayout());
+        c.add(panel, BorderLayout.SOUTH);
+        c.setPreferredSize(new Dimension(920, 650));
+        c.setMaximumSize(new Dimension(920, 650));
+        c.setMinimumSize(new Dimension(920, 650));
+        this.add(c);
+        this.setTitle("World Of Zuul");// Titre
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setPreferredSize(new Dimension(920, 700));
+        this.setMaximumSize(new Dimension(920, 700));
+        this.setMinimumSize(new Dimension(920, 700));
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+    }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent e) {
+        // exit page
+        if (e.getSource() == buttonRestart) {
+            //interfaceGame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            new InterfaceMain();
+            this.dispose();
+        }
+
     }
+
+    private ImageIcon makeImage() {
+        return new ImageIcon(getClass().getResource("/Images/gameover.gif"));
+
+    }
+
+//    @Override
+//    public void actionPerformed(ActionEvent ae) {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 }

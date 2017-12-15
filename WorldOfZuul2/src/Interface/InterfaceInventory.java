@@ -156,7 +156,7 @@ public class InterfaceInventory extends JFrame {
         inventory.setBackground(Color.black);
         
         //Listeners for buttons action
-        evt = new InventoryInterfaceListener(this);
+        evt = new InventoryInterfaceListener(this, player);
         back.addMouseListener(evt);
         
         //fill the body inventory

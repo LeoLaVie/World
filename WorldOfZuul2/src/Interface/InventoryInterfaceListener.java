@@ -9,10 +9,12 @@ import FunctionnalCore.Chest;
 import FunctionnalCore.Door;
 import FunctionnalCore.Items;
 import FunctionnalCore.Key;
+import FunctionnalCore.Player;
 import FunctionnalCore.Usable;
 import FunctionnalCore.Weapon;
 import java.awt.event.*;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -25,12 +27,16 @@ public class InventoryInterfaceListener extends MouseAdapter {
     private Items myItem;
     private int i;
     private HashMap<String, Door> doors;
+    private InterfaceGame2 interfaceGame;
+    private Player myPlayer;
+    JOptionPane dial;
 
     /**
      * The Constructor for the listener
      */
-    public InventoryInterfaceListener(InterfaceInventory c) {
+    public InventoryInterfaceListener(InterfaceInventory c, Player player) {
         inventory = c;
+        myPlayer = player;
     }
 
     /**
@@ -99,10 +105,13 @@ public class InventoryInterfaceListener extends MouseAdapter {
                     if (((Usable) myItem).getCare() > 0) {
                         inventory.getPlayer().manageHealth(((Usable) myItem).getCare());
                         //inventory.getGame().getHealthBar().setValue(inventory.getPlayer().getHealth());
+                        inventory.getGame().getLabelPv().setText(Integer.toString(myPlayer.getHealth()));
                     }
                 }
+                
                 inventory.getInventory().deleteItem(myItem);
                 inventory.manageInventory();
+               
             //} //if key, this function tries to open the door or chest
              if (myItem instanceof Key) {
                 //doors=inventory.getPlayer().getLocation().getDoors();
@@ -134,6 +143,9 @@ public class InventoryInterfaceListener extends MouseAdapter {
                     {
                         //inventory.getGame().setText
                         System.out.println("This key does not work, please try another key.");
+                        dial = new JOptionPane();
+                        dial.showMessageDialog(null, "This key does not work, please try another key.", null,
+                        JOptionPane.INFORMATION_MESSAGE);
                     }
 
                 }
