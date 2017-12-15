@@ -1,6 +1,9 @@
 package Interface;
 
 import FunctionnalCore.Game;
+import FunctionnalCore.Inventory;
+import FunctionnalCore.KindNPC;
+import FunctionnalCore.Player;
 import Interface.InterfaceGame2;
 import java.awt.event.*; 
 import javax.swing.*;
@@ -15,8 +18,11 @@ public class ActionText extends AbstractAction {
 
     
     // instance variables - replace the example below with your own
-    private InterfaceGame2 interfaceGame;  
+    private InterfaceGame2 interfaceGame;
+    private Player aPlayer;
+    private Inventory inventory;
     JOptionPane dial;
+    private KindNPC npc;
     /**
      * Constructor for objects of class ActionText
      */

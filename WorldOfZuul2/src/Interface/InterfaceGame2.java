@@ -465,31 +465,31 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
      * Method to creat different object in our game
      */
     private void createObject() {
-        w1 = new Weapon("couteau1", "cut all", 50);
-        w2 = new Weapon("epee2", "cut", 100);
+        w1 = new Weapon("couteau1", "cut all", 25);
+        w2 = new Weapon("epee2", "cut", 35);
 
         c1 = new Usable("potion", "care people", "care", 20);
         c2 = new Usable("potion", "care people", "care", 50);
 
         k1 = new Key("key", "open all chest");
-        k2 = new Key("key", "open really all treasure");
-        klastRoom = new Key("key", "open the boss room");
+        //k2 = new Key("key", "open really all treasure");
+        //klastRoom = new Key("key", "open the boss room");
 
         l1 = new Lock();
         l1.addKey(k1);
 
-        l2 = new Lock();
-        l2.addKey(k2);
+//        l2 = new Lock();
+//        l2.addKey(k2);
 
         ch1 = new Chest("superBox", "countains all", 2, 20, l1);
-        ch1.addItem(w1);
+        ch1.addItem(w2);
 
-        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
-        ch2.addItem(w2);
-        ch2.addItem(c2);
-        ch2.addItem(klastRoom);
+//        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
+//        ch2.addItem(w2);
+//        ch2.addItem(c2);
+//        ch2.addItem(klastRoom);
 
-        //aPlayer.inventory.addItem(w1);     
+        aPlayer.inventory.addItem(w1);     
         //aPlayer.inventory.addItem(w2);
         aPlayer.inventory.addItem(k1);
         // aPlayer.inventory.addItem(k2);
@@ -503,8 +503,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
      * Method for add the chests in the good room
      */
     private void addChestToRoom() {
-        rdch1.addChest(ch1);
-        bibliotheque.addChest(ch2);
+        //rdch1.addChest(ch1);
+        bibliotheque.addChest(ch1);
     }
 
     /**

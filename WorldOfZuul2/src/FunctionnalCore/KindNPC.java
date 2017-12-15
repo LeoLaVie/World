@@ -20,7 +20,9 @@ public class KindNPC {
     private String answer;
     //Enigma's availability
     private boolean available;
-
+    //Reward
+    private Items item1;
+    
     /**
      * Constructor for objects of class NPC
      */
@@ -41,7 +43,8 @@ public class KindNPC {
         // put your code here
         return nameKNPC;
     }
-
+    
+    
     /**
      * Method getAnswer - This method displays the answer of the enigma linked
      * to the kind NPC
@@ -88,4 +91,5 @@ public class KindNPC {
         return enigma;
     }
 
+    
 }
