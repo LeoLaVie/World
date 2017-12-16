@@ -31,6 +31,10 @@ public class MeanNPC {
 
     /**
      * Constructor for objects of class NPC
+     * @param nameMPC string for the name of npc
+     * @param health1 integer for the health of npc
+     * @param attack1 integer for the number of point attack
+     * @param live boolean if the npc is a live
      */
     public MeanNPC(String nameMPC, int health1, int attack1, boolean live) {
         // initialise instance variables
@@ -82,7 +86,7 @@ public class MeanNPC {
 
     /**
      * Method getNameMNPC - This method displays the name of the nasty NPC
-     * return nameMNPC the name of the mean NPC
+     * @return nameMNPC the name of the mean NPC
      */
     public String getNameMNPC() {
         return nameMNPC;

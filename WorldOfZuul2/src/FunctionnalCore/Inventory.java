@@ -22,6 +22,7 @@ public class Inventory {
 
     /**
      * Constructor for objects of class Inventory
+     * @param nbMaxItems the number of the max items
      */
     public Inventory(int nbMaxItems) {
         items = new ArrayList<Items>();
@@ -33,8 +34,7 @@ public class Inventory {
      * Constructor used only to create a player's inventory
      *
      * @param nbMaxItems int : number max of items in the inventory
-     * @param gold int : number of gold in the inventory By default the
-     * inventory has any item.
+     * @param golds int : number of gold in the inventory By default the inventory has any item.
      */
     public Inventory(int nbMaxItems, int golds) {
         items = new ArrayList<Items>();
@@ -52,6 +52,7 @@ public class Inventory {
 
     /**
      * This method returns a list of item from the inventory
+     * @return items it is a array list of item
      */
     public ArrayList<Items> getItems() {
         return items;
@@ -59,7 +60,7 @@ public class Inventory {
 
     /**
      * This method returns the number of items in the inventory
-     * 
+     * @return the size of the items
      */
     public int getNbItems() {
         return this.getItems().size();
@@ -83,7 +84,7 @@ public class Inventory {
     /**
      * This method deletes one item in an inventory.
      *
-     * @param item: The item deleted to the inventory
+     * @param itemToDelete The item deleted to the inventory
      * @return true if the item is correctly delete
      */
     public boolean deleteItem(Items itemToDelete) {
@@ -94,7 +95,7 @@ public class Inventory {
     /**
      * This method adds one item in an inventory.
      *
-     * @param item: The item added to the inventory
+     * @param itemToAdd The item added to the inventory
      * @return true if the item is correctly add, false if not
      */
     public boolean addItem(Items itemToAdd) {
@@ -115,6 +116,8 @@ public class Inventory {
     /**
      * This method allow to add or remove money (by minus int) from the
      * inventory
+     * @param money integer for the money
+     * @return boolean 
      */
     public boolean manageGold(int money) {
         if (gold + money >= 0) {
@@ -128,6 +131,7 @@ public class Inventory {
     /**
      * This method returns gold from the inventory of a character - simple
      * accessor
+     * @return gold
      */
     public int getGold() {
         return gold;

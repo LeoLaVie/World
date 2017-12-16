@@ -86,7 +86,7 @@ public class InterfaceGameOver extends JFrame implements ActionListener {
 
     /**
      * Method action performed to restart the game
-     * @param e 
+     * @param e action event for send in interface main in the end of game
      */
     @Override
     public void actionPerformed(ActionEvent e) {

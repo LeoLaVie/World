@@ -34,9 +34,9 @@ public class InterfaceGame extends JFrame  {
     
     /**
      * Attributes menubar
-     * @param menuBar is the JMenuBar for the menu
-     * @param quit is the JMenuItem to quit the game
-     * @param help is the JMenuItem to have a help
+     * menuBar is the JMenuBar for the menu
+     * quit is the JMenuItem to quit the game
+     * help is the JMenuItem to have a help
     */
     private JMenuBar menuBar;
     private final JMenuItem quit = new JMenuItem("Quit");
@@ -44,18 +44,18 @@ public class InterfaceGame extends JFrame  {
     
     /**
      * Attributes panel
-     * @param myPanel is the JPanel for creat different panel.
+     * myPanel is the JPanel for creat different panel.
     */
     private JPanel myPanel;
     
     /**
      * Attributes button
-     * @param buttonNorth
-     * @param buttonEast
-     * @param buttonSouth
-     * @param buttonWest
-     * @param buttonUp
-     * @param buttonDown
+     * buttonNorth
+     * buttonEast
+     * buttonSouth
+     * buttonWest
+     * buttonUp
+     * buttonDown
     */
     protected JButton buttonNorth;
     protected JButton buttonEast;
@@ -67,13 +67,13 @@ public class InterfaceGame extends JFrame  {
     
     /**
      * Attributes label
-     * @param labelPv
-     * @param labelVide
-     * @param labelVide2
-     * @param labelVide3
-     * @param labelVide4
-     * @param labelVide5
-     * @param labelback
+     * labelPv
+     * labelVide
+     * labelVide2
+     * labelVide3
+     * labelVide4
+     * labelVide5
+     * labelback
     */
      private JLabel labelPv;
      private JLabel labelVide;
@@ -281,19 +281,34 @@ public class InterfaceGame extends JFrame  {
         return panelText;
     }
     
-    
+    /**
+    * Method to return a text field
+    * @return textField
+    */   
     public JTextField getTextField(){
         return textField;
     }
  
+    /**
+    * Method to return a text area
+    * @return textArea
+    */   
     public JTextArea getTextArea(){
          return textArea;
     }
 
+    /**
+    * Method to return a buttonNorth
+    * @return buttonNorth
+    */   
     public JButton getButtonNorth() {
         return buttonNorth;
     }
-
+    
+    /**
+    * Method to return a button east
+    * @return buttonEast
+    */   
     public JButton getButtonEast() {
         return buttonEast;
     }

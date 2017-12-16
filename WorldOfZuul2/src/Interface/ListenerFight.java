@@ -15,7 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
- *
+ * 
  * @author leov
  */
 public class ListenerFight implements ActionListener{
@@ -25,11 +25,19 @@ public class ListenerFight implements ActionListener{
     private static Fight fight;
     private MeanNPC meanNpc;
     
+    /**
+     * Constructor of the listener fight class
+     * @param a interfaceGame2 class
+     */
     public ListenerFight (InterfaceGame2 a)
     {
         game = a;
     }
     
+    /**
+     * 
+     * @param fightRun action event for the fight in the runfight method
+     */
         @Override
     public void actionPerformed(ActionEvent fightRun)
     {

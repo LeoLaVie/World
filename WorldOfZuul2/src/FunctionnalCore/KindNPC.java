@@ -26,6 +26,10 @@ public class KindNPC {
     
     /**
      * Constructor for objects of class NPC
+     * @param a string for the name of kind npc
+     * @param c string for the enigma
+     * @param d string for the answer of enigma
+     * @param disp boolean for disponibility
      */
     public KindNPC(String a, String c, String d, boolean disp) {
         // initialise instance variables
@@ -88,6 +92,11 @@ public class KindNPC {
         System.out.println("*** Can you help me to free myself by answering the following riddle please ? " + enigma + " ***");
     }
 
+    
+    /**
+    * Method to return an event enigma
+    * @return enigma
+    */   
     public String getEnigma() {
         return enigma;
     }

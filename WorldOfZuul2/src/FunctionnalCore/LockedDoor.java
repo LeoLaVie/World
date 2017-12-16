@@ -23,6 +23,10 @@ public class LockedDoor extends Door {
      * LockedDoor class object builder, in addition to the following and
      * previous parts, has an identifier of int type which corresponds to the
      * key
+     * 
+     * @param nextRoom class room for the next room
+     * @param previousRoom class room for the previous room
+     * @param keyLocked class key for the key of the next room
      */
     public LockedDoor(Room nextRoom, Room previousRoom, Key keyLocked) {
         super(nextRoom, previousRoom);
@@ -66,7 +70,6 @@ public class LockedDoor extends Door {
      * The unlock method allows you to unlock the door if the key provided is
      * the correct one
      *
-     * @param locked provideKey is th number of the key provided
      */
     public void unlock() {
         if (!isLocked()) {

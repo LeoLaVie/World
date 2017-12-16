@@ -25,6 +25,8 @@ public class ActionText extends AbstractAction {
     private KindNPC npc;
     /**
      * Constructor for objects of class ActionText
+     * @param interfaceGame class interface Game 2
+     * @param texte string of text in textField
      */
     public ActionText(InterfaceGame2 interfaceGame, String texte)
     {
@@ -35,10 +37,9 @@ public class ActionText extends AbstractAction {
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Action performed for enigma
      *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * @param  e action event for enigma
      */
     public void actionPerformed(ActionEvent e) { 
         String texteUtilisateur = interfaceGame.getTextField().getText();

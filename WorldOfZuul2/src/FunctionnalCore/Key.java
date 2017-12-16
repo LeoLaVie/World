@@ -17,6 +17,8 @@ public class Key extends Items {
 
     /**
      * Constructor for objects of class Key
+     * @param name string for the name of key
+     * @param description string for the description of key
      */
     public Key(String name, String description) {
         super(name, description);

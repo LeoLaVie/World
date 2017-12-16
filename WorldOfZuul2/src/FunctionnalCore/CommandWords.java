@@ -30,6 +30,7 @@ public class CommandWords
      * Check whether a given String is a valid command word. 
      * @return true if a given string is a valid command,
      * false if it isn't.
+     * @param aString string for word in the command
      */
     public boolean isCommand(String aString)
     {

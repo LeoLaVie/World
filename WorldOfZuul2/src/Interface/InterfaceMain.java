@@ -160,6 +160,10 @@ public class InterfaceMain extends JFrame implements ActionListener
         
     }
     
+    /**
+     * Method to return the picture for the background
+     * @return ImageIcon 
+     */
      private ImageIcon makeImage()
      {
        return new ImageIcon(getClass().getResource("/Images/fond2.gif"));
@@ -169,6 +173,7 @@ public class InterfaceMain extends JFrame implements ActionListener
    /**
    *The method actionPerformed allows to launch the interface game so start the game
    *clicked by the player.
+   * @param e action event 
    */
    
    @Override
@@ -182,8 +187,6 @@ public class InterfaceMain extends JFrame implements ActionListener
          playerName = fieldName.getText();
          //new InterfaceInventory(anInventory, aPlayer, aGame);
          new InterfaceGame2(playerName);
-        // new InterfaceGameOver();
-         //new InterfaceGameWin();
          this.dispose();
       }
       

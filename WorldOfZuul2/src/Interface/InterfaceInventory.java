@@ -285,8 +285,8 @@ public class InterfaceInventory extends JFrame {
     
     
     /**
-     * 
-     * @param anItem
+     * Method to display a item
+     * @param anItem attribut item, array list
      */
     public void displayItem(Items anItem)
     {

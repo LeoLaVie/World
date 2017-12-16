@@ -27,6 +27,9 @@ public class Weapon extends Items {
 
     /**
      * Constructor for objects of class weapon
+     * @param newName name of the weapon
+     * @param aDescription description of the weapon
+     * @param nbDamage the number of the damage of the weapon
      */
     public Weapon(String newName, String aDescription, int nbDamage) {
         super(newName, aDescription);
@@ -36,6 +39,8 @@ public class Weapon extends Items {
 
     /**
      * This method returns if the weapon is use by the player
+     * 
+     *@return boolean equiped
      */
     public boolean getEquiped() {
         return equiped;
@@ -53,7 +58,6 @@ public class Weapon extends Items {
     /**
      * This method allows the character to equip or unequip a weapon.
      *
-     * @return boolean : true if the the character is equiped
      */
     public void equip() {
         if (this.getEquiped() == false) {

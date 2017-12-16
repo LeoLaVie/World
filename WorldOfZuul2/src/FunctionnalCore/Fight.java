@@ -23,6 +23,8 @@ public class Fight extends Events {
 
     /**
      * Constructor for objects of class Fight
+     * @param player class Player
+     * @param myNPC class MeanNPC
      */
     public Fight(Player player, MeanNPC myNPC) {
         // initialise instance variables
@@ -105,8 +107,7 @@ public class Fight extends Events {
     /**
      * Method to get the win when the player has win
      *
-     * @param y a sample parameter for a method
-     * @return the sum of x and y
+     * @return isWin for the player
      */
     public boolean getWin() {
         return isWin;
@@ -121,15 +122,13 @@ public class Fight extends Events {
         System.out.print("\nCongratulations!\nYou have defeated the enemy!");
         dial = new JOptionPane();
         dial.showMessageDialog(null, "\nCongratulations!\nYou have defeated the enemy!", null,
-                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.INFORMATION_MESSAGE);
 
     }
 
     /**
      * Method to describe that the player is death
      *
-     * @param y a sample parameter for a method
-     * @return the sum of x and y
      */
     public void youLose() {
         System.out.print("\nSorry but you have lose!");
@@ -138,18 +137,34 @@ public class Fight extends Events {
                 JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+    * Method to return a boolean is player has win
+    * @return isWin
+    */   
     public boolean isIsWin() {
         return isWin;
     }
 
+    /**
+    * Method to modifiy the boolean isWin
+    * @param isWin boolean to see if the player has win
+    */   
     public void setIsWin(boolean isWin) {
         this.isWin = isWin;
     }
 
+    /**
+    * Method to return the health
+    * @return health
+    */   
     public int getHealth() {
         return health;
     }
 
+    /**
+    * Method to modify the health
+    * @param health integer for the health of the player
+    */   
     public void setHealth(int health) {
         this.health = health;
     }

@@ -16,12 +16,19 @@ public class ListenerMouse extends MouseAdapter
 {
     private InterfaceGame2 mouse;
     
-    
+    /**
+     * Constructor for the listener mouse
+     * @param m it is the interfaceGame2 class
+     */
     public ListenerMouse (InterfaceGame2 m)
     {
         mouse = m;
     }
     
+    /**
+     * 
+     * @param evt mouse event
+     */
     @Override
     public void mouseEntered(MouseEvent evt)
     {

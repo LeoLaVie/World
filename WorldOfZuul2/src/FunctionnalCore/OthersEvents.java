@@ -20,6 +20,7 @@ public class OthersEvents extends Events {
 
     /**
      * Constructor for objects of class OthersEvents
+     * @param answer for the answer of the event
      */
     public OthersEvents(String answer) {
         // initialise instance variables
@@ -30,8 +31,6 @@ public class OthersEvents extends Events {
     /**
      * Method to a random death event.
      *
-     * @param randomMort is a random value between 0 and 10
-     * @return the state of player's death or player's live
      */
     public void eventMortAllea() {
         //initialisation du random
@@ -50,7 +49,7 @@ public class OthersEvents extends Events {
 
     /**
      * Method to an event in the mine of the castle
-     *
+     *@param answer string for the answer of the event
      */
     public void eventMine(String answer) {
         // dialogue

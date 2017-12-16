@@ -21,6 +21,11 @@ public class Chest extends Inventory {
 
     /**
      * Constructor for objects of class Chest
+     * @param aName string for the name of the chest
+     * @param aDescription string for the description of the chest
+     * @param maxItems int for the items
+     * @param golds integer for the gold
+     * @param aLock class Lock
      */
     public Chest(String aName, String aDescription, int maxItems, int golds, Lock aLock) {
         super(maxItems, golds);
@@ -58,7 +63,7 @@ public class Chest extends Inventory {
 
    /**
     * Method to change the status of the chest
-    * @param key
+    * @param key the attribut key
     * @return boolean, true if the chest is open, false if is not
     */
     public boolean openChest(Key key) {
@@ -73,7 +78,7 @@ public class Chest extends Inventory {
      * This method deletes one item in a chest. New method for chest : test if
      * the chest is open or not
      *
-     * @param item: The item deleted to the inventory
+     * @param itemToDelete The item deleted to the inventory
      * @return True if it works or false if it don't (chest close)
      */
     public boolean deleteItem(Items itemToDelete) {
@@ -101,6 +106,10 @@ public class Chest extends Inventory {
         }
     }
 
+    /**
+     * Method getter to return the inventory
+     * @return inventory 
+     */
     public Inventory getInventory() {
         return inventory;
     }

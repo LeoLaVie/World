@@ -41,8 +41,8 @@ public class Room {
     /**
      * Constructor for objects of class Room
      *
-     * @param roomName The name of the Room
-     * @param background The picture of the background of the room
+     * @param nameRoom roomName The name of the Room
+     * @param descriptionRoom The picture of the background of the room
      */
     public Room(String nameRoom, String descriptionRoom) {
         this.nameRoom = nameRoom;
@@ -54,10 +54,19 @@ public class Room {
 
     }
 
+    
+    /**
+     * Method getter to return the room's name
+     * @return nameRoom the name of room
+     */
     public String getNameRoom() {
         return nameRoom;
     }
 
+    /**
+     * Method getter to return the kind npc
+     * @return kNPC it is the kind npc of the room
+     */
     public KindNPC getKNPC() {
         return kNPC;
     }
@@ -65,9 +74,8 @@ public class Room {
     /**
      * Allows to add a simple or locked exit in the room
      *
-     * @param direction The direction for the door
-     * (East,West,South,Nort,Up,Down)
-     * @param lock A boolean to know if the door is locked or not
+     * @param action The direction for the door(East,West,South,Nort,Up,Down)
+     * @param keyLocked A boolean to know if the door is locked or not
      * @param nextRoom The room behind the door
      */
     public void setExit(String action, Key keyLocked, Room nextRoom) {
@@ -104,6 +112,7 @@ public class Room {
 
     /**
      * return if they are a chest in the room
+     * @return the chest
      */
     public Chest getChest() {
         return chest;
@@ -111,6 +120,7 @@ public class Room {
 
     /**
      * method for add a chest in a room
+     * @param aChest add a chest in a room
      */
     public void addChest(Chest aChest) {
         chest = aChest;
@@ -157,6 +167,7 @@ public class Room {
 
     /**
      * Method to add a Kind NPC in the corresponding room
+     * @param kiNPC adding a kind npc in a room
      */
     public void addkNPC(KindNPC kiNPC) {
         kNPC = kiNPC;
@@ -164,6 +175,7 @@ public class Room {
 
     /**
      * Method to add a Mean NPC in the corresponding room
+     * @param meNPC adding a mean npc in a room
      */
     public void addmNPC(MeanNPC meNPC) {
         mNPC = meNPC;
@@ -171,27 +183,49 @@ public class Room {
 
     /**
      * Method to add a fight in the corresponding room
+     * @param f1 adding a fight event in a room
      */
     public void addFight(Fight f1) {
         f = f1;
     }
 
+
+    /**
+    * Method to return an array list item
+    * @return item which is array list
+    */    
     public Items getItem() {
         return item;
     }
-
+    
+    /**
+    * Method to return an kind npc
+    * @return kNPC
+    */   
     public KindNPC getkNPC() {
         return kNPC;
     }
 
+    /**
+    * Method to return a mean NPC
+    * @return mNPC
+    */   
     public MeanNPC getmNPC() {
         return mNPC;
     }
 
+    /**
+    * Method to return the description of the room
+    * @return descriptionRoom
+    */   
     public String getDescriptionRoom() {
         return descriptionRoom;
     }
 
+    /**
+    * Method to return the event fight
+    * @return f
+    */   
     public Fight getF1() {
         return f;
     }

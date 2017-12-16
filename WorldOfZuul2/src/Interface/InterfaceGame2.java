@@ -72,21 +72,21 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     /**
      * Attributes for the world. There is attributes for rooms, for weapons, for useables,..    *
      * 
-     * @param w1 attribute for a knife
-     * @param w2 attribute for a sword
-     * @param c1 attribute for a potion
-     * @param c2 attribute for a second potion
-     * @param k1 attribute for a key
-     * @param k2 attribute for a second key
-     * @param l1 attribute for a chest locked
-     * @param l2 attribute for a chest locked
-     * @param ch1 attribute for a chest
-     * @param ch2 attribute for a second chest
-     * @param otherParametreRoom Those are the globality of parameters for the rooms of the world
+     * w1 attribute for a knife
+     * w2 attribute for a sword
+     * c1 attribute for a potion
+     * c2 attribute for a second potion
+     * k1 attribute for a key
+     * k2 attribute for a second key
+     * l1 attribute for a chest locked
+     * l2 attribute for a chest locked
+     * ch1 attribute for a chest
+     * ch2 attribute for a second chest
+     * otherParametreRoom Those are the globality of parameters for the rooms of the world
      * 
      */
     private Weapon w1, w2;
-    private Usable c1, c2;
+    private Usable c1, c2, c3;
     private Key k1, k2, klastRoom;
     private Lock l1, l2;
     private Chest ch1, ch2;
@@ -133,12 +133,12 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     /**
      * Attributes Label, panel, JScroolPane
      *
-     * @param labelPv label to display the player's life
-     * @param labelImage label to display the room's picture
-     * @param labelText label to display the text box
-     * @param textField textField to write
-     * @param textArea textArea 
-     * @param panelText panelText to display 
+     * labelPv label to display the player's life
+     * llabelImage label to display the room's picture
+     * labelText label to display the text box
+     * textField textField to write
+     * textArea textArea 
+     * panelText panelText to display 
      * 
      */
     
@@ -456,6 +456,10 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     }
 
+    /**
+    * Method to return an picture for the background
+    * @return image
+    */   
     private ImageIcon makeImage() {
         return image;
     }
@@ -470,6 +474,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
         c1 = new Usable("potion", "care people", "care", 20);
         c2 = new Usable("potion", "care people", "care", 50);
+        c3 = new Usable("potion", "care people", "care", 50);
 
         k1 = new Key("key", "open all chest");
         //k2 = new Key("key", "open really all treasure");
@@ -483,6 +488,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
         ch1 = new Chest("superBox", "countains all", 2, 20, l1);
         ch1.addItem(w2);
+        ch1.addItem(c2);
+        ch1.addItem(c3);
 
 //        ch2 = new Chest("super super box", "there are lot of things", 3, 30, l2);
 //        ch2.addItem(w2);
@@ -806,7 +813,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     /**
      * Method to display a pop up with the text of the kind NPC
-     * @param kNPC1 
+     * @param kNPC1 attribut for all kind NPC
      */
     public void beginEnigma(KindNPC kNPC1) {
         enigma = new JOptionPane();
@@ -816,7 +823,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
         /**
      * Method to display a pop up with the mother claus
-     * @param kNPC1 
+     * @param kNPC5 attribut for the mother claus NPC 
      */
     public void beginEnigmaMX(KindNPC kNPC5) {
         enigma = new JOptionPane();
@@ -826,7 +833,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     /**
      * Method to display a pop up with the MeanNPC
-     * @param kNPC1 
+     * @param mNPC1  attribut for all mean NPC
      */
     public void dialogueMeanNPC(MeanNPC mNPC1) {
         dial = new JOptionPane();
@@ -837,7 +844,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     /**
      * Method to display a pop up with the Santa Claus
-     * @param kNPC1 
+     * @param mNPC6 attribut for Santa claus mean NPC
      */
     public void dialogueSC(MeanNPC mNPC6) {
         dial = new JOptionPane();
@@ -896,7 +903,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     /**
      * Method used to put on line the text
-     * @param s 
+     * @param s string 
      */
     public void insert(String s) {
         try {
@@ -954,6 +961,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
      * Try to go to one direction. If there is an exit, enter the new room,
      * otherwise print an error message.
      * This method launch an event if the room has one.
+     * @param move action event for the move
      */
     public void goRoom(ActionEvent move) {
 
@@ -995,13 +1003,8 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             URL url = InterfaceGameOver.class.getResource("/Sound/combat.wav");
                             final AudioClip clip = Applet.newAudioClip(url);
 
-                            // pour l'exécuter au moment ou la fenêtre s'ouvre
-                             this.addWindowListener(new WindowAdapter() {
-                            @Override
-                            public void windowOpened(WindowEvent e) {
                             clip.play();
-                            }   
-                            });
+                            
                             dialogueSC(currentRoom.getmNPC());
                             //fight.runFight(move);
                             this.getButtonAttack().setEnabled(true);
@@ -1020,13 +1023,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                             URL url = InterfaceGameOver.class.getResource("/Sound/combat.wav");
                             final AudioClip clip = Applet.newAudioClip(url);
 
-                            // pour l'exécuter au moment ou la fenêtre s'ouvre
-                             this.addWindowListener(new WindowAdapter() {
-                            @Override
-                            public void windowOpened(WindowEvent e) {
                             clip.play();
-                            }   
-                            });
                              
                             dialogueMeanNPC(currentRoom.getmNPC());
                             // voir pour le runFight
@@ -1121,7 +1118,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
 
     /**
      * Method action performed to retrieve items from a chest in the player's inventory
-     * @param e 
+     * @param e  action event for the button inventory
      */
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -1135,12 +1132,19 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                 if (this.getPlayer().getLocation().getChest().getLock().getLock() == true) {
                     //this.buttonChest.setText
                     System.out.println("The chest " + this.getPlayer().getLocation().getChest().getName() + " is locked. You need a key to open this chest. Try to open it by opening your inventory !");
+                    dial = new JOptionPane();
+                    dial.showMessageDialog(null, "The chest " + this.getPlayer().getLocation().getChest().getName() + " is locked. You need a key to open this chest. Try to open it by opening your inventory !", null,
+                    JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     this.getItemsFromChest(this.getPlayer().getLocation().getChest());
                 }
             } else {
                 //this.buttonChest.setText
                 System.out.println("There is no chest in this room !");
+                dial = new JOptionPane();
+                dial.showMessageDialog(null, "There is no chest in this room !", null,
+                JOptionPane.INFORMATION_MESSAGE);
+
             }
         }
 
@@ -1173,7 +1177,7 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
     
     /**
      * Method to actualize the fight
-     * @param fightRun 
+     * @param fightRun action event for the fight
      */
     public void runFight(ActionEvent fightRun) {
         //appelle du joueur, vie, etat...
@@ -1207,6 +1211,9 @@ public class InterfaceGame2 extends JFrame implements ActionListener {
                     firstfight.youWin();
                     new InterfaceGameWin();
                     this.dispose();
+                }
+                else{
+                    firstfight.youWin();
                 }
                 this.getButtonAttack().setEnabled(false);
                 this.getButtonNorth().setEnabled(true);

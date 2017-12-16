@@ -25,6 +25,7 @@ public class Lock {
 
     /**
      * return if the lock is false or not
+     * @return lock boolean
      */
     public boolean getLock() {
         return lock;
@@ -32,6 +33,7 @@ public class Lock {
 
     /**
      * Method to return if the lock is false or not
+     * @return key of class Key
      */
     public Key getKey() {
         return key;
@@ -51,8 +53,8 @@ public class Lock {
     /**
      * Method boolean for return the statut of the chest, lock or unlock
      *
-     * @param keyTest
-     * @return boolean
+     * @param keyTest it is a class Key
+     * @return boolean 
      */
     public boolean unlock(Key keyTest) {
         if (keyTest.getKeyToken() == key.getKeyToken()) {

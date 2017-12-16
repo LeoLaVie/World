@@ -25,6 +25,8 @@ public class Items {
 
     /**
      * Constructor for objects of class Items
+     * @param newName string for the name of item
+     * @param aDescription description of the item
      */
     public Items(String newName, String aDescription) {
         name = newName;
@@ -69,7 +71,6 @@ public class Items {
     /**
      * This method returns if the item is managed.
      *
-     * @return Boolean : true if this item is displayed.
      */
     public void setManaged() {
         if (this.getDisplay() == true) {

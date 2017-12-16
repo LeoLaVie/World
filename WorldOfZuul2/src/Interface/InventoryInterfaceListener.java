@@ -29,10 +29,12 @@ public class InventoryInterfaceListener extends MouseAdapter {
     private HashMap<String, Door> doors;
     private InterfaceGame2 interfaceGame;
     private Player myPlayer;
-    JOptionPane dial;
+    JOptionPane dial, jop1;
 
     /**
      * The Constructor for the listener
+     * @param c it is the class interfaceinventory
+     * @param  player it is the class player
      */
     public InventoryInterfaceListener(InterfaceInventory c, Player player) {
         inventory = c;
@@ -42,6 +44,7 @@ public class InventoryInterfaceListener extends MouseAdapter {
     /**
      * action to do when the mouse flies on buttons This method displays the
      * name of the item in the inventory
+     * @param evt it is a mouse event
      */
     public void mouseEntered(MouseEvent evt) {
         items = inventory.getInventory().getItems();
@@ -56,6 +59,7 @@ public class InventoryInterfaceListener extends MouseAdapter {
                             if (((Weapon) item).getEquiped() == true) {
                                 myItem = item;
                                 inventory.getEquip().setToolTipText("You can not equip this weapon. You have to unequip your current weapon (" + myItem.getName() + ").");
+
                             }
                         }
                     }
@@ -65,9 +69,15 @@ public class InventoryInterfaceListener extends MouseAdapter {
                 if (inventory.getUse().isEnabled() == false) {
                     if (anItem instanceof Usable) {
                         inventory.getUse().setToolTipText("You have to equip a weapon before using this item.");
+                        jop1 = new JOptionPane();
+                        jop1.showMessageDialog(null, "You have to equip a weapon before using this item.", null,
+                        JOptionPane.INFORMATION_MESSAGE);
 
                     } else if (anItem instanceof Key) {
                         inventory.getUse().setToolTipText("You can not use a key at the moment.");
+                        jop1 = new JOptionPane();
+                        jop1.showMessageDialog(null, "You can not use a key at the moment.", null,
+                        JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             } else {
@@ -84,7 +94,7 @@ public class InventoryInterfaceListener extends MouseAdapter {
 
     /**
      * action to do when the mouse clicks on buttons
-     *
+     *@param  evt it is a mouse event
      */
     public void mousePressed(MouseEvent evt) {
         items = inventory.getInventory().getItems();

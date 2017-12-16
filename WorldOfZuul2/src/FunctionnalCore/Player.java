@@ -50,6 +50,7 @@ public class Player {
 
     /**
      * Constructor for objects of class Player.
+     * @param newName the new name of the player
      */
     public Player(String newName) {
         if (newName.equals("")) {
@@ -69,6 +70,7 @@ public class Player {
 
     /**
      * This method returns the name of the character.
+     * @return name of player
      */
     public static String getName() {
         return name;
@@ -76,6 +78,7 @@ public class Player {
 
     /**
      * This method returns the health points of the character.
+     * @return health of the player
      */
     public int getHealth() {
         return health;
@@ -83,6 +86,8 @@ public class Player {
 
     /**
      * Method to edit the player's health
+     * @param health of the player
+     * @param attPower of the player
      */
     public void setHealth(int health, int attPower) {
         this.health = health - attPower;
@@ -90,6 +95,7 @@ public class Player {
 
     /**
      * This method returns the max health points of the character.
+     * @return the max health possible for the player
      */
     public int getMaxHealth() {
         return maxHealth;
@@ -113,6 +119,7 @@ public class Player {
     /**
      * This method allows to change the statut alive when the character loose a
      * fight.
+     * @param hp the health adding with the take potion
      */
     public void looseHealth(int hp) {
         if (health < 0 | health == 0) {
@@ -152,6 +159,7 @@ public class Player {
 
     /**
      * Method getter to return the number of attack return attPower
+     * @return  attack power of the player
      */
     public int getAttPower() {
         return attPower;
@@ -160,7 +168,7 @@ public class Player {
     /**
      * Method to edit the number of the attack of the player
      *
-     * @param attPower
+     * @param attPower attack of the player
      */
     public void setAttPower(int attPower) {
         this.attPower = attPower;
@@ -168,7 +176,7 @@ public class Player {
 
     /**
      * Method for return the statut alive
-     *
+     *@return boolean if the player is a live
      */
     public boolean getALive() {
         // put your code here
@@ -179,7 +187,7 @@ public class Player {
     /**
      * Method for modify the statut of player in death for the random death
      * event.
-     *
+     *@param aLive for change the status a live of the player
      */
     public void setaLive(boolean aLive) {
         aLive = false;
@@ -187,17 +195,23 @@ public class Player {
 
     /**
      * This method return the location of the character in the town
+     * @return  location of the player
      */
     public Room getLocation() {
         return location;
     }
 
+    /**
+     * Method to change the position of the player
+     * @param newRoom the new position of the player
+     */
     public void moveRoom(Room newRoom) {
         location = newRoom;
     }
 
     /**
      * return the inventory of the player
+     * @return the inventory of the player
      */
     public Inventory getInventory() {
         return inventory;
